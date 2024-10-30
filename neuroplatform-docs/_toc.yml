@@ -1,9 +1,9 @@
 # Table of contents
-# Learn more at https://jupyterbook.org/customize/toc.html
 
 format: jb-book
 root: welcome
 parts:
   - caption: NeuroPlatform usage
     chapters:
-    - file : np_usage
+    - file : np_core/np_usage
+    - file : np_core/db_usage
