@@ -3,7 +3,7 @@
 
 format: jb-book
 root: welcome
-chapters:
-- file: markdown
-- file: notebooks
-- file: markdown-notebooks
+parts:
+  - caption: NeuroPlatform usage
+    chapters:
+    - file : np_usage

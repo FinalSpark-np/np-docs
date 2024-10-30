@@ -22,5 +22,6 @@ repository:
   branch: main  # Which branch of the repository should be used when creating links (optional)
 
 html:
+  favicon: favicon.ico
   use_issues_button: true
   use_repository_button: true
