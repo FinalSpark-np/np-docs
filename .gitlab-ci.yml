@@ -22,7 +22,7 @@ before_script:
 build:
   stage: build
   script:
-    - jupyter-book build .
+    - jupyter-book build neuroplatform-docs
   artifacts:
     paths:
       - _build/html
