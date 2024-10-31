@@ -1,13 +1,17 @@
 /* custom.css */
 
 html[data-theme="light"] {
-    --sidebar-bg-color: #d0ecf1;
+    --sidebar-bg-color: #d2efff;
+    --header-bg-color: #ececec;
     --logo-filter: none;
+    --button-text-color: #fff;
 }
 
 html[data-theme="dark"] {
-    --sidebar-bg-color: #042c33;
+    --sidebar-bg-color: #004864;
+    --header-bg-color: #414141;
     --logo-filter: grayscale(100%) brightness(20);
+    --button-text-color: #fff;
 }
 
 .bd-sidebar {
@@ -16,4 +20,34 @@ html[data-theme="dark"] {
 
 .navbar-brand img {
     filter: var(--logo-filter);
+}
+
+.bd-header-article {
+    position: relative; /* Ensure the container is positioned relative */
+    background-color: var(--header-bg-color);
+    z-index: 0; /* Ensure the pseudo-element is rendered below the text */
+}
+
+.bd-header-article::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('images/header.jpg'); /* Replace with your image path */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 0.5; /* Adjust the opacity as needed */
+    z-index: -1; /* Ensure the pseudo-element is rendered below the content */
+}
+
+.article-header-buttons .btn {
+    color: var(--button-text-color);
+    z-index: 1; /* Ensure the button is rendered above the pseudo-element */
+}
+
+.article-header-buttons .btn:hover {
+    opacity: 0.8; /* Add a hover effect if desired */
 }
