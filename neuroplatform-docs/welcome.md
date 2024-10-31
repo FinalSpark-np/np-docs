@@ -7,7 +7,9 @@ This documentation will guide through the basics of using FinalSpark's NeuroPlat
 The first part focuses on basic usage of the platform : stimulating organoids, and fetching data from the platform.
 
 ```{hint}
-Every tutorial page can be downloaded as a Jupyter notebook. Click on the "Download as Jupyter notebook" button at the top right of the page.
+**Every tutorial page can be downloaded as a Jupyter notebook.** 
+
+Click on the "Download as Jupyter notebook" button at the top right of the page.
 This will allow you to test the sample code on your provided machine.
 ```
 
