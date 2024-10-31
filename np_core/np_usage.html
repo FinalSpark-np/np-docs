@@ -383,12 +383,13 @@
 </ul>
 <p>This brings us to the core concepts of the system:</p>
 <ul class="simple">
-<li><p><strong>StimParam</strong> : This is a set of parameters that define a stimulation. It includes the duration, the amplitude, the frequency, and the electrode to stimulate.</p>
+<li><p><strong>StimParam</strong> : This is a set of parameters that define a stimulation. It includes the duration, the amplitude, the frequency, and the electrode to stimulate.</p></li>
+<li><p>The StimParam is associated with a trigger. Whenever said trigger is sent, the <strong>Intan Controller</strong> will execute the <strong>StimParam</strong> associated with that trigger, on the electrode to which the <strong>StimParam</strong> is associated.</p>
 <ul>
 <li><p><strong>Index</strong> : The index of the electrode to stimulate. This is the number of the electrode in the MEA.</p></li>
-<li><p><strong>Trigger</strong> : The trigger is used by the <strong>Trigger Generator</strong> to send a signal to the <strong>Intan Controller</strong> to execute the <strong>StimParam</strong>.</p>
+<li><p><strong>Trigger</strong> : The trigger is used by the <strong>Trigger Generator</strong> to send a signal to the <strong>Intan Controller</strong> to execute the <strong>StimParam</strong>. There is a maximum of 16 triggers that can be used, from 0 to 15.</p>
 <ul>
-<li><p>For example, if you send trigger 0 with two <strong>StimParam</strong>s set to <code class="docutils literal notranslate"><span class="pre">trigger_key</span></code> 0 on electrodes 1 and 2, the <strong>Intan Controller</strong> will stimulate electrodes 1 and 2 using the specified parameters when it receives the trigger 0.</p></li>
+<li><p>For example, if you send trigger 0 with two <strong>StimParam</strong>s with <code class="docutils literal notranslate"><span class="pre">trigger_key</span> <span class="pre">=</span> <span class="pre">0</span></code> on electrodes (<code class="docutils literal notranslate"><span class="pre">index</span></code>) 1 and 2 respectively, the <strong>Intan Controller</strong> will stimulate electrodes 1 and 2 using the specified parameters when it receives the trigger 0.</p></li>
 </ul>
 </li>
 </ul>
@@ -662,9 +663,15 @@ Therefore, you must choose between flexible spike trains with less precise timin
 <span class="n">params</span> <span class="o">=</span> <span class="p">[</span><span class="n">stim_param1</span><span class="p">,</span> <span class="n">stim_param2</span><span class="p">]</span> <span class="c1"># Create a list of stimulation parameters</span>
 
 <span class="n">intan</span><span class="o">.</span><span class="n">send_stimparam</span><span class="p">(</span><span class="n">params</span><span class="p">)</span> <span class="c1"># Send the stimulation parameters to the Intan software. THIS TAKES 10 SECONDS</span>
+<span class="o">...</span>
+<span class="n">intan</span><span class="o">.</span><span class="n">close</span><span class="p">()</span> <span class="c1"># Close the connection to the Intan software</span>
 </pre></div>
 </div>
 </div>
+</div>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>Always close your connection to the Intan when you are done using <code class="docutils literal notranslate"><span class="pre">intan.close()</span></code>.</p>
 </div>
 <p><strong>Sending the parameters will take ten seconds to complete.</strong> This is because the <strong>IntanSoftware</strong> will check the parameters and send them to the <strong>Intan Controller</strong>.
 Currently this cannot be bypassed, therefore parameters have to be set before your experiment starts, or during a ten-second pause in your experiment.</p>
@@ -685,9 +692,15 @@ Currently this cannot be bypassed, therefore parameters have to be set before yo
 <span class="n">trigger_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span> <span class="c1"># Here all the triggers are set to 0, so none will be sent</span>
 
 <span class="n">trigger_array</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1"># This will send a trigger to the stimulation with trigger_key = 3</span>
+<span class="o">...</span> <span class="c1"># Run experiment...</span>
+<span class="n">trigger_gen</span><span class="o">.</span><span class="n">close</span><span class="p">()</span> <span class="c1"># Close the trigger generator</span>
 </pre></div>
 </div>
 </div>
+</div>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>Always close your connection to the <strong>TriggerGenerator</strong> when you are done using <code class="docutils literal notranslate"><span class="pre">trigger_gen.close()</span></code>.</p>
 </div>
 </section>
 </section>
@@ -758,12 +771,19 @@ Currently this cannot be bypassed, therefore parameters have to be set before yo
 <p>As mentioned earlier, the threshold is six times the standard deviation of the noise. This is recomputed when the variance threshold is enabled.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>ALWAYS set back the variance threshold to enabled after finishing your experiment.</p>
+<p><strong>ALWAYS</strong> set back the variance threshold to <strong>enabled</strong> after finishing your experiment.</p>
 </div>
 <p>If you need to set a fixed threshold, for example to account for a drift in the noise or activity, you can use:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">intan</span><span class="o">.</span><span class="n">var_threshold</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span> <span class="c1"># Disable the variable threshold</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+    <span class="o">...</span> <span class="c1"># exp.start, other setup code</span>
+    <span class="n">intan</span><span class="o">.</span><span class="n">var_threshold</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span> <span class="c1"># Disable the variable threshold</span>
+    <span class="o">...</span> <span class="c1"># your experiment code</span>
+<span class="k">finally</span><span class="p">:</span>
+    <span class="n">intan</span><span class="o">.</span><span class="n">var_threshold</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># Enable the variable threshold</span>
+    <span class="o">...</span> <span class="c1"># disable parameters, other cleanup code</span>
+    <span class="n">exp</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span> <span class="c1"># Signal the end of the experiment</span>
 </pre></div>
 </div>
 </div>
@@ -772,7 +792,7 @@ Currently this cannot be bypassed, therefore parameters have to be set before yo
 <section id="impedance-measurement">
 <h3>Impedance measurement<a class="headerlink" href="#impedance-measurement" title="Link to this heading">#</a></h3>
 <p>You can ask the Intan to measure the impedance of the electrodes.
-This takes ten seconds, you can then retrieve the impedance values from the database. See the <a class="reference internal" href="db_usage.html"><span class="doc std std-doc">Database tutorial</span></a> for instructions.</p>
+This takes <strong>ten seconds</strong> to complete, you can then retrieve the impedance values from the database. See the <a class="reference internal" href="db_usage.html"><span class="doc std std-doc">Database tutorial</span></a> for instructions.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">intan</span><span class="o">.</span><span class="n">impedance</span><span class="p">()</span>

@@ -322,6 +322,13 @@
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#example-plot">Example plot</a></li>
 </ul>
 </li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#impedance">Impedance</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#miscellanous-measurements">Miscellanous measurements</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#co2-o2-temperature-humidity-pressure">CO2, O2, Temperature, Humidity, Pressure</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#flowrate">Flowrate</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#door-events">Door events</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -463,6 +470,66 @@ Every time we change the organoids on an MEA, we create a new fs ID such as <cod
 </div>
 </section>
 </section>
+<section id="impedance">
+<h3>Impedance<a class="headerlink" href="#impedance" title="Link to this heading">#</a></h3>
+<p>When you have measured impedance using the Intan, you can get the impedance values using <code class="docutils literal notranslate"><span class="pre">get_impedance</span></code> to get a DataFrame with the timestamp, the electrode number, and the impedance values.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df_impedance</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">get_impedance</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">stop</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="miscellanous-measurements">
+<h3>Miscellanous measurements<a class="headerlink" href="#miscellanous-measurements" title="Link to this heading">#</a></h3>
+<p>We also provide access to various environmental measurements within the incubator hosting the MEAs, namely :</p>
+<ul class="simple">
+<li><p>CO2 levels</p></li>
+<li><p>O2 levels</p></li>
+<li><p>Temperature</p></li>
+<li><p>Humidity</p></li>
+<li><p>Pressure</p></li>
+<li><p>Pump flowrate</p></li>
+<li><p>Door opening/closing events</p></li>
+</ul>
+<section id="co2-o2-temperature-humidity-pressure">
+<h4>CO2, O2, Temperature, Humidity, Pressure<a class="headerlink" href="#co2-o2-temperature-humidity-pressure" title="Link to this heading">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">co2_df</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">co2</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">stop</span><span class="p">)</span>
+<span class="n">o2_df</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">o2</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">stop</span><span class="p">)</span>
+<span class="n">temp_df</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">temperature</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">stop</span><span class="p">)</span>
+<span class="n">pressure_df</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">pressure</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">stop</span><span class="p">)</span>
+<span class="n">humidity_df</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">humidity</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">stop</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="flowrate">
+<h4>Flowrate<a class="headerlink" href="#flowrate" title="Link to this heading">#</a></h4>
+<p>There are 4 pumps, one for each MEA. You can access the flowrate values using :</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">port</span> <span class="o">=</span> <span class="mi">3</span> <span class="c1"># port is the MEA number from 1 to 4</span>
+<span class="n">flow_df</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">flowrate</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">stop</span><span class="p">,</span> <span class="n">port</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="door-events">
+<h4>Door events<a class="headerlink" href="#door-events" title="Link to this heading">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">door_df</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">door</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">stop</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
 </section>
 </section>
 
@@ -529,6 +596,13 @@ Every time we change the organoids on an MEA, we create a new fs ID such as <cod
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#triggers">Triggers</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#raw-spike-events">Raw Spike Events</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#example-plot">Example plot</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#impedance">Impedance</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#miscellanous-measurements">Miscellanous measurements</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#co2-o2-temperature-humidity-pressure">CO2, O2, Temperature, Humidity, Pressure</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#flowrate">Flowrate</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#door-events">Door events</a></li>
 </ul>
 </li>
 </ul>
