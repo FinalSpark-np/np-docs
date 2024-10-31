@@ -25,12 +25,12 @@ build:
     - jupyter-book build neuroplatform-docs
   artifacts:
     paths:
-      - _build/html
+      - neuroplatform-docs/_build/html
 
 pages:
   stage: deploy
   script:
-    - mv _build/html public
+    - mv neuroplatform-docs/_build/html public
   artifacts:
     paths:
       - public
