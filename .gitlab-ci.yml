@@ -26,6 +26,8 @@ build:
   artifacts:
     paths:
       - neuroplatform-docs/_build/html
+  only:
+    - main
 
 pages:
   stage: deploy
