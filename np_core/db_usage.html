@@ -37,7 +37,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=cefce026" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=422c814e" />
   
   <!-- So that users can add custom icons -->
   <script src="../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
@@ -317,11 +317,11 @@
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connection-to-the-database">Connection to the database</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spike-events">Spike events</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spike-count-per-minute">Spike count per minute</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#triggers">Triggers</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#raw-spike-events">Raw Spike Events</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#raw-spike-events">Raw spike events</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#example-plot">Example plot</a></li>
 </ul>
 </li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#triggers">Triggers</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#impedance">Impedance</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#miscellanous-measurements">Miscellanous measurements</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#co2-o2-temperature-humidity-pressure">CO2, O2, Temperature, Humidity, Pressure</a></li>
@@ -397,20 +397,8 @@ Every time we change the organoids on an MEA, we create a new fs ID such as <cod
 </div>
 </div>
 </section>
-<section id="triggers">
-<h3>Triggers<a class="headerlink" href="#triggers" title="Link to this heading">#</a></h3>
-<p>You can get the triggers used for stimulation using <code class="docutils literal notranslate"><span class="pre">get_triggers</span></code> to get a DataFrame with the timestamp, the trigger number, the status (up/down, which corresponds to times the trigger was enabled/disabled respectively) and the tag if any.</p>
-<p>For tags and their usage, see the <a class="reference internal" href="np_usage.html"><span class="doc std std-doc">System Basics</span></a> page.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">triggers_df</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">get_all_triggers</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">stop</span><span class="p">,</span> <span class="n">FSID</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-</section>
 <section id="raw-spike-events">
-<h3>Raw Spike Events<a class="headerlink" href="#raw-spike-events" title="Link to this heading">#</a></h3>
+<h3>Raw spike events<a class="headerlink" href="#raw-spike-events" title="Link to this heading">#</a></h3>
 <p>Every spike event is recorded for 3ms around the spike. You can get the raw spike events using <code class="docutils literal notranslate"><span class="pre">get_raw_spike_event</span></code> to get a DataFrame with the timestamp, the electrode number, and the amplitude values for each spike event in a long format.</p>
 <p>Since the sampling rate is 30kHz, each spike event will have 90 samples.</p>
 <div class="admonition caution">
@@ -470,6 +458,18 @@ Every time we change the organoids on an MEA, we create a new fs ID such as <cod
 </div>
 </section>
 </section>
+<section id="triggers">
+<h3>Triggers<a class="headerlink" href="#triggers" title="Link to this heading">#</a></h3>
+<p>You can get the triggers used for stimulation using <code class="docutils literal notranslate"><span class="pre">get_triggers</span></code> to get a DataFrame with the timestamp, the trigger number, the status (up/down, which corresponds to times the trigger was enabled/disabled respectively) and the tag if any.</p>
+<p>For tags and their usage, see the <a class="reference internal" href="np_usage.html"><span class="doc std std-doc">System Basics</span></a> page.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">triggers_df</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">get_all_triggers</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">stop</span><span class="p">,</span> <span class="n">FSID</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
 <section id="impedance">
 <h3>Impedance<a class="headerlink" href="#impedance" title="Link to this heading">#</a></h3>
 <p>When you have measured impedance using the Intan, you can get the impedance values using <code class="docutils literal notranslate"><span class="pre">get_impedance</span></code> to get a DataFrame with the timestamp, the electrode number, and the impedance values.</p>
@@ -483,7 +483,7 @@ Every time we change the organoids on an MEA, we create a new fs ID such as <cod
 </section>
 <section id="miscellanous-measurements">
 <h3>Miscellanous measurements<a class="headerlink" href="#miscellanous-measurements" title="Link to this heading">#</a></h3>
-<p>We also provide access to various environmental measurements within the incubator hosting the MEAs, namely :</p>
+<p>We also provide access to various environmental measurements within the incubator hosting the MEAs :</p>
 <ul class="simple">
 <li><p>CO2 levels</p></li>
 <li><p>O2 levels</p></li>
@@ -593,11 +593,11 @@ Every time we change the organoids on an MEA, we create a new fs ID such as <cod
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connection-to-the-database">Connection to the database</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spike-events">Spike events</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spike-count-per-minute">Spike count per minute</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#triggers">Triggers</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#raw-spike-events">Raw Spike Events</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#raw-spike-events">Raw spike events</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#example-plot">Example plot</a></li>
 </ul>
 </li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#triggers">Triggers</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#impedance">Impedance</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#miscellanous-measurements">Miscellanous measurements</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#co2-o2-temperature-humidity-pressure">CO2, O2, Temperature, Humidity, Pressure</a></li>

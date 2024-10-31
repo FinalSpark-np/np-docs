@@ -1,9 +1,19 @@
 /* custom.css */
 
-.bd-sidebar {
-    background-color: #0a7d91,
+html[data-theme="light"] {
+    --sidebar-bg-color: #d0ecf1;
+    --logo-filter: none;
 }
 
-.bd-bacground {
-    background-color: #0a7d91,
+html[data-theme="dark"] {
+    --sidebar-bg-color: #042c33;
+    --logo-filter: grayscale(100%) brightness(20);
+}
+
+.bd-sidebar {
+    background-color: var(--sidebar-bg-color);
+}
+
+.navbar-brand img {
+    filter: var(--logo-filter);
 }
