@@ -4,7 +4,7 @@
 title: NeuroPlatform Documentation
 author: FinalSpark
 copyright: FinalSpark - 2024
-logo: logo.png
+logo: _static/logo.png
 
 # Force re-execution of notebooks on each build.
 # See https://jupyterbook.org/content/execute.html
@@ -23,6 +23,6 @@ repository:
   branch: main  # Which branch of the repository should be used when creating links (optional)
 
 html:
-  favicon: favicon.ico
-  use_issues_button: true
-  use_repository_button: true
+  favicon: _static/favicon.ico
+  use_issues_button: false
+  use_repository_button: false
