@@ -318,6 +318,11 @@
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-concepts">Basic concepts</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#system-components">System components</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#core-api-concepts">Core API concepts</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#api-usage">API usage</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-experiments">Creating experiments</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#imports">Imports</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#experiment-and-token">Experiment and token</a></li>
@@ -327,11 +332,11 @@
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#stimparam-reference">StimParam reference</a></li>
 </ul>
 </li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connecting-to-the-intan-and-the-triggergenerator">Connecting to the Intan and the TriggerGenerator</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#connecting-to-the-intan-and-sending-parameters">Connecting to the Intan and sending parameters</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#connecting-to-the-triggergenerator-and-sending-triggers">Connecting to the TriggerGenerator and sending triggers</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connecting-to-the-intan-and-the-triggergenerator">Connecting to the Intan and the TriggerGenerator</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connecting-to-the-intan-and-sending-parameters">Connecting to the Intan and sending parameters</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connecting-to-the-triggergenerator-and-sending-triggers">Connecting to the TriggerGenerator and sending triggers</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-experiment">Example experiment</a></li>
@@ -360,6 +365,35 @@
 <h2>Basic concepts<a class="headerlink" href="#basic-concepts" title="Link to this heading">#</a></h2>
 <p>Let’s start with a brief description of the components, and an introduction to the core concepts of the system.</p>
 <p>Don’t worry if not everything is clear, we will put everything in practice below where we show how to use the Python API to control the above system.</p>
+<aside class="topic">
+<p class="topic-title">System specifications</p>
+<ul class="simple">
+<li><p><strong>Hardware</strong></p>
+<ul>
+<li><p>Sampling rate: 30 kHz</p></li>
+<li><p>Filtering : 250 to 5000 Hz</p></li>
+<li><p>Four MEAs with 4x8 electrodes each</p>
+<ul>
+<li><p>Eight electrodes per neurosphere</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>Wetware</strong></p>
+<ul>
+<li><p>Neurospheres are human cell-derived brain organoids</p>
+<ul>
+<li><p>Generally less than 1 mm in diameter</p></li>
+<li><p>Made from NSCs</p></li>
+<li><p>Lifetime varies between a week and a month on MEAs</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</aside>
+<section id="system-components">
+<h3>System components<a class="headerlink" href="#system-components" title="Link to this heading">#</a></h3>
 <figure class="align-default" id="neuroplatform-schema">
 <a class="reference internal image-reference" href="../_images/neuroplatform.png"><img alt="../_images/neuroplatform.png" src="../_images/neuroplatform.png" style="height: 400px;" /></a>
 <figcaption>
@@ -382,7 +416,10 @@
 </ul>
 </li>
 </ul>
-<p>This brings us to the core concepts of the system:</p>
+</section>
+<section id="core-api-concepts">
+<h3>Core API concepts<a class="headerlink" href="#core-api-concepts" title="Link to this heading">#</a></h3>
+<p>This brings us to some core concepts of the system:</p>
 <ul class="simple">
 <li><p><strong>StimParam</strong> : This is a set of parameters that define a stimulation. It includes the duration, the amplitude, the frequency, and the electrode to stimulate.</p></li>
 <li><p>The StimParam is associated with a trigger. Whenever said trigger is sent, the <strong>Intan Controller</strong> will execute the <strong>StimParam</strong> associated with that trigger, on the electrode to which the <strong>StimParam</strong> is associated.</p>
@@ -400,6 +437,10 @@
 <p class="admonition-title">Caution</p>
 <p><strong>DO NOT</strong> use the same index in two different <strong>StimParam</strong>s. This will overwrite the previous <strong>StimParam</strong> and only use the last one.</p>
 </div>
+</section>
+</section>
+<section id="api-usage">
+<h2>API usage<a class="headerlink" href="#api-usage" title="Link to this heading">#</a></h2>
 <p>Now, let’s look at code to help you understand the sequence of events, as well as the limitations of the system.</p>
 <section id="creating-experiments">
 <h3>Creating experiments<a class="headerlink" href="#creating-experiments" title="Link to this heading">#</a></h3>
@@ -651,12 +692,11 @@ Therefore, you must choose between flexible spike trains with less precise timin
 </div>
 </section>
 </section>
-</section>
 <section id="connecting-to-the-intan-and-the-triggergenerator">
-<h2>Connecting to the Intan and the TriggerGenerator<a class="headerlink" href="#connecting-to-the-intan-and-the-triggergenerator" title="Link to this heading">#</a></h2>
+<h3>Connecting to the Intan and the TriggerGenerator<a class="headerlink" href="#connecting-to-the-intan-and-the-triggergenerator" title="Link to this heading">#</a></h3>
 <p>Next, we will review the connection to the <strong>IntanSoftware</strong> and the <strong>TriggerGenerator</strong>, and how to send the parameters we created.</p>
 <section id="connecting-to-the-intan-and-sending-parameters">
-<h3>Connecting to the Intan and sending parameters<a class="headerlink" href="#connecting-to-the-intan-and-sending-parameters" title="Link to this heading">#</a></h3>
+<h4>Connecting to the Intan and sending parameters<a class="headerlink" href="#connecting-to-the-intan-and-sending-parameters" title="Link to this heading">#</a></h4>
 <p>To send the parameters to the <strong>IntanSoftware</strong>, simply do the following:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -682,7 +722,7 @@ Currently this cannot be bypassed, therefore parameters have to be set before yo
 </div>
 </section>
 <section id="connecting-to-the-triggergenerator-and-sending-triggers">
-<h3>Connecting to the TriggerGenerator and sending triggers<a class="headerlink" href="#connecting-to-the-triggergenerator-and-sending-triggers" title="Link to this heading">#</a></h3>
+<h4>Connecting to the TriggerGenerator and sending triggers<a class="headerlink" href="#connecting-to-the-triggergenerator-and-sending-triggers" title="Link to this heading">#</a></h4>
 <p>The main new concept here is how to send triggers.</p>
 <p>When you send a trigger, the <strong>TriggerGenerator</strong> will send a signal to the <strong>Intan Controller</strong> to execute the <strong>StimParam</strong>s you set for that trigger.</p>
 <p>We use a 16-length array of uint8 to send the triggers. If the value is 1, the trigger is sent. If the value is 0, the trigger is not sent.</p>
@@ -703,6 +743,7 @@ Currently this cannot be bypassed, therefore parameters have to be set before yo
 <p class="admonition-title">Caution</p>
 <p>Always close your connection to the <strong>TriggerGenerator</strong> when you are done using <code class="docutils literal notranslate"><span class="pre">trigger_gen.close()</span></code>.</p>
 </div>
+</section>
 </section>
 </section>
 <section id="example-experiment">
@@ -871,6 +912,11 @@ This takes <strong>ten seconds</strong> to complete, you can then retrieve the i
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-concepts">Basic concepts</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#system-components">System components</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#core-api-concepts">Core API concepts</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#api-usage">API usage</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-experiments">Creating experiments</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#imports">Imports</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#experiment-and-token">Experiment and token</a></li>
@@ -880,11 +926,11 @@ This takes <strong>ten seconds</strong> to complete, you can then retrieve the i
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#stimparam-reference">StimParam reference</a></li>
 </ul>
 </li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connecting-to-the-intan-and-the-triggergenerator">Connecting to the Intan and the TriggerGenerator</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#connecting-to-the-intan-and-sending-parameters">Connecting to the Intan and sending parameters</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#connecting-to-the-triggergenerator-and-sending-triggers">Connecting to the TriggerGenerator and sending triggers</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connecting-to-the-intan-and-the-triggergenerator">Connecting to the Intan and the TriggerGenerator</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connecting-to-the-intan-and-sending-parameters">Connecting to the Intan and sending parameters</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connecting-to-the-triggergenerator-and-sending-triggers">Connecting to the TriggerGenerator and sending triggers</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-experiment">Example experiment</a></li>

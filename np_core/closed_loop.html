@@ -291,7 +291,9 @@
 <button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
 </button>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -307,6 +309,15 @@
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-the-intan-to-read-the-number-of-spikes">Using the Intan to read the number of spikes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example">Example</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -324,6 +335,118 @@
 <p class="admonition-title">Note</p>
 <p>If you need the activity over periods longer than minutes, you may wish to use the database instead. See the <a class="reference internal" href="db_usage.html"><span class="doc std std-doc">Database tutorial</span></a>.</p>
 </div>
+<p>The counting will obtain the count for 200ms after the trigger is sent. The count is stored in a buffer for all 128 electrodes.</p>
+<section id="using-the-intan-to-read-the-number-of-spikes">
+<h2>Using the Intan to read the number of spikes<a class="headerlink" href="#using-the-intan-to-read-the-number-of-spikes" title="Link to this heading">#</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">IntanSofware</span></code> class provides the following methods :</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">set_count</span></code> : set which triggers start the counting process</p>
+<ul>
+<li><p>The input should be a list of trigger IDs (from 0 to 15).</p></li>
+</ul>
+</li>
+<li><p>Next, you must send the trigger in question to start the counting process.</p></li>
+<li><p>Finally, <code class="docutils literal notranslate"><span class="pre">read_count</span></code> lets you retrieve the buffer storing the number of spikes.</p>
+<ul>
+<li><p>The buffer is a 128-length array containing the number of spikes for each electrode.</p></li>
+<li><p>Make sure to select the channels relevant to your experiment.</p></li>
+</ul>
+</li>
+</ul>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p><code class="docutils literal notranslate"><span class="pre">read_count</span></code> intrinsically does nothing to count the spikes. It only retrieves the buffer storing the number of spikes.
+You must first send the triggers set to listen to populate the <code class="docutils literal notranslate"><span class="pre">read_count</span></code> buffer.</p>
+</div>
+<p><strong>If you set a trigger to read on which there is a StimParam defined, the StimParam will be triggered as well.</strong>
+If you only wish to read, make sure to use a trigger without a StimParam.</p>
+</section>
+<section id="example">
+<h2>Example<a class="headerlink" href="#example" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">token</span> <span class="o">=</span> <span class="s2">&quot;E9JTQDS62Y&quot;</span> <span class="c1"># We provide you a token for the experiment</span>
+<span class="n">exp</span> <span class="o">=</span> <span class="n">Experiment</span><span class="p">(</span><span class="n">token</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Electrodes: </span><span class="si">{</span><span class="n">exp</span><span class="o">.</span><span class="n">electrodes</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span> <span class="c1"># Electrodes that you can used</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">stim_param1</span> <span class="o">=</span> <span class="n">StimParam</span><span class="p">()</span>
+<span class="n">stim_param1</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">exp</span><span class="o">.</span><span class="n">electrodes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="c1"># the first electrode</span>
+<span class="n">stim_param1</span><span class="o">.</span><span class="n">trigger_key</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1"># the first trigger</span>
+<span class="n">stim_param1</span><span class="o">.</span><span class="n">phase_amplitude1</span> <span class="o">=</span> <span class="mf">2.0</span>
+<span class="n">stim_param1</span><span class="o">.</span><span class="n">phase_amplitude2</span> <span class="o">=</span> <span class="mf">2.0</span>
+<span class="n">stim_param1</span><span class="o">.</span><span class="n">display_attributes</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">intan</span> <span class="o">=</span> <span class="n">IntanSofware</span><span class="p">()</span>
+<span class="n">trigger_gen</span> <span class="o">=</span> <span class="n">Trigger</span><span class="p">()</span>
+<span class="n">intan</span><span class="o">.</span><span class="n">set_count</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span> <span class="c1"># Set the Intan to record the number of spike whenever sending trigger 0 or 1</span>
+
+<span class="n">stim_params</span> <span class="o">=</span> <span class="p">[</span><span class="n">stim_param1</span><span class="p">]</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">exp</span><span class="o">.</span><span class="n">start</span><span class="p">():</span> <span class="c1"># Signal the start of an experiment to all users</span>
+        <span class="c1"># Send stim parameter</span>
+        <span class="n">intan</span><span class="o">.</span><span class="n">send_stimparam</span><span class="p">(</span><span class="n">stim_params</span><span class="p">)</span>
+        <span class="n">start_exp</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">utcnow</span><span class="p">()</span>
+
+        <span class="c1"># Create the array of triggers, and set the desired trigger to 1</span>
+        <span class="n">trigger0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
+        <span class="n">trigger0</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+        
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+            <span class="c1"># Stimulation on electrode 0</span>
+            <span class="n">trigger_gen</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">trigger0</span><span class="p">)</span> <span class="c1"># THIS TRIGGERS BOTH THE STIM AND THE READ</span>
+            <span class="c1"># Wait 200ms to read for a close loop</span>
+            <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.2</span><span class="p">)</span>
+            <span class="n">count_spikes</span> <span class="o">=</span> <span class="n">intan</span><span class="o">.</span><span class="n">read_count</span><span class="p">()</span> <span class="c1"># np.array(128)</span>
+            <span class="c1"># count the number of spike of electrode 22</span>
+            <span class="n">total_spikes_stim</span> <span class="o">=</span> <span class="n">count_spikes</span><span class="p">[</span><span class="mi">22</span><span class="p">]</span>
+
+            <span class="c1">###</span>
+
+            <span class="c1"># Send trigger 1 - no stimulation</span>
+            <span class="n">trigger1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
+            <span class="n">trigger1</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+            <span class="n">trigger_gen</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">trigger1</span><span class="p">)</span> <span class="c1"># THIS TRIGGERS ONLY THE READ</span>
+            <span class="c1"># Wait 200ms to read for a close loop</span>
+            <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.2</span><span class="p">)</span>
+            <span class="n">count_spikes</span> <span class="o">=</span> <span class="n">intan</span><span class="o">.</span><span class="n">read_count</span><span class="p">()</span> <span class="c1"># np.array(128)</span>
+            <span class="c1"># count the number of spike of electrode 22</span>
+            <span class="n">total_spikes_read_only</span> <span class="o">=</span> <span class="n">count_spikes</span><span class="p">[</span><span class="mi">22</span><span class="p">]</span>
+
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Spikes with stimulation: </span><span class="si">{</span><span class="n">total_spikes_stim</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Spikes without stimulation: </span><span class="si">{</span><span class="n">total_spikes_read_only</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+            <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+        <span class="n">stop_exp</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">utcnow</span><span class="p">()</span>
+
+        <span class="c1"># Disable all parameters</span>
+        <span class="k">for</span> <span class="n">stim</span> <span class="ow">in</span> <span class="n">stim_params</span><span class="p">:</span>
+            <span class="n">stim</span><span class="o">.</span><span class="n">enable</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="n">intan</span><span class="o">.</span><span class="n">send_stimparam</span><span class="p">(</span><span class="n">stim_params</span><span class="p">)</span>
+
+<span class="k">finally</span><span class="p">:</span>
+    <span class="c1"># Close the connection to the trigger generator</span>
+    <span class="n">trigger_gen</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+    <span class="c1"># Close the connection to the Intan</span>
+    <span class="n">intan</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+    <span class="c1"># Signal the end of an experiment to all users</span>
+    <span class="n">exp</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -371,6 +494,23 @@
             </div>
             
             
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-the-intan-to-read-the-number-of-spikes">Using the Intan to read the number of spikes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example">Example</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
