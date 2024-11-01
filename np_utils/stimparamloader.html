@@ -65,6 +65,7 @@
     <link rel="icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Spike sorting" href="spikesorting.html" />
     <link rel="prev" title="Closed-loop : reading and stimulating" href="../np_core/closed_loop.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -178,6 +179,7 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">NeuroPlatform utilities</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Stimulation parameter loader</a></li>
+<li class="toctree-l1"><a class="reference internal" href="spikesorting.html">Spike sorting</a></li>
 </ul>
 
     </div>
@@ -374,22 +376,30 @@
 </section>
 <section id="changing-parameters">
 <h3>Changing parameters<a class="headerlink" href="#changing-parameters" title="Link to this heading">#</a></h3>
-<p>There are several options to change the parameters :
-- Create the instance with a list of <code class="docutils literal notranslate"><span class="pre">StimParam</span></code> instances.
-- Modify the <code class="docutils literal notranslate"><span class="pre">stimparams</span></code> attribute directly.
-- Use the <code class="docutils literal notranslate"><span class="pre">add_stimparam</span></code> method to add a new <code class="docutils literal notranslate"><span class="pre">StimParam</span></code> instance to the list.
-- Use the <code class="docutils literal notranslate"><span class="pre">reset</span></code> method to clear all parameters.</p>
+<p>There are several options to change the parameters :</p>
+<ul class="simple">
+<li><p>Create the instance with a list of <code class="docutils literal notranslate"><span class="pre">StimParam</span></code> instances.</p></li>
+<li><p>Modify the <code class="docutils literal notranslate"><span class="pre">stimparams</span></code> attribute directly.</p></li>
+<li><p>Use the <code class="docutils literal notranslate"><span class="pre">add_stimparam</span></code> method to add a new <code class="docutils literal notranslate"><span class="pre">StimParam</span></code> instance to the list.</p></li>
+<li><p>Use the <code class="docutils literal notranslate"><span class="pre">reset</span></code> method to clear all parameters.</p></li>
+</ul>
 <div class="admonition danger">
 <p class="admonition-title">Danger</p>
-<p>Remember to always disable <strong>ALL</strong> parameters sent. If you remove or modify the list of parameters, make sure to disable all parameters and send the update to the Intan.</p>
+<p>Remember to always disable <strong>ALL</strong> parameters sent. If you remove or modify the list of parameters, make sure to disable all parameters and send the update to the Intan first.</p>
 <p>If you do not disable all parameters before sending new ones, there may be old leftover parameters that are still enabled, which can cause unexpected stimulation.</p>
-<p>If you suspect there may be leftover parameters, please contact us.</p>
+<p>If you suspect there may be leftover parameters either from your code or another user’s session, please contact us.</p>
 </div>
 </section>
 <section id="previewing-parameters">
 <h3>Previewing parameters<a class="headerlink" href="#previewing-parameters" title="Link to this heading">#</a></h3>
 <p>To preview the parameters in a plot, use the <code class="docutils literal notranslate"><span class="pre">preview_parameters</span></code> method. You can choose to hide empty parameters and use a colorblind-friendly color scheme.</p>
 <p>The plot is interactive and will display the settings for each parameter when you hover over the electrode.</p>
+<figure class="align-default" id="stimparamloader-plot">
+<a class="reference internal image-reference" href="../_images/stimparamloader_plot.png"><img alt="../_images/stimparamloader_plot.png" src="../_images/stimparamloader_plot.png" style="width: 800px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 3 </span><span class="caption-text">StimParamLoader plot preview</span><a class="headerlink" href="#stimparamloader-plot" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 </section>
 <section id="sending-parameters">
 <h3>Sending parameters<a class="headerlink" href="#sending-parameters" title="Link to this heading">#</a></h3>
@@ -492,12 +502,6 @@ If this is impractical to show during your experiment, for example if you are ch
 </div>
 </div>
 </div>
-<figure class="align-default" id="stimparamloader-plot">
-<a class="reference internal image-reference" href="../_images/stimparamloader_plot.png"><img alt="../_images/stimparamloader_plot.png" src="../_images/stimparamloader_plot.png" style="width: 800px;" /></a>
-<figcaption>
-<p><span class="caption-number">Fig. 3 </span><span class="caption-text">StimParamLoader plot preview</span><a class="headerlink" href="#stimparamloader-plot" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Enabling all stimparams (this can be done safely without booking the Intan)</span>
@@ -572,6 +576,15 @@ If this is impractical to show during your experiment, for example if you are ch
         <p class="prev-next-title">Closed-loop : reading and stimulating</p>
       </div>
     </a>
+    <a class="right-next"
+       href="spikesorting.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Spike sorting</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
@@ -613,7 +626,7 @@ If this is impractical to show during your experiment, for example if you are ch
   <div class="footer-item">
     
 <p class="component-author">
-By FinalSpark
+By the FinalSpark team - Vevey, Switzerland
 </p>
 
   </div>

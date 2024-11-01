@@ -61,10 +61,13 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'np_utils/spikesorting';</script>
     <link rel="icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Stimulation parameter loader" href="stimparamloader.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -115,8 +118,6 @@
     <div class="bd-container__inner bd-page-width">
       
       
-      
-        
       
       <dialog id="pst-primary-sidebar-modal"></dialog>
       <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
@@ -177,8 +178,9 @@
 <li class="toctree-l1"><a class="reference internal" href="../np_core/closed_loop.html">Closed-loop : reading and stimulating</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">NeuroPlatform utilities</span></p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="stimparamloader.html">Stimulation parameter loader</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Spike sorting</a></li>
 </ul>
 
     </div>
@@ -311,7 +313,9 @@
 <button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
 </button>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -327,6 +331,25 @@
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#usage">Usage</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-spikesorting">Creating a SpikeSorting</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#running-the-spikesorting">Running the SpikeSorting</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-the-results">Plotting the results</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#plots-reference">Plots reference</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#example-plots">Example plots</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#making-your-own-plots">Making your own plots</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -338,6 +361,198 @@
                   
   <section class="tex2jax_ignore mathjax_ignore" id="spike-sorting">
 <h1>Spike sorting<a class="headerlink" href="#spike-sorting" title="Link to this heading">#</a></h1>
+<p>This utility allows you to perform spike sorting directly from the database, and plot the results.</p>
+<p>It uses <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.FastICA.html">FastICA</a> or <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html">PCA</a> followed by <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.cluster.HDBSCAN.html">HDBSCAN</a> to cluster the spikes.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The current (simple) implementation is mostly meant to help distinguish spikes within the same electrode over a given time period.
+This is currently not meant to provide an exact “unit” attribution for each spike over longer durations, such as for the lifetime of an organoid on the MEA.
+Clusters assignement <strong>may change for the same profile across different time windows</strong>, due to the non-deterministic nature of the clustering algorithm.</p>
+</div>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<p><strong>In brief :</strong> Choose an electrode and a time window, and the algorithm will return the spikes detected in this window, and their clustering.</p>
+<p>Spikes are seperated into two categories :</p>
+<ul class="simple">
+<li><p><strong>Spikes</strong> : The spikes detected in the time window. Labels will vary between 0 and <span class="math notranslate nohighlight">\(n_{clusters}\)</span>.</p>
+<ul>
+<li><p><strong>Outliers</strong> : Spikes that were not assigned to any cluster. Those will always be labeled as <strong>cluster -1</strong>.</p></li>
+</ul>
+</li>
+<li><p><strong>Artifacts</strong> : Spikes that were detected as artifacts.<br>
+Those will always be labeled as belonging to cluster -2 to <span class="math notranslate nohighlight">\(-n_{artifacts}\)</span>.</p>
+<ul>
+<li><p>Artifacts are detected based on their amplitude. If a spike has an amplitude above the <code class="docutils literal notranslate"><span class="pre">artifact_threshold</span></code>, it will be considered an artifact.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Link to this heading">#</a></h2>
+<section id="creating-a-spikesorting">
+<h3>Creating a SpikeSorting<a class="headerlink" href="#creating-a-spikesorting" title="Link to this heading">#</a></h3>
+<p>You may set the following parameters :</p>
+<ul class="simple">
+<li><p><strong>Pre-processing</strong>:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">realign</span></code> : Whether to realign spikes based on amplitude. Default is True. This is meant to help align spikes that are not perfectly aligned, and have all peaks centered on time 0.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">time_before</span></code> : Time before the event to include in the window (in ms). Default is 0.5. Maximum is 1.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">time_after</span></code> : Time after the event to include in the window (in ms). Default is 1. Maximum is 2.</p>
+<ul>
+<li><p>We recommend keeping the default, as the post-spike noise will cause spurious clustering if the window is too large.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">artifact_threshold</span></code> : Threshold to detect artifacts (in uV). Default is 1000. This is meant to detect spikes that are too large to be actual spikes.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">filter_artifacts</span></code> : Whether to filter out artifacts. Default is True. If set to False, artifacts will be treated as regular spikes.</p></li>
+</ul>
+</li>
+<li><p><strong>Hyperparameters</strong>:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">dimred_method</span></code> : Dimensionality reduction method to use. Must be either “PCA” or “ICA”. Default is “PCA”. <strong>Recommended to try both</strong>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">n_components</span></code> : Number of components to keep after dimensionality reduction. Default is 3. <strong>Recommended to try different values</strong>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cluster_method</span></code> : Clustering method to use. Must be either “HDBSCAN” or “OPTICS”. Default is “HDBSCAN”. HDBSCAN is recommended.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">clustering_kwargs</span></code> : Additional keyword arguments to pass to the clustering method. Default is None. See the <a class="reference external" href="https://hdbscan.readthedocs.io/en/latest/parameter_selection.html">HDBSCAN documentation</a> for more information.</p></li>
+</ul>
+</li>
+<li><p><strong>Miscellaneous</strong>:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">n_jobs</span></code> : Number of jobs to run in parallel. Default is 8.</p>
+<ul>
+<li><p>Avoid setting this too high, as the database will reject too many requests at once.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">dateutil</span> <span class="kn">import</span> <span class="n">parser</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">timedelta</span>
+
+<span class="kn">from</span> <span class="nn">neuroplatform_utils</span> <span class="kn">import</span> <span class="n">SpikeSorting</span>
+
+<span class="n">start</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span>
+    <span class="s2">&quot;2024-10-29 13:00:00&quot;</span>
+<span class="p">)</span>  <span class="c1"># Change this to the start time of the recording</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">EXP_NAME</span> <span class="o">=</span> <span class="s2">&quot;fs300&quot;</span>
+<span class="n">N_COMP</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">ELECTRODE</span> <span class="o">=</span> <span class="mi">9</span>
+<span class="n">sorter</span> <span class="o">=</span> <span class="n">SpikeSorting</span><span class="p">(</span><span class="n">dimred_method</span><span class="o">=</span><span class="s2">&quot;ICA&quot;</span><span class="p">,</span> <span class="n">n_components</span><span class="o">=</span><span class="n">N_COMP</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="running-the-spikesorting">
+<h3>Running the SpikeSorting<a class="headerlink" href="#running-the-spikesorting" title="Link to this heading">#</a></h3>
+<p>To run the spike sorting, you will need to specify a start and stop time, as well as the experiment ID (<code class="docutils literal notranslate"><span class="pre">fs#ID</span></code>).</p>
+<div class="dropdown admonition hint">
+<p class="admonition-title">Hint</p>
+<p>See the <a class="reference internal" href="../np_core/db_usage.html#core-database-token"><span class="std std-ref">Database setup</span></a> page for more information on how to get the experiment ID.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">events_df</span> <span class="o">=</span> <span class="n">sorter</span><span class="o">.</span><span class="n">run_spike_sorting</span><span class="p">(</span>
+    <span class="n">start</span><span class="p">,</span> <span class="n">start</span> <span class="o">+</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">minutes</span><span class="o">=</span><span class="mi">20</span><span class="p">),</span> <span class="n">fs_id</span><span class="o">=</span><span class="n">EXP_NAME</span><span class="p">,</span> <span class="n">electrode_nb</span><span class="o">=</span><span class="n">ELECTRODE</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="plotting-the-results">
+<h3>Plotting the results<a class="headerlink" href="#plotting-the-results" title="Link to this heading">#</a></h3>
+<section id="plots-reference">
+<h4>Plots reference<a class="headerlink" href="#plots-reference" title="Link to this heading">#</a></h4>
+<p>The SpikeSorting provides several plots :</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">plot_clustered_spikes</span></code> : Plot the average waveform of each cluster, with confidence intervals.</p>
+<ul>
+<li><p>You may choose to show outliers or not using the <code class="docutils literal notranslate"><span class="pre">show_outliers</span></code> parameter.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">plot_clustered_artifacts</span></code> : Plot the average waveform of each artifact cluster, with confidence intervals.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">plot_raw_spikes_for_cluster</span></code> : Plot all the raw trace of a given cluster.</p>
+<ul>
+<li><p>Provide a list of which clusters you wish to see plotted.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">plot_raw_outlier_spikes</span></code> : Plot all the raw trace of ALL the outliers or artifacts.</p>
+<ul>
+<li><p>Provide a list of which clusters you wish to see plotted.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">plot_spike_clustering_in_latent_space</span></code> : Plot the clustering results in the latent space.</p>
+<ul>
+<li><p>This will plot the first 3 components of the dimensionality reduction. If you have more components, the plot may be hard to interpret.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">plot_explained_variance</span></code> : Plot the explained variance of the PCA. Only available if PCA was used.</p></li>
+</ul>
+</section>
+<section id="example-plots">
+<h4>Example plots<a class="headerlink" href="#example-plots" title="Link to this heading">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sorter</span><span class="o">.</span><span class="n">plot_clustered_spikes</span><span class="p">(</span><span class="n">show_outliers</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<figure class="align-default" id="spike-sorting-clusters-lineplot">
+<a class="reference internal image-reference" href="../_images/spike_sorting_clusters_lineplot.png"><img alt="../_images/spike_sorting_clusters_lineplot.png" src="../_images/spike_sorting_clusters_lineplot.png" style="width: 800px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 4 </span><span class="caption-text">Plot of the average waveform of each cluster, with confidence intervals.</span><a class="headerlink" href="#spike-sorting-clusters-lineplot" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sorter</span><span class="o">.</span><span class="n">plot_spike_clustering_in_latent_space</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<figure class="align-default" id="spike-sorting-clusters-latent-space-plot">
+<a class="reference internal image-reference" href="../_images/spike_sorting_latent_space_plot.png"><img alt="../_images/spike_sorting_latent_space_plot.png" src="../_images/spike_sorting_latent_space_plot.png" style="width: 800px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 5 </span><span class="caption-text">Plot of the clustering results in the latent space.</span><a class="headerlink" href="#spike-sorting-clusters-latent-space-plot" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sorter</span><span class="o">.</span><span class="n">plot_raw_spikes_for_cluster</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<figure class="align-default" id="spike-sorting-clusters-raw-lineplot">
+<a class="reference internal image-reference" href="../_images/spike_sorting_raw_lineplot.png"><img alt="../_images/spike_sorting_raw_lineplot.png" src="../_images/spike_sorting_raw_lineplot.png" style="width: 800px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 6 </span><span class="caption-text">Plot of all the raw trace of a given cluster.</span><a class="headerlink" href="#spike-sorting-clusters-raw-lineplot" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="making-your-own-plots">
+<h4>Making your own plots<a class="headerlink" href="#making-your-own-plots" title="Link to this heading">#</a></h4>
+<p>You may also use some of the attributes of the SpikeSorting object to make your own plots :</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">raw_spikes_df</span></code> : DataFrame containing the raw spikes, with clustering results.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">processed_spike_events_df</span></code> : DataFrame containing the spike events with clustering results.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">dimred_method_spikes.fit_data_df</span></code> : DataFrame containing the dimensionality reduction, with clustering results.</p></li>
+</ul>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>Make sure to copy those DataFrames before modifying them, as they are directly linked to the SpikeSorting object.</p>
+</div>
+</section>
+</section>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -370,12 +585,48 @@
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="stimparamloader.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Stimulation parameter loader</p>
+      </div>
+    </a>
 </div>
                 </footer>
               
             </div>
             
             
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#usage">Usage</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-spikesorting">Creating a SpikeSorting</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#running-the-spikesorting">Running the SpikeSorting</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-the-results">Plotting the results</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#plots-reference">Plots reference</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#example-plots">Example plots</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#making-your-own-plots">Making your own plots</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
@@ -386,7 +637,7 @@
   <div class="footer-item">
     
 <p class="component-author">
-By FinalSpark
+By the FinalSpark team - Vevey, Switzerland
 </p>
 
   </div>
