@@ -37,7 +37,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=f7412527" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=110f5885" />
   
   <!-- So that users can add custom icons -->
   <script src="../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
@@ -220,6 +220,21 @@
 <div class="article-header-buttons">
 
 
+<a href="https://github.com/FinalSpark-np/np-docs" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
 
 
 
@@ -330,6 +345,8 @@
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stimulation-parameters">Stimulation parameters</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#stimparam-reference">StimParam reference</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-the-stimulation-parameters">Setting the stimulation parameters</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#example">Example</a></li>
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connecting-to-the-intan-and-the-triggergenerator">Connecting to the Intan and the TriggerGenerator</a><ul class="nav section-nav flex-column">
@@ -457,9 +474,8 @@ This is used to check that no other experiment is running while you use the syst
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">time</span>
-<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">timedelta</span>
-<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">clear_output</span>
-<span class="kn">from</span> <span class="nn">neuroplatform</span> <span class="kn">import</span> <span class="n">StimShape</span><span class="p">,</span> <span class="n">StimParam</span> <span class="p">,</span> <span class="n">IntanSofware</span><span class="p">,</span> <span class="n">Trigger</span><span class="p">,</span> <span class="n">Database</span><span class="p">,</span> <span class="n">StimPolarity</span><span class="p">,</span> <span class="n">Experiment</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+<span class="kn">from</span> <span class="nn">neuroplatform</span> <span class="kn">import</span> <span class="n">StimParam</span><span class="p">,</span> <span class="n">IntanSofware</span><span class="p">,</span> <span class="n">Trigger</span><span class="p">,</span> <span class="n">StimPolarity</span><span class="p">,</span> <span class="n">Experiment</span>
 </pre></div>
 </div>
 </div>
@@ -469,9 +485,9 @@ This is used to check that no other experiment is running while you use the syst
 <h4>Experiment and token<a class="headerlink" href="#experiment-and-token" title="Link to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">token</span> <span class="o">=</span> <span class="s2">&quot;9T5KLS6T7X&quot;</span> <span class="c1"># We provide you a token for the experiment</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">token</span> <span class="o">=</span> <span class="s2">&quot;9T5KLS6T7X&quot;</span>  <span class="c1"># We provide you a token for the experiment</span>
 <span class="n">exp</span> <span class="o">=</span> <span class="n">Experiment</span><span class="p">(</span><span class="n">token</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Electrodes: </span><span class="si">{</span><span class="n">exp</span><span class="o">.</span><span class="n">electrodes</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span> <span class="c1"># Electrodes that you can use</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Electrodes: </span><span class="si">{</span><span class="n">exp</span><span class="o">.</span><span class="n">electrodes</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>  <span class="c1"># Electrodes that you can use</span>
 </pre></div>
 </div>
 </div>
@@ -488,9 +504,9 @@ Remember to check the “Absolute Index” function to get the correct electrode
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
     <span class="n">exp</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
-    <span class="o">...</span> <span class="c1"># Your experiment code here</span>
+    <span class="o">...</span>  <span class="c1"># Your experiment code here</span>
 <span class="k">finally</span><span class="p">:</span>
-    <span class="n">exp</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span> <span class="c1"># This ensures a proper shutdown of the experiment</span>
+    <span class="n">exp</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>  <span class="c1"># This ensures a proper shutdown of the experiment</span>
 </pre></div>
 </div>
 </div>
@@ -501,7 +517,11 @@ Remember to check the “Absolute Index” function to get the correct electrode
 <h3>Stimulation parameters<a class="headerlink" href="#stimulation-parameters" title="Link to this heading">#</a></h3>
 <p>Now we can define the stimulation parameters.</p>
 <p>Through Python, you will be controlling the Intan software to set the stimulation parameters.</p>
-<p>The software provides a view of the parameters :</p>
+<div class="dropdown admonition seealso">
+<p class="admonition-title">See also</p>
+<p>You can use the <a class="reference internal" href="#stimparamloader"><span class="xref myst">StimParamLoader utility</span></a> to help you check for inconsistencies.</p>
+</div>
+<p>The software defines stimulations using the elements shown here :</p>
 <figure class="align-default" id="stimparam">
 <a class="reference internal image-reference" href="../_images/stimparam.png"><img alt="../_images/stimparam.png" src="../_images/stimparam.png" style="height: 400px;" /></a>
 <figcaption>
@@ -512,7 +532,8 @@ Remember to check the “Absolute Index” function to get the correct electrode
 <p class="admonition-title">Tip</p>
 <p>Feel free to use this as a visual reference when setting your parameters.</p>
 </div>
-<p>Stimulation parameters are defined by the following:</p>
+<p>Stimulation parameters are defined by several values, such as the amplitude, the duration, and the electrode to stimulate.
+See below for a detailed explanation of the parameters.</p>
 <section id="stimparam-reference">
 <h4>StimParam reference<a class="headerlink" href="#stimparam-reference" title="Link to this heading">#</a></h4>
 <div class="pst-scrollable-table-container"><table class="table">
@@ -528,47 +549,47 @@ Remember to check the “Absolute Index” function to get the correct electrode
 <td><p>True</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">index</span></code></p></td>
-<td><p>Electrode for stimulation</p></td>
-<td><p>64</p></td>
+<td><p>Electrode index [0-127]</p></td>
+<td><p>0</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">trigger_key</span></code></p></td>
-<td><p>Trigger key for stimulation</p></td>
+<td><p>Trigger key [0-15]</p></td>
 <td><p>0</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">polarity</span></code></p></td>
 <td><p>Polarity of the stimulation</p></td>
-<td><p>PositiveFirst</p></td>
+<td><p>NegativeFirst</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">phase_duration1</span></code></p></td>
-<td><p>Duration of the first phase (us)</p></td>
+<td><p>D1 [us]</p></td>
 <td><p>100.0</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">phase_amplitude1</span></code></p></td>
-<td><p>Amplitude of the first phase (uA)</p></td>
-<td><p>4.0</p></td>
+<td><p>A1 [uA]</p></td>
+<td><p>1.0</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">phase_duration2</span></code></p></td>
-<td><p>Duration of the second phase (us)</p></td>
+<td><p>D2 [us]</p></td>
 <td><p>100</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">phase_amplitude2</span></code></p></td>
-<td><p>Amplitude of the second phase (uA)</p></td>
-<td><p>2.0</p></td>
+<td><p>A2 [uA]</p></td>
+<td><p>1.0</p></td>
 </tr>
 <tr class="row-even"><td><p>————————–</p></td>
 <td><p>————————————–</p></td>
 <td><p>—————</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">stim_shape</span></code></p></td>
-<td><p>Shape of the stimulation</p></td>
+<td><p>Stimulation Shape</p></td>
 <td><p>Biphasic</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">interphase_delay</span></code></p></td>
-<td><p>Delay between phases (ms)</p></td>
+<td><p>Interphase delay [us]</p></td>
 <td><p>0.0</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">trigger_delay</span></code></p></td>
-<td><p>Delay after trigger (ms)</p></td>
+<td><p>Post trigger delay [us]</p></td>
 <td><p>0</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">nb_pulse</span></code></p></td>
@@ -576,7 +597,7 @@ Remember to check the “Absolute Index” function to get the correct electrode
 <td><p>0</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">pulse_train_period</span></code></p></td>
-<td><p>Period of pulse train (ms)</p></td>
+<td><p>Pulse Train Period [us]</p></td>
 <td><p>10000</p></td>
 </tr>
 <tr class="row-even"><td><p>————————–</p></td>
@@ -584,7 +605,7 @@ Remember to check the “Absolute Index” function to get the correct electrode
 <td><p>—————</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">post_stim_ref_period</span></code></p></td>
-<td><p>Post-stimulation refractory period (ms)</p></td>
+<td><p>Post-Stimulation Refractory Period [us]</p></td>
 <td><p>1000.0</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">enable_amp_settle</span></code></p></td>
@@ -592,11 +613,11 @@ Remember to check the “Absolute Index” function to get the correct electrode
 <td><p>True</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">pre_stim_amp_settle</span></code></p></td>
-<td><p>Pre-stimulation amplitude settling (ms)</p></td>
+<td><p>Pre-stimulation amplitude settling [us]</p></td>
 <td><p>0.0</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">post_stim_amp_settle</span></code></p></td>
-<td><p>Post-stimulation amplitude settling (ms)</p></td>
+<td><p>Post-stimulation amplitude settling [us]</p></td>
 <td><p>1000.0</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">enable_charge_recovery</span></code></p></td>
@@ -604,23 +625,21 @@ Remember to check the “Absolute Index” function to get the correct electrode
 <td><p>True</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">post_charge_recovery_on</span></code></p></td>
-<td><p>Post-charge recovery on time (ms)</p></td>
+<td><p>Post charge recovery on [us]</p></td>
 <td><p>0.0</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">post_charge_recovery_off</span></code></p></td>
-<td><p>Post-charge recovery off time (ms)</p></td>
+<td><p>Post charge recovery off [us]</p></td>
 <td><p>100.0</p></td>
 </tr>
 </tbody>
 </table>
 </div>
-<div class="dropdown admonition seealso">
-<p class="admonition-title">See also</p>
-<p>You can use the <a class="reference internal" href="#stimparamloader"><span class="xref myst">StimParamLoader utility</span></a> to help you check for inconsistencies.</p>
-</div>
-<p>We recommend the following :</p>
+</section>
+<section id="setting-the-stimulation-parameters">
+<h4>Setting the stimulation parameters<a class="headerlink" href="#setting-the-stimulation-parameters" title="Link to this heading">#</a></h4>
 <ul class="simple">
-<li><p>The first section of the table contains the basic parameters for the stimulation.</p>
+<li><p><strong>The first section of the table contains the basic parameters for the stimulation.</strong></p>
 <ul>
 <li><p>You likely will have to adapt these for each experiment.</p></li>
 <li><p>If possible, balance the charge of the stimulation.</p>
@@ -638,20 +657,27 @@ Remember to check the “Absolute Index” function to get the correct electrode
 <li><p>The <code class="docutils literal notranslate"><span class="pre">pulse_train_period</span></code> parameter is useful for setting the period of the burst stimulation.</p></li>
 </ul>
 </li>
-<li><p>The last section contains parameters that we recommend leaving as-is.</p></li>
+<li><p>The last section contains parameters that we recommend leaving as-is.</p>
+<ul>
+<li><p>Please contact us if you have questions regarding the relevance of these parameters for your experiment.</p></li>
+</ul>
+</li>
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Due to the network-based nature of the communication between components, using Python to time your stimulation will always be less precise than using the pulse train settings.
-However, the pulse train settings may not be changed quickly during the experiment.
-Therefore, you must choose between flexible spike trains with less precise timing or precise timing with less flexibility.</p>
+<p>Due to the network-based nature of the communication between components, using Python to time your stimulation (e.g. with <code class="docutils literal notranslate"><span class="pre">time.sleep()</span></code>) will always be less precise than using the pulse train settings.
+However, the pulse train settings may not be changed quickly during the experiment, due to the delay when sending the parameters to the headstage of the MEA.</p>
+<p>Therefore, you must choose between <strong>flexible spike trains with less precise timing</strong> (Python) or <strong>precise timing with less flexibility</strong> (pulse train settings).</p>
 </div>
+</section>
+<section id="example">
+<h4>Example<a class="headerlink" href="#example" title="Link to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">stim_param1</span> <span class="o">=</span> <span class="n">StimParam</span><span class="p">()</span>
-<span class="n">stim_param1</span><span class="o">.</span><span class="n">enable</span> <span class="o">=</span> <span class="kc">True</span> <span class="c1"># Enable the stimulation</span>
-<span class="n">stim_param1</span><span class="o">.</span><span class="n">trigger_key</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1"># Trigger key to be used</span>
-<span class="n">stim_param1</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1"># Index of the stimulation</span>
+<span class="n">stim_param1</span><span class="o">.</span><span class="n">enable</span> <span class="o">=</span> <span class="kc">True</span>  <span class="c1"># Enable the stimulation</span>
+<span class="n">stim_param1</span><span class="o">.</span><span class="n">trigger_key</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># Trigger key to be used</span>
+<span class="n">stim_param1</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># Index of the stimulation</span>
 <span class="c1"># --- Stimulation parameters --- #</span>
 <span class="n">stim_param1</span><span class="o">.</span><span class="n">polarity</span> <span class="o">=</span> <span class="n">StimPolarity</span><span class="o">.</span><span class="n">PositiveFirst</span>
 <span class="n">stim_param1</span><span class="o">.</span><span class="n">phase_duration2</span> <span class="o">=</span> <span class="mi">100</span>
@@ -666,10 +692,14 @@ Therefore, you must choose between flexible spike trains with less precise timin
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">stim_param2</span> <span class="o">=</span> <span class="n">StimParam</span><span class="p">()</span>
-<span class="n">stim_param2</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">exp</span><span class="o">.</span><span class="n">electrodes</span><span class="p">[</span><span class="mi">8</span><span class="p">]</span> <span class="c1"># Use your provided electrodes to choose the site of stimulation</span>
+<span class="n">stim_param2</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">exp</span><span class="o">.</span><span class="n">electrodes</span><span class="p">[</span>
+    <span class="mi">8</span>
+<span class="p">]</span>  <span class="c1"># Use your provided electrodes to choose the site of stimulation</span>
 
 <span class="n">stim_param2</span><span class="o">.</span><span class="n">enable</span> <span class="o">=</span> <span class="kc">True</span>
-<span class="n">stim_param2</span><span class="o">.</span><span class="n">trigger_key</span> <span class="o">=</span> <span class="mi">10</span> <span class="c1"># The trigger key that will be used to send the stimulation</span>
+<span class="n">stim_param2</span><span class="o">.</span><span class="n">trigger_key</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="mi">10</span>  <span class="c1"># The trigger key that will be used to send the stimulation</span>
+<span class="p">)</span>
 <span class="n">stim_param2</span><span class="o">.</span><span class="n">polarity</span> <span class="o">=</span> <span class="n">StimPolarity</span><span class="o">.</span><span class="n">NegativeFirst</span>
 <span class="n">stim_param2</span><span class="o">.</span><span class="n">display_attributes</span><span class="p">()</span>
 </pre></div>
@@ -686,8 +716,8 @@ Therefore, you must choose between flexible spike trains with less precise timin
 <li><p><strong>Trigger key</strong> : You specify the trigger that will be sent to the <strong>Intan Controller</strong>. The controller can accomodate <strong>16</strong> triggers.</p></li>
 <li><p><strong>Enable</strong> : if the parameter is enabled, the <strong>Intan Software</strong> will record that a given parameter is set for a given trigger.</p></li>
 </ul>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
 <p>When you finish your experiment, make sure to disable all <strong>StimParam</strong>s by setting <code class="docutils literal notranslate"><span class="pre">enable</span></code> to <code class="docutils literal notranslate"><span class="pre">False</span></code> and sending them to the <strong>Intan Software</strong>.</p>
 </div>
 </section>
@@ -701,11 +731,13 @@ Therefore, you must choose between flexible spike trains with less precise timin
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">intan</span> <span class="o">=</span> <span class="n">IntanSofware</span><span class="p">()</span>
-<span class="n">params</span> <span class="o">=</span> <span class="p">[</span><span class="n">stim_param1</span><span class="p">,</span> <span class="n">stim_param2</span><span class="p">]</span> <span class="c1"># Create a list of stimulation parameters</span>
+<span class="n">params</span> <span class="o">=</span> <span class="p">[</span><span class="n">stim_param1</span><span class="p">,</span> <span class="n">stim_param2</span><span class="p">]</span>  <span class="c1"># Create a list of stimulation parameters</span>
 
-<span class="n">intan</span><span class="o">.</span><span class="n">send_stimparam</span><span class="p">(</span><span class="n">params</span><span class="p">)</span> <span class="c1"># Send the stimulation parameters to the Intan software. THIS TAKES 10 SECONDS</span>
+<span class="n">intan</span><span class="o">.</span><span class="n">send_stimparam</span><span class="p">(</span>
+    <span class="n">params</span>
+<span class="p">)</span>  <span class="c1"># Send the stimulation parameters to the Intan software. THIS TAKES 10 SECONDS</span>
 <span class="o">...</span>
-<span class="n">intan</span><span class="o">.</span><span class="n">close</span><span class="p">()</span> <span class="c1"># Close the connection to the Intan software</span>
+<span class="n">intan</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>  <span class="c1"># Close the connection to the Intan software</span>
 </pre></div>
 </div>
 </div>
@@ -714,8 +746,8 @@ Therefore, you must choose between flexible spike trains with less precise timin
 <p class="admonition-title">Caution</p>
 <p>Always close your connection to the Intan when you are done using <code class="docutils literal notranslate"><span class="pre">intan.close()</span></code>.</p>
 </div>
-<p><strong>Sending the parameters will take ten seconds to complete.</strong> This is because the <strong>IntanSoftware</strong> will check the parameters and send them to the <strong>Intan Controller</strong>.
-Currently this cannot be bypassed, therefore parameters have to be set before your experiment starts, or during a ten-second pause in your experiment.</p>
+<p><strong>Sending the parameters will take ten seconds to complete.</strong> This is because the <strong>IntanSoftware</strong> will check the parameters and send them to the <strong>Intan Controller</strong>, and then to the headstage of the MEA.
+This is a limitation of the system, and we are working on improving this delay; currently this cannot be bypassed, therefore parameters have to be set before your experiment starts, or during a ten-second pause in your experiment.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Sending the parameters to the <strong>IntanSoftware</strong> will not stimulate the electrodes. You must send a trigger to the <strong>TriggerGenerator</strong> to stimulate the electrodes. See the next section for more information.</p>
@@ -729,12 +761,14 @@ Currently this cannot be bypassed, therefore parameters have to be set before yo
 <p>For example, to send trigger 3, we would define the array as follows:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">trigger_gen</span> 
-<span class="n">trigger_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span> <span class="c1"># Here all the triggers are set to 0, so none will be sent</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">trigger_gen</span> <span class="o">=</span> <span class="n">Trigger</span><span class="p">()</span>
+<span class="n">trigger_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span>
+    <span class="mi">16</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span>
+<span class="p">)</span>  <span class="c1"># Here all the triggers are set to 0, so none will be sent</span>
 
-<span class="n">trigger_array</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1"># This will send a trigger to the stimulation with trigger_key = 3</span>
-<span class="o">...</span> <span class="c1"># Run experiment...</span>
-<span class="n">trigger_gen</span><span class="o">.</span><span class="n">close</span><span class="p">()</span> <span class="c1"># Close the trigger generator</span>
+<span class="n">trigger_array</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># This will send a trigger to the stimulation with trigger_key = 3</span>
+<span class="o">...</span>  <span class="c1"># Run experiment...</span>
+<span class="n">trigger_gen</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>  <span class="c1"># Close the trigger generator</span>
 </pre></div>
 </div>
 </div>
@@ -751,24 +785,28 @@ Currently this cannot be bypassed, therefore parameters have to be set before yo
 <p>Let’s look at a small, simple example experiment, and put together all the concepts we have seen so far.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">intan</span> <span class="o">=</span> <span class="n">IntanSofware</span><span class="p">()</span> <span class="c1"># Here we connect to the Intan software</span>
-<span class="n">trigger_gen</span> <span class="o">=</span> <span class="n">Trigger</span><span class="p">()</span> <span class="c1"># Here we connect to the trigger generator</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">intan</span> <span class="o">=</span> <span class="n">IntanSofware</span><span class="p">()</span>  <span class="c1"># Here we connect to the Intan software</span>
+<span class="n">trigger_gen</span> <span class="o">=</span> <span class="n">Trigger</span><span class="p">()</span>  <span class="c1"># Here we connect to the trigger generator</span>
 
 <span class="n">stim_params</span> <span class="o">=</span> <span class="p">[</span><span class="n">stim_param1</span><span class="p">,</span> <span class="n">stim_param2</span><span class="p">]</span>
 
 <span class="k">try</span><span class="p">:</span>
-    <span class="k">if</span> <span class="n">exp</span><span class="o">.</span><span class="n">start</span><span class="p">():</span> <span class="c1"># Signal the start of an experiment to all users</span>
+    <span class="k">if</span> <span class="n">exp</span><span class="o">.</span><span class="n">start</span><span class="p">():</span>  <span class="c1"># Signal the start of an experiment to all users</span>
         <span class="c1"># Send stim parameter</span>
         <span class="n">intan</span><span class="o">.</span><span class="n">send_stimparam</span><span class="p">(</span><span class="n">stim_params</span><span class="p">)</span>
         <span class="n">start_exp</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">utcnow</span><span class="p">()</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">start_exp</span><span class="p">)</span>
 
         <span class="n">trigger0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
-        <span class="n">trigger0</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1"># Enable stimulation on trigger 0, which is bound to stim_param1</span>
-        
+        <span class="n">trigger0</span><span class="p">[</span>
+            <span class="mi">0</span>
+        <span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># Enable stimulation on trigger 0, which is bound to stim_param1</span>
+
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
             <span class="c1"># Stimulation on electrode 0</span>
-            <span class="n">trigger_gen</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">trigger0</span><span class="p">)</span> <span class="c1"># Here we send ten times the StimParam on electrode 0</span>
+            <span class="n">trigger_gen</span><span class="o">.</span><span class="n">send</span><span class="p">(</span>
+                <span class="n">trigger0</span>
+            <span class="p">)</span>  <span class="c1"># Here we send ten times the StimParam on electrode 0</span>
 
             <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 
@@ -801,7 +839,7 @@ Currently this cannot be bypassed, therefore parameters have to be set before yo
 <p>When you retrieve the triggers in the database, you will see the tag you set. See the <a class="reference internal" href="db_usage.html"><span class="doc std std-doc">Database tutorial</span></a> for more information on how to do so.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">intan</span><span class="o">.</span><span class="n">set_tag_trigger</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># Triggers will have this tag attached to them in the database</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">intan</span><span class="o">.</span><span class="n">set_tag_trigger</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># Triggers will have this tag attached to them in the database</span>
 </pre></div>
 </div>
 </div>
@@ -819,13 +857,13 @@ Currently this cannot be bypassed, therefore parameters have to be set before yo
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
-    <span class="o">...</span> <span class="c1"># exp.start, other setup code</span>
-    <span class="n">intan</span><span class="o">.</span><span class="n">var_threshold</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span> <span class="c1"># Disable the variable threshold</span>
-    <span class="o">...</span> <span class="c1"># your experiment code</span>
+    <span class="o">...</span>  <span class="c1"># exp.start, other setup code</span>
+    <span class="n">intan</span><span class="o">.</span><span class="n">var_threshold</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>  <span class="c1"># Disable the variable threshold</span>
+    <span class="o">...</span>  <span class="c1"># your experiment code</span>
 <span class="k">finally</span><span class="p">:</span>
-    <span class="n">intan</span><span class="o">.</span><span class="n">var_threshold</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># Enable the variable threshold</span>
-    <span class="o">...</span> <span class="c1"># disable parameters, other cleanup code</span>
-    <span class="n">exp</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span> <span class="c1"># Signal the end of the experiment</span>
+    <span class="n">intan</span><span class="o">.</span><span class="n">var_threshold</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>  <span class="c1"># Enable the variable threshold</span>
+    <span class="o">...</span>  <span class="c1"># disable parameters, other cleanup code</span>
+    <span class="n">exp</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>  <span class="c1"># Signal the end of the experiment</span>
 </pre></div>
 </div>
 </div>
@@ -924,6 +962,8 @@ This takes <strong>ten seconds</strong> to complete, you can then retrieve the i
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stimulation-parameters">Stimulation parameters</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#stimparam-reference">StimParam reference</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-the-stimulation-parameters">Setting the stimulation parameters</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#example">Example</a></li>
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connecting-to-the-intan-and-the-triggergenerator">Connecting to the Intan and the TriggerGenerator</a><ul class="nav section-nav flex-column">

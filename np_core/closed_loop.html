@@ -37,7 +37,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=f7412527" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=110f5885" />
   
   <!-- So that users can add custom icons -->
   <script src="../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
@@ -217,6 +217,21 @@
 <div class="article-header-buttons">
 
 
+<a href="https://github.com/FinalSpark-np/np-docs" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
 
 
 
@@ -356,7 +371,7 @@
 <div class="admonition caution">
 <p class="admonition-title">Caution</p>
 <p><code class="docutils literal notranslate"><span class="pre">read_count</span></code> intrinsically does nothing to count the spikes. It only retrieves the buffer storing the number of spikes.
-You must first send the triggers set to listen to populate the <code class="docutils literal notranslate"><span class="pre">read_count</span></code> buffer.</p>
+You must first send the triggers set to listen (using <code class="docutils literal notranslate"><span class="pre">set_count</span></code>) to populate the <code class="docutils literal notranslate"><span class="pre">read_count</span></code> buffer.</p>
 </div>
 <p><strong>If you set a trigger to read on which there is a StimParam defined, the StimParam will be triggered as well.</strong>
 If you only wish to read, make sure to use a trigger without a StimParam.</p>
@@ -365,9 +380,19 @@ If you only wish to read, make sure to use a trigger without a StimParam.</p>
 <h2>Example<a class="headerlink" href="#example" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">token</span> <span class="o">=</span> <span class="s2">&quot;E9JTQDS62Y&quot;</span> <span class="c1"># We provide you a token for the experiment</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">neuroplatform</span> <span class="kn">import</span> <span class="n">Experiment</span><span class="p">,</span> <span class="n">StimParam</span><span class="p">,</span> <span class="n">IntanSofware</span><span class="p">,</span> <span class="n">Trigger</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">UTC</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">token</span> <span class="o">=</span> <span class="s2">&quot;E9JTQDS62Y&quot;</span>  <span class="c1"># We provide you a token for the experiment</span>
 <span class="n">exp</span> <span class="o">=</span> <span class="n">Experiment</span><span class="p">(</span><span class="n">token</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Electrodes: </span><span class="si">{</span><span class="n">exp</span><span class="o">.</span><span class="n">electrodes</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span> <span class="c1"># Electrodes that you can used</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Electrodes: </span><span class="si">{</span><span class="n">exp</span><span class="o">.</span><span class="n">electrodes</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>  <span class="c1"># Electrodes that you can used</span>
 </pre></div>
 </div>
 </div>
@@ -375,8 +400,8 @@ If you only wish to read, make sure to use a trigger without a StimParam.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">stim_param1</span> <span class="o">=</span> <span class="n">StimParam</span><span class="p">()</span>
-<span class="n">stim_param1</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">exp</span><span class="o">.</span><span class="n">electrodes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="c1"># the first electrode</span>
-<span class="n">stim_param1</span><span class="o">.</span><span class="n">trigger_key</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1"># the first trigger</span>
+<span class="n">stim_param1</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">exp</span><span class="o">.</span><span class="n">electrodes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>  <span class="c1"># the first electrode</span>
+<span class="n">stim_param1</span><span class="o">.</span><span class="n">trigger_key</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># the first trigger</span>
 <span class="n">stim_param1</span><span class="o">.</span><span class="n">phase_amplitude1</span> <span class="o">=</span> <span class="mf">2.0</span>
 <span class="n">stim_param1</span><span class="o">.</span><span class="n">phase_amplitude2</span> <span class="o">=</span> <span class="mf">2.0</span>
 <span class="n">stim_param1</span><span class="o">.</span><span class="n">display_attributes</span><span class="p">()</span>
@@ -388,26 +413,28 @@ If you only wish to read, make sure to use a trigger without a StimParam.</p>
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">intan</span> <span class="o">=</span> <span class="n">IntanSofware</span><span class="p">()</span>
 <span class="n">trigger_gen</span> <span class="o">=</span> <span class="n">Trigger</span><span class="p">()</span>
-<span class="n">intan</span><span class="o">.</span><span class="n">set_count</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span> <span class="c1"># Set the Intan to record the number of spike whenever sending trigger 0 or 1</span>
+<span class="n">intan</span><span class="o">.</span><span class="n">set_count</span><span class="p">(</span>
+    <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="p">)</span>  <span class="c1"># Set the Intan to record the number of spike whenever sending trigger 0 or 1</span>
 
 <span class="n">stim_params</span> <span class="o">=</span> <span class="p">[</span><span class="n">stim_param1</span><span class="p">]</span>
 
 <span class="k">try</span><span class="p">:</span>
-    <span class="k">if</span> <span class="n">exp</span><span class="o">.</span><span class="n">start</span><span class="p">():</span> <span class="c1"># Signal the start of an experiment to all users</span>
+    <span class="k">if</span> <span class="n">exp</span><span class="o">.</span><span class="n">start</span><span class="p">():</span>  <span class="c1"># Signal the start of an experiment to all users</span>
         <span class="c1"># Send stim parameter</span>
         <span class="n">intan</span><span class="o">.</span><span class="n">send_stimparam</span><span class="p">(</span><span class="n">stim_params</span><span class="p">)</span>
-        <span class="n">start_exp</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">utcnow</span><span class="p">()</span>
+        <span class="n">start_exp</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">(</span><span class="n">UTC</span><span class="p">)</span>
 
         <span class="c1"># Create the array of triggers, and set the desired trigger to 1</span>
         <span class="n">trigger0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
         <span class="n">trigger0</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
-        
+
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
             <span class="c1"># Stimulation on electrode 0</span>
-            <span class="n">trigger_gen</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">trigger0</span><span class="p">)</span> <span class="c1"># THIS TRIGGERS BOTH THE STIM AND THE READ</span>
+            <span class="n">trigger_gen</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">trigger0</span><span class="p">)</span>  <span class="c1"># THIS TRIGGERS BOTH THE STIM AND THE READ</span>
             <span class="c1"># Wait 200ms to read for a close loop</span>
             <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.2</span><span class="p">)</span>
-            <span class="n">count_spikes</span> <span class="o">=</span> <span class="n">intan</span><span class="o">.</span><span class="n">read_count</span><span class="p">()</span> <span class="c1"># np.array(128)</span>
+            <span class="n">count_spikes</span> <span class="o">=</span> <span class="n">intan</span><span class="o">.</span><span class="n">read_count</span><span class="p">()</span>  <span class="c1"># np.array(128)</span>
             <span class="c1"># count the number of spike of electrode 22</span>
             <span class="n">total_spikes_stim</span> <span class="o">=</span> <span class="n">count_spikes</span><span class="p">[</span><span class="mi">22</span><span class="p">]</span>
 
@@ -416,15 +443,15 @@ If you only wish to read, make sure to use a trigger without a StimParam.</p>
             <span class="c1"># Send trigger 1 - no stimulation</span>
             <span class="n">trigger1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
             <span class="n">trigger1</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
-            <span class="n">trigger_gen</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">trigger1</span><span class="p">)</span> <span class="c1"># THIS TRIGGERS ONLY THE READ</span>
+            <span class="n">trigger_gen</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">trigger1</span><span class="p">)</span>  <span class="c1"># THIS TRIGGERS ONLY THE READ</span>
             <span class="c1"># Wait 200ms to read for a close loop</span>
             <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.2</span><span class="p">)</span>
-            <span class="n">count_spikes</span> <span class="o">=</span> <span class="n">intan</span><span class="o">.</span><span class="n">read_count</span><span class="p">()</span> <span class="c1"># np.array(128)</span>
+            <span class="n">count_spikes</span> <span class="o">=</span> <span class="n">intan</span><span class="o">.</span><span class="n">read_count</span><span class="p">()</span>  <span class="c1"># np.array(128)</span>
             <span class="c1"># count the number of spike of electrode 22</span>
             <span class="n">total_spikes_read_only</span> <span class="o">=</span> <span class="n">count_spikes</span><span class="p">[</span><span class="mi">22</span><span class="p">]</span>
 
-            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Spikes with stimulation: </span><span class="si">{</span><span class="n">total_spikes_stim</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Spikes without stimulation: </span><span class="si">{</span><span class="n">total_spikes_read_only</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Spikes with stimulation: </span><span class="si">{</span><span class="n">total_spikes_stim</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Spikes without stimulation: </span><span class="si">{</span><span class="n">total_spikes_read_only</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
             <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 
