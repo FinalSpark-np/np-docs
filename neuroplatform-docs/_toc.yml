@@ -11,3 +11,4 @@ parts:
   - caption: NeuroPlatform utilities
     chapters:
     - file : np_utils/stimparamloader
+    - file : np_utils/spikesorting
