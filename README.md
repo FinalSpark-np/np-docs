@@ -6,6 +6,9 @@ This repository contains the documentation for the FinalSpark NeuroPlatform.
 
 Contributions from NeuroPlatform users are welcome. Please feel free to open issues, or add pull requests to request updates to the documentation.
 
+This documentation uses **jupyter-book**. Contributing is as simple as adding some jupyter notebooks with markdown cells and some formatting.
+See the official [jupyter-book documentation](https://jupyterbook.org/en/stable/file-types/notebooks.html) for more information.
+
 Please use the provided `pre-commit` hook to ensure that the documentation is formatted correctly before committing changes.
 
 Run the following command to install the pre-commit hook:
