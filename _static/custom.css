@@ -29,7 +29,7 @@ html[data-theme="dark"] {
   font-size: 12px;
   color: var(--footer-text-color);
   background-image: url("images/logo_background.png");
-  backdrop-filter: opacity(0.5) blur(5px);
+  backdrop-filter: opacity(0.35) blur(5px);
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
@@ -45,9 +45,11 @@ html[data-theme="dark"] {
 
 /* Header */
 .bd-header-article {
-  position: relative;
-  background-color: var(--header-bg-color);
-  z-index: 0;
+  /* position: fixed; */
+  /* background-color: var(--header-bg-color); */
+  background-color: rgba(0, 0, 0, 0);
+  backdrop-filter: blur(2px);
+  z-index: 1000;
 }
 
 /* Header background image */
@@ -70,6 +72,16 @@ html[data-theme="dark"] {
 .article-header-buttons .btn {
   color: var(--button-text-color);
   z-index: 1;
+}
+
+.article-header-buttons .btn:hover {
+  opacity: 0.8;
+  z-index: 1;
+}
+
+.article-header-buttons .btn:hover {
+  opacity: 0.8;
+  -index: 1;
 }
 
 .article-header-buttons .btn:hover {
