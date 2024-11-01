@@ -226,18 +226,67 @@
 <div class="article-header-buttons">
 
 
-<a href="https://github.com/FinalSpark-np/np-docs" target="_blank"
-   class="btn btn-sm btn-source-repository-button"
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/FinalSpark-np/np-docs" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
    title="Source repository"
-   data-bs-placement="bottom" data-bs-toggle="tooltip"
+   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
 <span class="btn__icon-container">
   <i class="fab fa-github"></i>
   </span>
-
+<span class="btn__text-container">Repository</span>
 </a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/FinalSpark-np/np-docs/edit/main/neuroplatform-docs/welcome.md" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/FinalSpark-np/np-docs/issues/new?title=Issue%20on%20page%20%2Fwelcome.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
 
 
 
@@ -339,6 +388,11 @@
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#questions-and-support">Questions and support</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contributing">Contributing</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-contribute">How to contribute</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#navigation">Navigation</a><ul class="nav section-nav flex-column">
 </ul>
 </li>
@@ -359,13 +413,48 @@
 <section id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
 <p>This documentation will guide through the basics of using FinalSpark’s NeuroPlatform.</p>
-<p>The first part focuses on basic usage of the platform : stimulating organoids, and fetching data from the platform.</p>
+<p>The first part focuses on basic usage of the platform : stimulating organoids, fetching data from the platform and reading spikes for closed-loop experiments.</p>
+<p>The second part lists several utilities that you may find useful in your experiments, whether for setting up your parameters or empowering your data analysis.</p>
 <div class="admonition hint">
 <p class="admonition-title">Hint</p>
 <p><strong>Every tutorial page can be downloaded as a Jupyter notebook.</strong></p>
 <p>Click on the “Download as Jupyter notebook” button at the top right of the page.
 This will allow you to test the sample code on your provided machine.</p>
 </div>
+</section>
+<section id="questions-and-support">
+<h2>Questions and support<a class="headerlink" href="#questions-and-support" title="Link to this heading">#</a></h2>
+<p><a class="reference external" href="https://discord.gg/edPetHUYtx"><img alt="Discord" src="https://img.shields.io/badge/Discord-5865F2?style=for-the-badge&amp;logo=discord&amp;logoColor=white" /></a></p>
+<p>If you have questions, please try to prioritize Discord, so your question can benefit the community.</p>
+<p>You may also <a class="reference external" href="https://finalspark.com/team/">contact us directly</a> if you have specific questions or requests.</p>
+</section>
+<section id="contributing">
+<h2>Contributing<a class="headerlink" href="#contributing" title="Link to this heading">#</a></h2>
+<p>All NeuroPlatform users are welcome to contribute to this documentation, which is built upon <strong>jupyter-book</strong>.</p>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>Try the “Repository” button at the top right of the page to access the GitHub repository, open issues or suggest changes to the current page you are reading.</p>
+</div>
+<p><strong>Contributing is as simple as adding your jupyter notebooks with markdown cells and some formatting.</strong></p>
+<p>See the official <a class="reference external" href="https://jupyterbook.org/en/stable/file-types/notebooks.html">jupyter-book documentation</a> for more information.</p>
+<p>If you have any questions, please reach out to us and we will help you deploy your documentation changes.</p>
+<section id="how-to-contribute">
+<h3>How to contribute<a class="headerlink" href="#how-to-contribute" title="Link to this heading">#</a></h3>
+<p>If possible, please use the provided <code class="docutils literal notranslate"><span class="pre">pre-commit</span></code> hook to ensure that the documentation is formatted correctly before committing changes.</p>
+<div class="dropdown admonition">
+<p class="admonition-title">Installing pre-commit</p>
+<p>Install <code class="docutils literal notranslate"><span class="pre">pre-commit</span></code> by running the following command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>pre-commit
+</pre></div>
+</div>
+<p>or use your preferred package manager.</p>
+<p>Then, run the following command to install the pre-commit hook:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pre-commit<span class="w"> </span>install
+</pre></div>
+</div>
+</div>
+<p>Then, <strong>create a new branch</strong> and <strong>open a pull request</strong> to request updates to the documentation.</p>
+</section>
 </section>
 <section id="navigation">
 <h2>Navigation<a class="headerlink" href="#navigation" title="Link to this heading">#</a></h2>
@@ -449,6 +538,11 @@ This will allow you to test the sample code on your provided machine.</p>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#questions-and-support">Questions and support</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contributing">Contributing</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-contribute">How to contribute</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#navigation">Navigation</a><ul class="nav section-nav flex-column">
 </ul>
 </li>

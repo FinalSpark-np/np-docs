@@ -223,18 +223,67 @@
 <div class="article-header-buttons">
 
 
-<a href="https://github.com/FinalSpark-np/np-docs" target="_blank"
-   class="btn btn-sm btn-source-repository-button"
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/FinalSpark-np/np-docs" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
    title="Source repository"
-   data-bs-placement="bottom" data-bs-toggle="tooltip"
+   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
 <span class="btn__icon-container">
   <i class="fab fa-github"></i>
   </span>
-
+<span class="btn__text-container">Repository</span>
 </a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/FinalSpark-np/np-docs/edit/main/neuroplatform-docs/np_core/closed_loop.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/FinalSpark-np/np-docs/issues/new?title=Issue%20on%20page%20%2Fnp_core/closed_loop.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
 
 
 
@@ -376,11 +425,12 @@
 </ul>
 <div class="admonition caution">
 <p class="admonition-title">Caution</p>
-<p><code class="docutils literal notranslate"><span class="pre">read_count</span></code> intrinsically does nothing to count the spikes. It only retrieves the buffer storing the number of spikes.
-You must first send the triggers set to listen (using <code class="docutils literal notranslate"><span class="pre">set_count</span></code>) to populate the <code class="docutils literal notranslate"><span class="pre">read_count</span></code> buffer.</p>
+<p><code class="docutils literal notranslate"><span class="pre">read_count</span></code> intrinsically does nothing to count the spikes.<br>
+It only retrieves the buffer storing the number of spikes.<br>
+You must first send the triggers (using a <code class="docutils literal notranslate"><span class="pre">Trigger()</span></code> object, see <a class="reference internal" href="np_usage.html#core-np-trigger-gen"><span class="std std-ref">here</span></a>) that have been set to listen (using <code class="docutils literal notranslate"><span class="pre">set_count</span></code>) to populate the <code class="docutils literal notranslate"><span class="pre">read_count</span></code> buffer.</p>
 </div>
-<p><strong>If you set a trigger to read on which there is a StimParam defined, the StimParam will be triggered as well.</strong>
-If you only wish to read, make sure to use a trigger without a StimParam.</p>
+<p><strong>If you set a trigger to read on which there is a StimParam defined, the StimParam will be triggered as well.</strong></p>
+<p>If you only wish to read, make sure to use a trigger without a StimParam.</p>
 </section>
 <section id="example">
 <h2>Example<a class="headerlink" href="#example" title="Link to this heading">#</a></h2>

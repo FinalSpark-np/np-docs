@@ -223,18 +223,67 @@
 <div class="article-header-buttons">
 
 
-<a href="https://github.com/FinalSpark-np/np-docs" target="_blank"
-   class="btn btn-sm btn-source-repository-button"
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/FinalSpark-np/np-docs" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
    title="Source repository"
-   data-bs-placement="bottom" data-bs-toggle="tooltip"
+   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
 <span class="btn__icon-container">
   <i class="fab fa-github"></i>
   </span>
-
+<span class="btn__text-container">Repository</span>
 </a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/FinalSpark-np/np-docs/edit/main/neuroplatform-docs/np_core/db_usage.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/FinalSpark-np/np-docs/issues/new?title=Issue%20on%20page%20%2Fnp_core/db_usage.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
 
 
 
@@ -399,7 +448,7 @@ Make sure to use the token you used for your experiment to perform the data anal
 
 <span class="n">db</span> <span class="o">=</span> <span class="n">Database</span><span class="p">()</span>
 <span class="n">exp</span> <span class="o">=</span> <span class="n">Experiment</span><span class="p">(</span><span class="s2">&quot;Your token here&quot;</span><span class="p">)</span>
-<span class="n">FSID</span> <span class="o">=</span> <span class="p">(</span>
+<span class="n">FS_NAME</span> <span class="o">=</span> <span class="p">(</span>
     <span class="n">exp</span><span class="o">.</span><span class="n">exp_name</span>
 <span class="p">)</span>  <span class="c1"># FS ID for the MEA. This changes every time we change the organoids.</span>
 </pre></div>
@@ -416,15 +465,15 @@ Make sure to use the token you used for your experiment to perform the data anal
 <p>You can query a list of spike events with the timestamp, the amplitude (maximum voltage across 3ms around the spike) and the channel number using <code class="docutils literal notranslate"><span class="pre">get_spike_event</span></code></p>
 <div class="admonition caution">
 <p class="admonition-title">Caution</p>
-<p>To avoid returning large amounts of data, keep the time window small.</p>
-<p>We recommed starting with 5 minutes, and increasing/decresing the window as needed.</p>
+<p>To avoid returning large amounts of data, keep the time window small.<br>
+We recommed starting with 5 minutes, and increasing/decresing the window as needed.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">start</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="s2">&quot;2024-04-05T00:00:00.000Z&quot;</span><span class="p">)</span>
 <span class="n">stop</span> <span class="o">=</span> <span class="n">start</span> <span class="o">+</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">minutes</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
 
-<span class="n">spike_event_df</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">get_spike_event</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">stop</span><span class="p">,</span> <span class="n">FSID</span><span class="p">)</span>
+<span class="n">spike_event_df</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">get_spike_event</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">stop</span><span class="p">,</span> <span class="n">FS_NAME</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -432,10 +481,10 @@ Make sure to use the token you used for your experiment to perform the data anal
 </section>
 <section id="spike-count-per-minute">
 <h3>Spike count per minute<a class="headerlink" href="#spike-count-per-minute" title="Link to this heading">#</a></h3>
-<p>You can get the spike count per minute for all electrodes in a given FS ID using <code class="docutils literal notranslate"><span class="pre">get_spike_count</span></code> to get a DataFrame with the spike count per minute for each electrode, with the timestamp.</p>
+<p>You can get the spike count per minute for all electrodes for a given experiment name using <code class="docutils literal notranslate"><span class="pre">get_spike_count</span></code> to get a DataFrame with the spike count per minute for each electrode, with the timestamp.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">spike_per_min_df</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">get_spike_count</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">stop</span><span class="p">,</span> <span class="n">FSID</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">spike_per_min_df</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">get_spike_count</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">stop</span><span class="p">,</span> <span class="n">FS_NAME</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -447,13 +496,13 @@ Make sure to use the token you used for your experiment to perform the data anal
 <p>Since the sampling rate is 30kHz, each spike event will have 90 samples.</p>
 <div class="admonition caution">
 <p class="admonition-title">Caution</p>
-<p>Raw data is very memory-intensive. Make sure to query a small time window.</p>
+<p><strong>Raw data is very memory-intensive.</strong> Make sure to query a small time window.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">tqdm</span>
 
-<span class="n">df_spike_event</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">get_spike_event</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">start</span> <span class="o">+</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">seconds</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">FSID</span><span class="p">)</span>
+<span class="n">df_spike_event</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">get_spike_event</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">start</span> <span class="o">+</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">seconds</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">FS_NAME</span><span class="p">)</span>
 
 <span class="n">raws</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">df_spike_event</span><span class="o">.</span><span class="n">iterrows</span><span class="p">(),</span> <span class="n">total</span><span class="o">=</span><span class="n">df_spike_event</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
@@ -512,20 +561,21 @@ Make sure to use the token you used for your experiment to perform the data anal
 </section>
 </section>
 <section id="triggers">
-<h3>Triggers<a class="headerlink" href="#triggers" title="Link to this heading">#</a></h3>
+<span id="core-db-triggers"></span><h3>Triggers<a class="headerlink" href="#triggers" title="Link to this heading">#</a></h3>
 <p>You can get the triggers used for stimulation using <code class="docutils literal notranslate"><span class="pre">get_triggers</span></code> to get a DataFrame with the timestamp, the trigger number, the status (up/down, which corresponds to times the trigger was enabled/disabled respectively) and the tag if any.</p>
-<p>For tags and their usage, see the <a class="reference internal" href="np_usage.html"><span class="doc std std-doc">System Basics</span></a> page.</p>
+<p>For tags and their usage, see the <a class="reference internal" href="np_usage.html#core-tagging-triggers"><span class="std std-ref">Tagging triggers</span></a> section.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">triggers_df</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">get_all_triggers</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">stop</span><span class="p">,</span> <span class="n">FSID</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">triggers_df</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">get_all_triggers</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">stop</span><span class="p">,</span> <span class="n">FS_NAME</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 </section>
 <section id="impedance">
-<h3>Impedance<a class="headerlink" href="#impedance" title="Link to this heading">#</a></h3>
+<span id="core-db-impedance"></span><h3>Impedance<a class="headerlink" href="#impedance" title="Link to this heading">#</a></h3>
 <p>When you have measured impedance using the Intan, you can get the impedance values using <code class="docutils literal notranslate"><span class="pre">get_impedance</span></code> to get a DataFrame with the timestamp, the electrode number, and the impedance values.</p>
+<p>See the <a class="reference internal" href="np_usage.html#core-intan-impedance"><span class="std std-ref">Impedance measurement</span></a> section for more information.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df_impedance</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">get_impedance</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">stop</span><span class="p">)</span>
@@ -536,6 +586,13 @@ Make sure to use the token you used for your experiment to perform the data anal
 </section>
 <section id="miscellanous-measurements">
 <h3>Miscellanous measurements<a class="headerlink" href="#miscellanous-measurements" title="Link to this heading">#</a></h3>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you require additional measurements, we may be able to provide them. Please contact us.</p>
+</div>
+</aside>
 <p>We also provide access to various environmental measurements within the incubator hosting the MEAs :</p>
 <ul class="simple">
 <li><p>CO2 levels</p></li>

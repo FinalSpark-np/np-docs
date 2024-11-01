@@ -225,18 +225,67 @@
 <div class="article-header-buttons">
 
 
-<a href="https://github.com/FinalSpark-np/np-docs" target="_blank"
-   class="btn btn-sm btn-source-repository-button"
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/FinalSpark-np/np-docs" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
    title="Source repository"
-   data-bs-placement="bottom" data-bs-toggle="tooltip"
+   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
 <span class="btn__icon-container">
   <i class="fab fa-github"></i>
   </span>
-
+<span class="btn__text-container">Repository</span>
 </a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/FinalSpark-np/np-docs/edit/main/neuroplatform-docs/np_core/np_usage.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/FinalSpark-np/np-docs/issues/new?title=Issue%20on%20page%20%2Fnp_core/np_usage.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
 
 
 
@@ -528,10 +577,6 @@ Remember to check the “Absolute Index” function to get the correct electrode
 <h3>Stimulation parameters<a class="headerlink" href="#stimulation-parameters" title="Link to this heading">#</a></h3>
 <p>Now we can define the stimulation parameters.</p>
 <p>Through Python, you will be controlling the Intan software to set the stimulation parameters.</p>
-<div class="dropdown admonition seealso">
-<p class="admonition-title">See also</p>
-<p>You can use the <a class="reference internal" href="../np_utils/stimparamloader.html"><span class="doc std std-doc">StimParamLoader utility</span></a> to help you check for inconsistencies.</p>
-</div>
 <p>The software defines stimulations using the elements shown here :</p>
 <figure class="align-default" id="stimparam">
 <a class="reference internal image-reference" href="../_images/stimparam.png"><img alt="../_images/stimparam.png" src="../_images/stimparam.png" style="height: 400px;" /></a>
@@ -649,6 +694,13 @@ See below for a detailed explanation of the parameters.</p>
 </section>
 <section id="setting-the-stimulation-parameters">
 <h4>Setting the stimulation parameters<a class="headerlink" href="#setting-the-stimulation-parameters" title="Link to this heading">#</a></h4>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>You can use the <a class="reference internal" href="../np_utils/stimparamloader.html"><span class="doc std std-doc">StimParamLoader utility</span></a> to help you manage and preview your parameters.</p>
+</div>
+</aside>
 <ul class="simple">
 <li><p><strong>The first section of the table contains the basic parameters for the stimulation.</strong></p>
 <ul>
@@ -761,11 +813,12 @@ However, the pulse train settings may not be changed quickly during the experime
 This is a limitation of the system, and we are working on improving this delay; currently this cannot be bypassed, therefore parameters have to be set before your experiment starts, or during a ten-second pause in your experiment.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Sending the parameters to the <strong>IntanSoftware</strong> will not stimulate the electrodes. You must send a trigger to the <strong>TriggerGenerator</strong> to stimulate the electrodes. See the next section for more information.</p>
+<p>Sending the parameters to the <strong>IntanSoftware</strong> will not stimulate the electrodes. You must send a trigger to the <strong>TriggerGenerator</strong> to stimulate the electrodes.</p>
+<p>See the next section for more information.</p>
 </div>
 </section>
 <section id="connecting-to-the-triggergenerator-and-sending-triggers">
-<h4>Connecting to the TriggerGenerator and sending triggers<a class="headerlink" href="#connecting-to-the-triggergenerator-and-sending-triggers" title="Link to this heading">#</a></h4>
+<span id="core-np-trigger-gen"></span><h4>Connecting to the TriggerGenerator and sending triggers<a class="headerlink" href="#connecting-to-the-triggergenerator-and-sending-triggers" title="Link to this heading">#</a></h4>
 <p>The main new concept here is how to send triggers.</p>
 <p>When you send a trigger, the <strong>TriggerGenerator</strong> will send a signal to the <strong>Intan Controller</strong> to execute the <strong>StimParam</strong>s you set for that trigger.</p>
 <p>We use a 16-length array of uint8 to send the triggers. If the value is 1, the trigger is sent. If the value is 0, the trigger is not sent.</p>
@@ -784,6 +837,7 @@ This is a limitation of the system, and we are working on improving this delay; 
 </div>
 </div>
 </div>
+<p>To enable several triggers at once, simply set all the corresponding indices to 1.</p>
 <div class="admonition caution">
 <p class="admonition-title">Caution</p>
 <p>Always close your connection to the <strong>TriggerGenerator</strong> when you are done using <code class="docutils literal notranslate"><span class="pre">trigger_gen.close()</span></code>.</p>
@@ -821,6 +875,19 @@ This is a limitation of the system, and we are working on improving this delay; 
 
             <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 
+        <span class="c1">#################</span>
+
+        <span class="n">trigger0and10</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
+        <span class="n">trigger0and10</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="n">trigger0and10</span><span class="p">[</span><span class="mi">10</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+            <span class="c1"># Stimulation on both electrodes</span>
+            <span class="n">trigger_gen</span><span class="o">.</span><span class="n">send</span><span class="p">(</span>
+                <span class="n">trigger0and10</span>
+            <span class="p">)</span>  <span class="c1"># Here we stim on both electrodes at the same time</span>
+            <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
         <span class="n">stop_exp</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">utcnow</span><span class="p">()</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">stop_exp</span><span class="p">)</span>
 
@@ -845,9 +912,10 @@ This is a limitation of the system, and we are working on improving this delay; 
 <h2>Advanced functionalities<a class="headerlink" href="#advanced-functionalities" title="Link to this heading">#</a></h2>
 <p>This section lists a few additional functionalities that you may find useful depending on your experiment.</p>
 <section id="tagging-triggers">
-<h3>Tagging triggers<a class="headerlink" href="#tagging-triggers" title="Link to this heading">#</a></h3>
+<span id="core-tagging-triggers"></span><h3>Tagging triggers<a class="headerlink" href="#tagging-triggers" title="Link to this heading">#</a></h3>
 <p>You can tag triggers with a number to identify them more easily.</p>
-<p>When you retrieve the triggers in the database, you will see the tag you set. See the <a class="reference internal" href="db_usage.html"><span class="doc std std-doc">Database tutorial</span></a> for more information on how to do so.</p>
+<p>When you retrieve the triggers in the database, you will see the tag you set.</p>
+<p>See the <a class="reference internal" href="db_usage.html#core-db-triggers"><span class="std std-ref">Triggers</span></a> section of the Database tutorial for more information on how to do so.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">intan</span><span class="o">.</span><span class="n">set_tag_trigger</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># Triggers will have this tag attached to them in the database</span>
@@ -860,8 +928,8 @@ This is a limitation of the system, and we are working on improving this delay; 
 <h3>Fixed threshold<a class="headerlink" href="#fixed-threshold" title="Link to this heading">#</a></h3>
 <p>You can set the threshold for spike events to be fixed, which means it will be constant throughout the experiment.</p>
 <p>As mentioned earlier, the threshold is six times the standard deviation of the noise. This is recomputed when the variance threshold is enabled.</p>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
 <p><strong>ALWAYS</strong> set back the variance threshold to <strong>enabled</strong> after finishing your experiment.</p>
 </div>
 <p>If you need to set a fixed threshold, for example to account for a drift in the noise or activity, you can use:</p>
@@ -881,9 +949,10 @@ This is a limitation of the system, and we are working on improving this delay; 
 </div>
 </section>
 <section id="impedance-measurement">
-<h3>Impedance measurement<a class="headerlink" href="#impedance-measurement" title="Link to this heading">#</a></h3>
+<span id="core-intan-impedance"></span><h3>Impedance measurement<a class="headerlink" href="#impedance-measurement" title="Link to this heading">#</a></h3>
 <p>You can ask the Intan to measure the impedance of the electrodes.
-This takes <strong>ten seconds</strong> to complete, you can then retrieve the impedance values from the database. See the <a class="reference internal" href="db_usage.html"><span class="doc std std-doc">Database tutorial</span></a> for instructions.</p>
+This takes <strong>ten seconds</strong> to complete, you can then retrieve the impedance values from the database.</p>
+<p>See the <a class="reference internal" href="db_usage.html#core-db-impedance"><span class="std std-ref">Impedance</span></a> section of the Database tutorial for instructions.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">intan</span><span class="o">.</span><span class="n">impedance</span><span class="p">()</span>

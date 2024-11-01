@@ -224,18 +224,67 @@
 <div class="article-header-buttons">
 
 
-<a href="https://github.com/FinalSpark-np/np-docs" target="_blank"
-   class="btn btn-sm btn-source-repository-button"
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/FinalSpark-np/np-docs" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
    title="Source repository"
-   data-bs-placement="bottom" data-bs-toggle="tooltip"
+   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
 <span class="btn__icon-container">
   <i class="fab fa-github"></i>
   </span>
-
+<span class="btn__text-container">Repository</span>
 </a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/FinalSpark-np/np-docs/edit/main/neuroplatform-docs/np_utils/spikesorting.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/FinalSpark-np/np-docs/issues/new?title=Issue%20on%20page%20%2Fnp_utils/spikesorting.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
 
 
 
@@ -452,10 +501,13 @@ Those will always be labeled as belonging to cluster -2 to <span class="math not
 <section id="running-the-spikesorting">
 <h3>Running the SpikeSorting<a class="headerlink" href="#running-the-spikesorting" title="Link to this heading">#</a></h3>
 <p>To run the spike sorting, you will need to specify a start and stop time, as well as the experiment ID (<code class="docutils literal notranslate"><span class="pre">fs#ID</span></code>).</p>
-<div class="dropdown admonition hint">
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition hint">
 <p class="admonition-title">Hint</p>
 <p>See the <a class="reference internal" href="../np_core/db_usage.html#core-database-token"><span class="std std-ref">Database setup</span></a> page for more information on how to get the experiment ID.</p>
 </div>
+</aside>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">events_df</span> <span class="o">=</span> <span class="n">sorter</span><span class="o">.</span><span class="n">run_spike_sorting</span><span class="p">(</span>

@@ -223,18 +223,67 @@
 <div class="article-header-buttons">
 
 
-<a href="https://github.com/FinalSpark-np/np-docs" target="_blank"
-   class="btn btn-sm btn-source-repository-button"
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/FinalSpark-np/np-docs" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
    title="Source repository"
-   data-bs-placement="bottom" data-bs-toggle="tooltip"
+   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
 <span class="btn__icon-container">
   <i class="fab fa-github"></i>
   </span>
-
+<span class="btn__text-container">Repository</span>
 </a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/FinalSpark-np/np-docs/edit/main/neuroplatform-docs/np_utils/stimparamloader.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/FinalSpark-np/np-docs/issues/new?title=Issue%20on%20page%20%2Fnp_utils/stimparamloader.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
 
 
 
@@ -385,9 +434,9 @@
 </ul>
 <div class="admonition danger">
 <p class="admonition-title">Danger</p>
-<p>Remember to always disable <strong>ALL</strong> parameters sent. If you remove or modify the list of parameters, make sure to disable all parameters and send the update to the Intan first.</p>
-<p>If you do not disable all parameters before sending new ones, there may be old leftover parameters that are still enabled, which can cause unexpected stimulation.</p>
-<p>If you suspect there may be leftover parameters either from your code or another user’s session, please contact us.</p>
+<p>Remember to always disable <strong>ALL</strong> parameters sent. If you remove or modify the list of parameters, make sure to disable all parameters and send the update to the Intan before doing so.</p>
+<p>If you do not disable all parameters before sending new ones, there may be old leftover parameters that are still enabled, which can cause unexpected stimulation when sending triggers.</p>
+<p><strong>If you suspect there may be leftover parameters either from your code or another user’s session, please contact us.</strong></p>
 </div>
 </section>
 <section id="previewing-parameters">
@@ -403,12 +452,13 @@
 </section>
 <section id="sending-parameters">
 <h3>Sending parameters<a class="headerlink" href="#sending-parameters" title="Link to this heading">#</a></h3>
-<p>To send the parameters to the Intan, use the <code class="docutils literal notranslate"><span class="pre">send_parameters</span></code> method. This will check if all parameters are valid and enabled before sending them to the Intan.
-When you are finished with this set of parameters, remember to disable all parameters and send the update to the Intan, using the <code class="docutils literal notranslate"><span class="pre">disable_all_and_send</span></code> method.</p>
+<p>To send the parameters to the Intan, use the <code class="docutils literal notranslate"><span class="pre">send_parameters</span></code> method.<br>
+This will check if all parameters are valid and enabled before sending them to the Intan.</p>
+<p>When you are finished with this set of parameters, remember to disable all parameters and send the update to the Intan, using the <code class="docutils literal notranslate"><span class="pre">disable_all_and_send</span></code> method.</p>
 </section>
 <section id="logging-messages">
 <h3>Logging messages<a class="headerlink" href="#logging-messages" title="Link to this heading">#</a></h3>
-<p>If using the <code class="docutils literal notranslate"><span class="pre">verbose</span></code> option, all log messages will be shown.
+<p>If using the <code class="docutils literal notranslate"><span class="pre">verbose</span></code> option, all log messages will be shown.<br>
 If this is impractical to show during your experiment, for example if you are changing parameters frequently in a loop, you may set <code class="docutils literal notranslate"><span class="pre">verbose=False</span></code>.</p>
 <div class="admonition hint">
 <p class="admonition-title">Hint</p>
