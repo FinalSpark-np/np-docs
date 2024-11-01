@@ -16,6 +16,7 @@ This will allow you to test the sample code on your provided machine.
 ## Navigation
 
 ```{tableofcontents}
+
 ```
 
 ## Live view

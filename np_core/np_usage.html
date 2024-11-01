@@ -37,7 +37,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=110f5885" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=c81f9318" />
   
   <!-- So that users can add custom icons -->
   <script src="../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
@@ -177,6 +177,10 @@
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">System basics and stimulating organoids</a></li>
 <li class="toctree-l1"><a class="reference internal" href="db_usage.html">Database usage and fetching results</a></li>
 <li class="toctree-l1"><a class="reference internal" href="closed_loop.html">Closed-loop : reading and stimulating</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">NeuroPlatform utilities</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../np_utils/stimparamloader.html">Stimulation parameter loader</a></li>
 </ul>
 
     </div>
@@ -378,6 +382,12 @@
 <h1>System basics and stimulating organoids<a class="headerlink" href="#system-basics-and-stimulating-organoids" title="Link to this heading">#</a></h1>
 <p>The NeuroPlatform uses a dedicated API to control the equipment and to acquire data.</p>
 <p>Below is an explanation of the system’s main components and how to use them.</p>
+<div class="dropdown admonition seealso">
+<p class="admonition-title">See also</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../np_utils/stimparamloader.html"><span class="doc std std-doc">StimParamLoader</span></a> : Utility to help you manage, preview and load stimulation parameters.</p></li>
+</ul>
+</div>
 <section id="basic-concepts">
 <h2>Basic concepts<a class="headerlink" href="#basic-concepts" title="Link to this heading">#</a></h2>
 <p>Let’s start with a brief description of the components, and an introduction to the core concepts of the system.</p>
@@ -519,7 +529,7 @@ Remember to check the “Absolute Index” function to get the correct electrode
 <p>Through Python, you will be controlling the Intan software to set the stimulation parameters.</p>
 <div class="dropdown admonition seealso">
 <p class="admonition-title">See also</p>
-<p>You can use the <a class="reference internal" href="#stimparamloader"><span class="xref myst">StimParamLoader utility</span></a> to help you check for inconsistencies.</p>
+<p>You can use the <a class="reference internal" href="../np_utils/stimparamloader.html"><span class="doc std std-doc">StimParamLoader utility</span></a> to help you check for inconsistencies.</p>
 </div>
 <p>The software defines stimulations using the elements shown here :</p>
 <figure class="align-default" id="stimparam">
@@ -798,9 +808,9 @@ This is a limitation of the system, and we are working on improving this delay; 
         <span class="nb">print</span><span class="p">(</span><span class="n">start_exp</span><span class="p">)</span>
 
         <span class="n">trigger0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
-        <span class="n">trigger0</span><span class="p">[</span>
-            <span class="mi">0</span>
-        <span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># Enable stimulation on trigger 0, which is bound to stim_param1</span>
+        <span class="n">trigger0</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="mi">1</span>  <span class="c1"># Enable stimulation on trigger 0, which is bound to stim_param1</span>
+        <span class="p">)</span>
 
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
             <span class="c1"># Stimulation on electrode 0</span>
