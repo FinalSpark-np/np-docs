@@ -17,11 +17,12 @@ This will allow you to test the sample code on your provided machine.
 
 ## Questions and support
 
+[![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/FinalSpark-np/np-docs/issues)
 [![Discord](https://img.shields.io/badge/Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/edPetHUYtx)
 
-If you have questions, please try to prioritize Discord, so your question can benefit the community.
+If you have questions or issues, please try to prioritize GitHub or Discord, so discussions can benefit the community.
 
-You may also [contact us directly](https://finalspark.com/team/) if you have specific questions or requests.
+You may also [contact us directly](https://finalspark.com/team/) if you have specific questions or requests, or for support on your experiments.
 
 ## Contributing
 
