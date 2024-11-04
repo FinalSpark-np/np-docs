@@ -37,7 +37,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=a5bb2f62" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=910fd53f" />
   
   <!-- So that users can add custom icons -->
   <script src="../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
@@ -384,8 +384,8 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setup">Setup</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connection-to-the-database">Connection to the database</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connection-to-the-database">Connection to the database</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-code">Example code</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#database-functions">Database functions</a><ul class="nav section-nav flex-column">
@@ -422,23 +422,25 @@
 <div class="dropdown admonition seealso">
 <p class="admonition-title">See also</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="../np_utils/spikesorting.html"><span class="doc std std-doc">Spike sorting</span></a> : Utility to perform spike sorting on the data.</p></li>
+<li><p><a class="reference internal" href="../np_utils/spikesorting.html"><span class="doc std std-doc">Spike sorting</span></a> : Utility to perform basic spike sorting on the data.</p></li>
 </ul>
 </div>
-<section id="setup">
-<h2>Setup<a class="headerlink" href="#setup" title="Link to this heading">#</a></h2>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p><strong>All database times are in UTC.</strong></p>
-</div>
 <section id="connection-to-the-database">
-<span id="core-database-token"></span><h3>Connection to the database<a class="headerlink" href="#connection-to-the-database" title="Link to this heading">#</a></h3>
+<span id="core-database-token"></span><h2>Connection to the database<a class="headerlink" href="#connection-to-the-database" title="Link to this heading">#</a></h2>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>For more information on tokens and experiments, see : <a class="reference internal" href="np_usage.html#core-exp-and-tokens"><span class="std std-ref">Experiments and tokens</span></a></p>
+</div>
+</aside>
 <p>Simply create a database object, and then use the available methods to retrieve your data of interest.</p>
-<p><strong>Make sure to have the up-to-date fs ID of the MEA you are interested in.</strong>
+<p><strong>Make sure to have the up-to-date token for the experiment you are interested in.</strong>
 Every time we change the organoids on an MEA, we create a new fs ID such as <code class="docutils literal notranslate"><span class="pre">&quot;fs300&quot;</span></code>.</p>
 <p>This is accessible through your Experiment token, specifically the <code class="docutils literal notranslate"><span class="pre">exp_name</span></code> attribute.
-Make sure to use the token you used for your experiment to perform the data analysis.</p>
-<p>Please contact us if you need the fs ID for a specific MEA/time.</p>
+Make sure to record and recover <strong>the token you used during your experiment</strong> to perform the data analysis.</p>
+<section id="example-code">
+<h3>Example code<a class="headerlink" href="#example-code" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">dateutil</span> <span class="kn">import</span> <span class="n">parser</span>
@@ -455,23 +457,31 @@ Make sure to use the token you used for your experiment to perform the data anal
 </div>
 </div>
 </div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Please contact us if you need the fs ID for a specific MEA/time.</p>
+</div>
 </section>
 </section>
 <section id="database-functions">
 <h2>Database functions<a class="headerlink" href="#database-functions" title="Link to this heading">#</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>All database times are in UTC.</strong></p>
+</div>
 <section id="spike-events">
 <h3>Spike events<a class="headerlink" href="#spike-events" title="Link to this heading">#</a></h3>
 <p>A <strong>spike event</strong> is logged whenever the voltage from an electrode crosses a threshold of six times the standard deviation of the noise.</p>
-<p>You can query a list of spike events with the timestamp, the amplitude (maximum voltage across 3ms around the spike) and the channel number using <code class="docutils literal notranslate"><span class="pre">get_spike_event</span></code></p>
+<p>You can query a list of spike events with the timestamp, the amplitude (maximum absolute voltage of the peak across 3ms around the spike) and the channel number using <code class="docutils literal notranslate"><span class="pre">get_spike_event</span></code></p>
 <div class="admonition caution">
 <p class="admonition-title">Caution</p>
 <p>To avoid returning large amounts of data, keep the time window small.<br>
-We recommed starting with 5 minutes, and increasing/decresing the window as needed.</p>
+We recommed starting with 5 minutes, and increasing/decreasing the window as needed.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">start</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="s2">&quot;2024-04-05T00:00:00.000Z&quot;</span><span class="p">)</span>
-<span class="n">stop</span> <span class="o">=</span> <span class="n">start</span> <span class="o">+</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">minutes</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">stop</span> <span class="o">=</span> <span class="n">start</span> <span class="o">+</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">minutes</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
 
 <span class="n">spike_event_df</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">get_spike_event</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">stop</span><span class="p">,</span> <span class="n">FS_NAME</span><span class="p">)</span>
 </pre></div>
@@ -492,11 +502,11 @@ We recommed starting with 5 minutes, and increasing/decresing the window as need
 </section>
 <section id="raw-spike-events">
 <h3>Raw spike events<a class="headerlink" href="#raw-spike-events" title="Link to this heading">#</a></h3>
-<p>Every spike event is recorded for 3ms around the spike. You can get the raw spike events using <code class="docutils literal notranslate"><span class="pre">get_raw_spike_event</span></code> to get a DataFrame with the timestamp, the electrode number, and the amplitude values for each spike event in a long format.</p>
+<p>Every spike event is recorded for 3ms around the spike. You can get the raw signal for these 3ms of spike events using <code class="docutils literal notranslate"><span class="pre">get_raw_spike_event</span></code> to get a DataFrame with the timestamp, the electrode number, and the amplitude values for each event in a long format.</p>
 <p>Since the sampling rate is 30kHz, each spike event will have 90 samples.</p>
 <div class="admonition caution">
 <p class="admonition-title">Caution</p>
-<p><strong>Raw data is very memory-intensive.</strong> Make sure to query a small time window.</p>
+<p><strong>Raw data is very memory-intensive.</strong> Make sure to query a small time window first, and increase/decrease as needed.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -562,8 +572,14 @@ We recommed starting with 5 minutes, and increasing/decresing the window as need
 </section>
 <section id="triggers">
 <span id="core-db-triggers"></span><h3>Triggers<a class="headerlink" href="#triggers" title="Link to this heading">#</a></h3>
-<p>You can get the triggers used for stimulation using <code class="docutils literal notranslate"><span class="pre">get_triggers</span></code> to get a DataFrame with the timestamp, the trigger number, the status (up/down, which corresponds to times the trigger was enabled/disabled respectively) and the tag if any.</p>
-<p>For tags and their usage, see the <a class="reference internal" href="np_usage.html#core-tagging-triggers"><span class="std std-ref">Tagging triggers</span></a> section.</p>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>For tags and their usage, see : <a class="reference internal" href="np_usage.html#core-tagging-triggers"><span class="std std-ref">Tagging triggers</span></a></p>
+</div>
+</aside>
+<p>You can obtain the triggers used for stimulation using <code class="docutils literal notranslate"><span class="pre">get_triggers</span></code> to return a DataFrame with the timestamp, the trigger number, the status (up/down, which corresponds to the times where the trigger was enabled/disabled respectively) and the tag if any.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">triggers_df</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">get_all_triggers</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">stop</span><span class="p">,</span> <span class="n">FS_NAME</span><span class="p">)</span>
@@ -574,8 +590,14 @@ We recommed starting with 5 minutes, and increasing/decresing the window as need
 </section>
 <section id="impedance">
 <span id="core-db-impedance"></span><h3>Impedance<a class="headerlink" href="#impedance" title="Link to this heading">#</a></h3>
-<p>When you have measured impedance using the Intan, you can get the impedance values using <code class="docutils literal notranslate"><span class="pre">get_impedance</span></code> to get a DataFrame with the timestamp, the electrode number, and the impedance values.</p>
-<p>See the <a class="reference internal" href="np_usage.html#core-intan-impedance"><span class="std std-ref">Impedance measurement</span></a> section for more information.</p>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>To measure impedance, see : <a class="reference internal" href="np_usage.html#core-intan-impedance"><span class="std std-ref">Impedance measurement</span></a></p>
+</div>
+</aside>
+<p>When you have measured impedance using the Intan, you can get the recorded impedance values using <code class="docutils literal notranslate"><span class="pre">get_impedance</span></code> to return a DataFrame with the timestamp, the electrode number, and the impedance values.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df_impedance</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">get_impedance</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">stop</span><span class="p">)</span>
@@ -605,6 +627,7 @@ We recommed starting with 5 minutes, and increasing/decresing the window as need
 </ul>
 <section id="co2-o2-temperature-humidity-pressure">
 <h4>CO2, O2, Temperature, Humidity, Pressure<a class="headerlink" href="#co2-o2-temperature-humidity-pressure" title="Link to this heading">#</a></h4>
+<p>Simply provide a start and stop time to obtain the recorded values.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">co2_df</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">co2</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">stop</span><span class="p">)</span>
@@ -631,6 +654,13 @@ We recommed starting with 5 minutes, and increasing/decresing the window as need
 </section>
 <section id="door-events">
 <h4>Door events<a class="headerlink" href="#door-events" title="Link to this heading">#</a></h4>
+<p>There are currently two incubators:</p>
+<ul class="simple">
+<li><p><strong>Incubator 0</strong> hosts the MEAs</p></li>
+<li><p><strong>Incubator 1</strong> hosts the organoids in culture</p></li>
+</ul>
+<p>Values of 0 or 1 indicate the door is being opened or closed respectively.</p>
+<p>To access opening/closing events, use the following :</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">door_df</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">door</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">stop</span><span class="p">)</span>
@@ -708,8 +738,8 @@ We recommed starting with 5 minutes, and increasing/decresing the window as need
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setup">Setup</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connection-to-the-database">Connection to the database</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connection-to-the-database">Connection to the database</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-code">Example code</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#database-functions">Database functions</a><ul class="nav section-nav flex-column">

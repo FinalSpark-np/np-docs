@@ -23,7 +23,7 @@ html[data-theme="dark"] {
 
 /* Sidebar footer */
 .sidebar-primary-items__end::after {
-  content: "© 2024 FinalSpark";
+  content: "© FinalSpark";
   display: block;
   text-align: center;
   font-size: 12px;

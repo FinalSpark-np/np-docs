@@ -11,7 +11,7 @@ The second part lists several utilities that you may find useful in your experim
 ```{hint}
 **Every tutorial page can be downloaded as a Jupyter notebook.**
 
-Click on the "Download as Jupyter notebook" button at the top right of the page.
+Click on the *"Download as .ipynb"* button at the top right of the page.
 This will allow you to test the sample code on your provided machine.
 ```
 

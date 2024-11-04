@@ -37,7 +37,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=a5bb2f62" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=910fd53f" />
   
   <!-- So that users can add custom icons -->
   <script src="../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
@@ -542,7 +542,7 @@ This is used to check that no other experiment is running while you use the syst
 </div>
 </section>
 <section id="experiment-and-token">
-<h4>Experiment and token<a class="headerlink" href="#experiment-and-token" title="Link to this heading">#</a></h4>
+<span id="core-exp-and-tokens"></span><h4>Experiment and token<a class="headerlink" href="#experiment-and-token" title="Link to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">token</span> <span class="o">=</span> <span class="s2">&quot;9T5KLS6T7X&quot;</span>  <span class="c1"># We provide you a token for the experiment</span>
@@ -809,7 +809,7 @@ However, the pulse train settings may not be changed quickly during the experime
 <p class="admonition-title">Caution</p>
 <p>Always close your connection to the Intan when you are done using <code class="docutils literal notranslate"><span class="pre">intan.close()</span></code>.</p>
 </div>
-<p><strong>Sending the parameters will take ten seconds to complete.</strong> This is because the <strong>IntanSoftware</strong> will check the parameters and send them to the <strong>Intan Controller</strong>, and then to the headstage of the MEA.
+<p><strong>Sending the parameters will take ten seconds to complete.</strong> This is because the <strong>IntanSoftware</strong> will check the parameters and send them to the <strong>Intan Controller</strong>, and then to the headstage of the MEA.<br>
 This is a limitation of the system, and we are working on improving this delay; currently this cannot be bypassed, therefore parameters have to be set before your experiment starts, or during a ten-second pause in your experiment.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -847,7 +847,7 @@ This is a limitation of the system, and we are working on improving this delay; 
 </section>
 <section id="example-experiment">
 <h2>Example experiment<a class="headerlink" href="#example-experiment" title="Link to this heading">#</a></h2>
-<p>Let’s look at a small, simple example experiment, and put together all the concepts we have seen so far.</p>
+<p>Let’s look at a small minimal experiment, and put together all the concepts we have seen so far.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">intan</span> <span class="o">=</span> <span class="n">IntanSofware</span><span class="p">()</span>  <span class="c1"># Here we connect to the Intan software</span>
@@ -913,9 +913,15 @@ This is a limitation of the system, and we are working on improving this delay; 
 <p>This section lists a few additional functionalities that you may find useful depending on your experiment.</p>
 <section id="tagging-triggers">
 <span id="core-tagging-triggers"></span><h3>Tagging triggers<a class="headerlink" href="#tagging-triggers" title="Link to this heading">#</a></h3>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>To retrieve triggers from the database, see : <a class="reference internal" href="db_usage.html#core-db-triggers"><span class="std std-ref">Querying for triggers</span></a></p>
+</div>
+</aside>
 <p>You can tag triggers with a number to identify them more easily.</p>
 <p>When you retrieve the triggers in the database, you will see the tag you set.</p>
-<p>See the <a class="reference internal" href="db_usage.html#core-db-triggers"><span class="std std-ref">Triggers</span></a> section of the Database tutorial for more information on how to do so.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">intan</span><span class="o">.</span><span class="n">set_tag_trigger</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># Triggers will have this tag attached to them in the database</span>
@@ -950,9 +956,15 @@ This is a limitation of the system, and we are working on improving this delay; 
 </section>
 <section id="impedance-measurement">
 <span id="core-intan-impedance"></span><h3>Impedance measurement<a class="headerlink" href="#impedance-measurement" title="Link to this heading">#</a></h3>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>To obtain impedance values, see : <a class="reference internal" href="db_usage.html#core-db-impedance"><span class="std std-ref">Querying for impedance</span></a></p>
+</div>
+</aside>
 <p>You can ask the Intan to measure the impedance of the electrodes.
 This takes <strong>ten seconds</strong> to complete, you can then retrieve the impedance values from the database.</p>
-<p>See the <a class="reference internal" href="db_usage.html#core-db-impedance"><span class="std std-ref">Impedance</span></a> section of the Database tutorial for instructions.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">intan</span><span class="o">.</span><span class="n">impedance</span><span class="p">()</span>
