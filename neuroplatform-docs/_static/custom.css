@@ -3,26 +3,25 @@
 html[data-theme="light"] {
   --sidebar-bg-color: #dbffff; /* #d2efff; */
   --sidebar-text-color: #000000;
-  --sidebar-highlight-color: #f39900;
-  --sidebar-hover-text-color: #eb6817; /* #0044bd; */
+  --sidebar-highlight-color: #eb6817;
+  --sidebar-hover-text-color: #f39900; /* #0044bd; */
   --header-bg-color: #ececec;
   --logo-filter: none;
-  --button-text-color: #fff;
+  --button-color: #fff;
   --footer-text-color: #000000;
 }
 
 html[data-theme="dark"] {
   --sidebar-bg-color: #0044bd; /* #053346; */
   --sidebar-text-color: #ffffff;
-  --sidebar-highlight-color: #eb6817;
-  --sidebar-hover-text-color: #f39900; /* #00aeef; */
+  --sidebar-highlight-color: #f39900;
+  --sidebar-hover-text-color: #eb6817; /* #00aeef; */
   --header-bg-color: #414141;
   --logo-filter: grayscale(100%) brightness(20);
-  --button-text-color: #fff;
-  --footer-text-color: #9b9b9b;
+  --button-color: #fff;
+  --footer-text-color: #b9b9b9;
 }
 
-/* Sidebar */
 /* Sidebar */
 .bd-sidebar-primary.bd-sidebar {
   background-color: var(--sidebar-bg-color);
@@ -37,15 +36,11 @@ html[data-theme="dark"] {
   color: var(--sidebar-hover-text-color);
 }
 
-/* .bd-sidebar-primary.bd-sidebar .bd-toc-item.active > a {
-  color: var(--sidebar-highlight-color);
-} */
-
+/* Sidebar ToC */
 .toctree-l1.current.active {
   color: var(--sidebar-highlight-color);
 }
 
-/* Ensure the color cascades to all child elements */
 .toctree-l1.current.active * {
   color: inherit;
 }
@@ -66,7 +61,7 @@ html[data-theme="dark"] {
   z-index: 1;
 }
 
-/* Logo */
+/* Logo (top of sidebar) */
 .navbar-brand img {
   filter: var(--logo-filter);
 }
@@ -98,7 +93,7 @@ html[data-theme="dark"] {
 
 /* Header buttons */
 .article-header-buttons .btn {
-  color: var(--button-text-color);
+  color: var(--button-color);
   z-index: 1;
 }
 
