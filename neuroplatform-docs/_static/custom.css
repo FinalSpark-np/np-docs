@@ -19,7 +19,7 @@ html[data-theme="dark"] {
   --header-bg-color: #414141;
   --logo-filter: grayscale(100%) brightness(20);
   --button-text-color: #fff;
-  --footer-text-color: #838383;
+  --footer-text-color: #9b9b9b;
 }
 
 /* Sidebar */
