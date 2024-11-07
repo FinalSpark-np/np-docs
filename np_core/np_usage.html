@@ -37,7 +37,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=910fd53f" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=85b9a0f2" />
   
   <!-- So that users can add custom icons -->
   <script src="../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
@@ -441,7 +441,7 @@
 <section id="basic-concepts">
 <h2>Basic concepts<a class="headerlink" href="#basic-concepts" title="Link to this heading">#</a></h2>
 <p>Let’s start with a brief description of the components, and an introduction to the core concepts of the system.</p>
-<p>Don’t worry if not everything is clear, we will put everything in practice below where we show how to use the Python API to control the above system.</p>
+<p>Don’t worry if not everything is clear at first, we will put everything in practice below where we show how to use the Python API to control the system.</p>
 <aside class="topic">
 <p class="topic-title">System specifications</p>
 <ul class="simple">
@@ -472,7 +472,7 @@
 <section id="system-components">
 <h3>System components<a class="headerlink" href="#system-components" title="Link to this heading">#</a></h3>
 <figure class="align-default" id="neuroplatform-schema">
-<a class="reference internal image-reference" href="../_images/neuroplatform.png"><img alt="../_images/neuroplatform.png" src="../_images/neuroplatform.png" style="height: 400px;" /></a>
+<a class="reference internal image-reference" href="../_images/neuroplatform.png"><img alt="../_images/neuroplatform.png" src="../_images/neuroplatform.png" style="width: 100%;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 1 </span><span class="caption-text">Overview of the NeuroPlatform system.</span><a class="headerlink" href="#neuroplatform-schema" title="Link to this image">#</a></p>
 </figcaption>
@@ -545,7 +545,7 @@ This is used to check that no other experiment is running while you use the syst
 <span id="core-exp-and-tokens"></span><h4>Experiment and token<a class="headerlink" href="#experiment-and-token" title="Link to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">token</span> <span class="o">=</span> <span class="s2">&quot;9T5KLS6T7X&quot;</span>  <span class="c1"># We provide you a token for the experiment</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">token</span> <span class="o">=</span> <span class="s2">&quot;9T5KLS6T7X&quot;</span>  <span class="c1"># We provide you with a token for the experiment</span>
 <span class="n">exp</span> <span class="o">=</span> <span class="n">Experiment</span><span class="p">(</span><span class="n">token</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Electrodes: </span><span class="si">{</span><span class="n">exp</span><span class="o">.</span><span class="n">electrodes</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>  <span class="c1"># Electrodes that you can use</span>
 </pre></div>
@@ -557,7 +557,7 @@ This is used to check that no other experiment is running while you use the syst
 Remember to check the “Absolute Index” function to get the correct electrode number.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>When you start your experiment, always remember to stop it when you are done.</p>
+<p>When you start your experiment, always remember to stop it when you are done using <code class="docutils literal notranslate"><span class="pre">exp.stop()</span></code>.</p>
 </div>
 <p>To start and stop your experiment, we recommend using <code class="docutils literal notranslate"><span class="pre">try...</span> <span class="pre">finally</span></code> blocks to ensure that the experiment is stopped even if an error occurs.</p>
 <div class="cell docutils container">
@@ -579,7 +579,7 @@ Remember to check the “Absolute Index” function to get the correct electrode
 <p>Through Python, you will be controlling the Intan software to set the stimulation parameters.</p>
 <p>The software defines stimulations using the elements shown here :</p>
 <figure class="align-default" id="stimparam">
-<a class="reference internal image-reference" href="../_images/stimparam.png"><img alt="../_images/stimparam.png" src="../_images/stimparam.png" style="height: 400px;" /></a>
+<a class="reference internal image-reference" href="../_images/stimparam.png"><img alt="../_images/stimparam.png" src="../_images/stimparam.png" style="width: 100%;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 2 </span><span class="caption-text">Stimulation parameters.</span><a class="headerlink" href="#stimparam" title="Link to this image">#</a></p>
 </figcaption>
@@ -745,8 +745,8 @@ However, the pulse train settings may not be changed quickly during the experime
 <span class="n">stim_param1</span><span class="o">.</span><span class="n">polarity</span> <span class="o">=</span> <span class="n">StimPolarity</span><span class="o">.</span><span class="n">PositiveFirst</span>
 <span class="n">stim_param1</span><span class="o">.</span><span class="n">phase_duration2</span> <span class="o">=</span> <span class="mi">100</span>
 <span class="n">stim_param1</span><span class="o">.</span><span class="n">phase_duration1</span> <span class="o">=</span> <span class="mi">100</span>
-<span class="n">stim_param1</span><span class="o">.</span><span class="n">phase_amplitude2</span> <span class="o">=</span> <span class="mi">100</span>
-<span class="n">stim_param1</span><span class="o">.</span><span class="n">phase_amplitude1</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">stim_param1</span><span class="o">.</span><span class="n">phase_amplitude2</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">stim_param1</span><span class="o">.</span><span class="n">phase_amplitude1</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="n">stim_param1</span><span class="o">.</span><span class="n">display_attributes</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -773,10 +773,14 @@ However, the pulse train settings may not be changed quickly during the experime
 <ul class="simple">
 <li><p><strong>Index</strong> : You specify the electrode you want to stimulate.</p>
 <ul>
-<li><p>As mentioned, you cannot use two distinct parameters with the same index. This will overwrite the previous parameter.</p></li>
+<li><p>As mentioned, you cannot use two distinct parameters with the same electrode index. This will overwrite the previous parameter.</p></li>
 </ul>
 </li>
-<li><p><strong>Trigger key</strong> : You specify the trigger that will be sent to the <strong>Intan Controller</strong>. The controller can accomodate <strong>16</strong> triggers.</p></li>
+<li><p><strong>Trigger key</strong> : You specify the trigger that will be sent to the <strong>Intan Controller</strong>. The controller can accomodate up to <strong>16</strong> triggers (from 0 to 15).</p>
+<ul>
+<li><p>When you send a trigger, the <strong>Intan Controller</strong> will execute the parameter(s) associated with that trigger.</p></li>
+</ul>
+</li>
 <li><p><strong>Enable</strong> : if the parameter is enabled, the <strong>Intan Software</strong> will record that a given parameter is set for a given trigger.</p></li>
 </ul>
 <div class="admonition warning">
@@ -820,8 +824,8 @@ This is a limitation of the system, and we are working on improving this delay; 
 <section id="connecting-to-the-triggergenerator-and-sending-triggers">
 <span id="core-np-trigger-gen"></span><h4>Connecting to the TriggerGenerator and sending triggers<a class="headerlink" href="#connecting-to-the-triggergenerator-and-sending-triggers" title="Link to this heading">#</a></h4>
 <p>The main new concept here is how to send triggers.</p>
-<p>When you send a trigger, the <strong>TriggerGenerator</strong> will send a signal to the <strong>Intan Controller</strong> to execute the <strong>StimParam</strong>s you set for that trigger.</p>
-<p>We use a 16-length array of uint8 to send the triggers. If the value is 1, the trigger is sent. If the value is 0, the trigger is not sent.</p>
+<p>When you send a given trigger(s), the <strong>TriggerGenerator</strong> will send a signal to the <strong>Intan Controller</strong> to execute the <strong>StimParam</strong>(s) you set for the trigger(s).</p>
+<p>To send triggers, use a 16-length array of uint8 to send the triggers. If the value is 1, the trigger is sent. If the value is 0, the trigger is not sent.</p>
 <p>For example, to send trigger 3, we would define the array as follows:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
