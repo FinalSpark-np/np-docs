@@ -1,7 +1,7 @@
 /* custom.css */
 
 html[data-theme="light"] {
-  --sidebar-bg-color: #dbffff; /* #d2efff; */
+  --sidebar-bg-color: #efeff0; /* #d2efff; */
   --sidebar-text-color: #000000;
   --sidebar-highlight-color: #eb6817;
   --sidebar-hover-text-color: #f39900; /* #0044bd; */
