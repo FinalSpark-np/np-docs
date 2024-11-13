@@ -10,5 +10,6 @@ parts:
     - file : np_core/closed_loop
   - caption: NeuroPlatform utilities
     chapters:
+    - file : np_utils/livemea
     - file : np_utils/stimparamloader
     - file : np_utils/spikesorting
