@@ -1,0 +1,759 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Recording live data &#8212; NeuroPlatform Documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=990f3d29" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'np_utils/livemea';</script>
+    <link rel="icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Stimulation parameter loader" href="stimparamloader.html" />
+    <link rel="prev" title="Closed-loop : reading and stimulating" href="../np_core/closed_loop.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../welcome.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="NeuroPlatform Documentation - Home"/>
+    <img src="../_static/logo.png" class="logo__image only-dark pst-js-only" alt="NeuroPlatform Documentation - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../welcome.html">
+                    Welcome to the NeuroPlatform documentation!
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">NeuroPlatform usage</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../np_core/np_usage.html">System basics and stimulating organoids</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../np_core/db_usage.html">Database usage and fetching results</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../np_core/closed_loop.html">Closed-loop : reading and stimulating</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">NeuroPlatform utilities</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Recording live data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stimparamloader.html">Stimulation parameter loader</a></li>
+<li class="toctree-l1"><a class="reference internal" href="spikesorting.html">Spike sorting</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/FinalSpark-np/np-docs" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/FinalSpark-np/np-docs/edit/main/neuroplatform-docs/np_utils/livemea.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/FinalSpark-np/np-docs/issues/new?title=Issue%20on%20page%20%2Fnp_utils/livemea.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/np_utils/livemea.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Recording live data</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-specification">Data specification</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">Installation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#api-usage">API Usage</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#livemea-class">LiveMEA Class</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#initialization">Initialization</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#methods">Methods</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example">Example</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cli-usage">CLI Usage</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#command">Command</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#arguments">Arguments</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Example</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-the-saved-data">Accessing the saved data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#note-regarding-future-updates">Note regarding future updates</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="recording-live-data">
+<h1>Recording live data<a class="headerlink" href="#recording-live-data" title="Link to this heading">#</a></h1>
+<p>This code allows you to record live data from the <a class="reference external" href="https://livemea.finalspark.com/live">FinalSpark LiveMEA webview</a> and save it to an HDF5 file.<br>
+It provides both an API and a CLI for ease of use.</p>
+<p>The code is available <a class="reference external" href="https://github.com/FinalSpark-np/LiveMEA">at the following link</a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The code is usable even if you are not a NeuroPlatform user, and is freely available for anyone to use.<br>
+Please reuse the provided code in your own projects and modify it as needed; the current implementation merely provides a simple way to record data from the live view.</p>
+<p><strong>We only request that you mention FinalSpark as the source of the data where you use it.</strong></p>
+</div>
+<section id="data-specification">
+<h2>Data specification<a class="headerlink" href="#data-specification" title="Link to this heading">#</a></h2>
+<p>The live view gives, roughly every second, 4096 samples of data from 32 electrodes.</p>
+<p>In the following code, each “duration” unit corresponds to 4096 values; the sampling frequency is 30kHz downsampled via wavelet transform by a factor of 8.</p>
+<p><strong>Therefore, a duration of 1 corresponds in reality to ~1.09 seconds of data.</strong></p>
+<p>Expect a <strong>disk usage of around 1.04 MB</strong>, and an <strong>average wait time of at least 1.09 seconds per second of recording</strong>.</p>
+</section>
+<section id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Link to this heading">#</a></h2>
+<p>We recommend using a virtual environment or a conda environment to install the required packages.
+For anyone unfamiliar with or new to Python, we recommend installing <a class="reference external" href="https://docs.anaconda.com/miniconda/">miniconda</a> to create a new environment.</p>
+<ol class="arabic">
+<li><p>Clone the repository:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/FinalSpark-np/LiveMEA.git
+<span class="nb">cd</span><span class="w"> </span>live-mea
+</pre></div>
+</div>
+</li>
+</ol>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>To use the libraries you installed, you will have to activate the environment each time you open a new terminal.</p>
+</div>
+</aside>
+<ol class="arabic" start="2">
+<li><p>Create and activate a conda environment:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>create<span class="w"> </span>--name<span class="w"> </span>livemea-env<span class="w"> </span><span class="nv">python</span><span class="o">=</span><span class="m">3</span>.11
+conda<span class="w"> </span>activate<span class="w"> </span>livemea-env
+</pre></div>
+</div>
+</li>
+<li><p>Install the required packages:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+<section id="api-usage">
+<h2>API Usage<a class="headerlink" href="#api-usage" title="Link to this heading">#</a></h2>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>Using the <code class="docutils literal notranslate"><span class="pre">record()</span></code> method in Jupyter will not work.<br>
+You will have to use <code class="docutils literal notranslate"><span class="pre">await</span> <span class="pre">record_async()</span></code> instead.<br>
+See the <a class="reference internal" href="#utils-livemea-record-example"><span class="std std-ref">Example</span></a> below for more details, you can also use the CLI instead.</p>
+</div>
+<section id="livemea-class">
+<h3>LiveMEA Class<a class="headerlink" href="#livemea-class" title="Link to this heading">#</a></h3>
+<section id="initialization">
+<h4>Initialization<a class="headerlink" href="#initialization" title="Link to this heading">#</a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">MEA_live</span> <span class="kn">import</span> <span class="n">LiveMEA</span>
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+
+<span class="n">live_mea</span> <span class="o">=</span> <span class="n">LiveMEA</span><span class="p">(</span><span class="n">save_path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">Path</span><span class="p">,</span> <span class="n">recording_duration</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> <span class="n">mea_id</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">save_path</span></code>
+(str | Path): Path to save the HDF5 file.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">recording_duration</span></code>
+(int, optional): Duration of recording in “seconds” (chunks of 4096 samples).<br>Defaults to 5.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mea_id</span></code>
+(int, optional): MEA ID to use. Defaults to 1, must be between 1 and 4.</p></li>
+</ul>
+</section>
+<section id="methods">
+<h4>Methods<a class="headerlink" href="#methods" title="Link to this heading">#</a></h4>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The data is saved to the h5 automatically after the recording is complete.</p>
+</div>
+</aside>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">record()</span></code> : Starts recording live data and saves it to the specified HDF5 file.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">record_async()</span></code> : Starts recording live data asynchronously and saves it to the specified HDF5 file. Used within Jupyter notebooks.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">plot_data(h5f_path:</span> <span class="pre">str</span> <span class="pre">|</span> <span class="pre">Path)</span></code>: Plots data from an HDF5 file. Requires Matplotlib as an additional dependency.</p></li>
+</ul>
+</section>
+</section>
+<section id="example">
+<span id="utils-livemea-record-example"></span><h3>Example<a class="headerlink" href="#example" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">MEA_live</span> <span class="kn">import</span> <span class="n">LiveMEA</span>
+
+<span class="c1"># Initialize the LiveMEA instance</span>
+<span class="n">live_mea</span> <span class="o">=</span> <span class="n">LiveMEA</span><span class="p">(</span><span class="n">save_path</span><span class="o">=</span><span class="s2">&quot;live_data.h5&quot;</span><span class="p">,</span> <span class="n">recording_duration</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">mea_id</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Record data</span>
+<span class="c1"># IF YOU ARE USING A PYTHON SCRIPT :</span>
+<span class="n">live_mea</span><span class="o">.</span><span class="n">record</span><span class="p">()</span>
+<span class="c1"># IF YOU ARE USING JUPYTER :</span>
+<span class="n">data</span> <span class="o">=</span> <span class="k">await</span> <span class="n">live_mea</span><span class="o">.</span><span class="n">record_async</span><span class="p">()</span>
+
+<span class="c1"># Plot recorded data</span>
+<span class="n">LiveMEA</span><span class="o">.</span><span class="n">plot_data</span><span class="p">(</span><span class="s2">&quot;live_data.h5&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="cli-usage">
+<h2>CLI Usage<a class="headerlink" href="#cli-usage" title="Link to this heading">#</a></h2>
+<p>You can also use a command-line interface (CLI) to record live MEA data.</p>
+<section id="command">
+<h3>Command<a class="headerlink" href="#command" title="Link to this heading">#</a></h3>
+<p>From the repository root directory, run the following command:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>live-mea<span class="w"> </span>-d<span class="w"> </span>&lt;duration&gt;<span class="w"> </span>-p<span class="w"> </span>&lt;path&gt;<span class="w"> </span>-m<span class="w"> </span>&lt;MEA&gt;
+</pre></div>
+</div>
+</section>
+<section id="arguments">
+<h3>Arguments<a class="headerlink" href="#arguments" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">-d</span></code>, <code class="docutils literal notranslate"><span class="pre">--duration</span></code> (int, optional): Duration of the recording in seconds. Defaults to 5.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-p</span></code>, <code class="docutils literal notranslate"><span class="pre">--path</span></code> (str, optional): Path to save the recorded data. Defaults to “live_data.h5”.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-m</span></code>, <code class="docutils literal notranslate"><span class="pre">--MEA</span></code> (int, optional): MEA ID to record data from. Defaults to 1.</p></li>
+</ul>
+</section>
+<section id="id1">
+<h3>Example<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>live-mea<span class="w"> </span>-d<span class="w"> </span><span class="m">10</span><span class="w"> </span>-p<span class="w"> </span><span class="s2">&quot;live_data.h5&quot;</span><span class="w"> </span>-m<span class="w"> </span><span class="m">1</span>
+</pre></div>
+</div>
+<p>This command will record live MEA data for 10 seconds and save it to <code class="docutils literal notranslate"><span class="pre">live_data.h5</span></code> using MEA 1.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The CLI works natively in Jupyter notebooks or ipython.<br>
+Simply use <code class="docutils literal notranslate"><span class="pre">!</span></code> before the command within your notebook cell.</p>
+</div>
+</section>
+</section>
+<section id="accessing-the-saved-data">
+<h2>Accessing the saved data<a class="headerlink" href="#accessing-the-saved-data" title="Link to this heading">#</a></h2>
+<p>Each time point is saved under its own group in the HDF5 file. The data for each electrode is then saved as a dataset within the group.</p>
+<p>The structure of the HDF5 file is as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>live_data.h5
+├── timestamp_0
+│   ├── electrode_0
+│   ├── electrode_1
+│   ├── ...
+│   ├── electrode_31
+├── timestamp_1
+│   ├── ...
+│   ├── electrode_31
+├── ...
+</pre></div>
+</div>
+<p>You can access the saved data using the <code class="docutils literal notranslate"><span class="pre">h5py</span></code> library in Python.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">h5py</span>
+
+<span class="c1"># Open the HDF5 file</span>
+<span class="k">with</span> <span class="n">h5py</span><span class="o">.</span><span class="n">File</span><span class="p">(</span><span class="s2">&quot;live_data.h5&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="c1"># List all timestamps</span>
+    <span class="n">timestamps</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Timestamps:&quot;</span><span class="p">,</span> <span class="n">timestamps</span><span class="p">)</span>
+
+    <span class="c1"># Access data for a specific timestamp</span>
+    <span class="n">timestamp</span> <span class="o">=</span> <span class="n">timestamps</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">data_group</span> <span class="o">=</span> <span class="n">f</span><span class="p">[</span><span class="n">timestamp</span><span class="p">]</span>
+
+    <span class="c1"># List all electrodes</span>
+    <span class="n">electrodes</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">data_group</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Electrodes:&quot;</span><span class="p">,</span> <span class="n">electrodes</span><span class="p">)</span>
+
+    <span class="c1"># Access data for a specific electrode</span>
+    <span class="n">electrode_data</span> <span class="o">=</span> <span class="n">data_group</span><span class="p">[</span><span class="s2">&quot;electrode_0&quot;</span><span class="p">][:]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Electrode 0 data:&quot;</span><span class="p">,</span> <span class="n">electrode_data</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="note-regarding-future-updates">
+<h2>Note regarding future updates<a class="headerlink" href="#note-regarding-future-updates" title="Link to this heading">#</a></h2>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>We provide the current code to obtain live data as-is, and we do not guarantee its maintenance or future updates.</p>
+<p><strong>The provided code may stop working without notice</strong>, as our infrastructure is still in development, and constantly evolving and changing.<br>
+In the event that the code is non-functional, please reach out to us, e.g <a class="reference external" href="https://github.com/FinalSpark-np/LiveMEA/issues">by opening an issue on the repository</a>.</p>
+<p>Of course, feel free to open issues or pull requests anytime if you encounter any problems or have suggestions for improvements.</p>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./np_utils"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../np_core/closed_loop.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Closed-loop : reading and stimulating</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="stimparamloader.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Stimulation parameter loader</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-specification">Data specification</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">Installation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#api-usage">API Usage</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#livemea-class">LiveMEA Class</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#initialization">Initialization</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#methods">Methods</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example">Example</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cli-usage">CLI Usage</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#command">Command</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#arguments">Arguments</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Example</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-the-saved-data">Accessing the saved data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#note-regarding-future-updates">Note regarding future updates</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By the FinalSpark team - Vevey, Switzerland
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright FinalSpark - 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
