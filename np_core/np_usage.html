@@ -443,6 +443,13 @@
 <h2>Basic concepts<a class="headerlink" href="#basic-concepts" title="Link to this heading">#</a></h2>
 <p>Let’s start with a brief description of the components, and an introduction to the core concepts of the system.</p>
 <p>Don’t worry if not everything is clear at first, we will put everything in practice below where we show how to use the Python API to control the system.</p>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you need additional information on the current MEAs and neurospheres, please contact us with your experimental token.</p>
+</div>
+</aside>
 <aside class="topic">
 <p class="topic-title">System specifications</p>
 <ul class="simple">
@@ -452,30 +459,50 @@
 <li><p>Filtering : 250 to 5000 Hz</p></li>
 <li><p>Four MEAs with 4x8 electrodes each</p>
 <ul>
+<li><p>Most common layout as of now</p></li>
 <li><p>Eight electrodes per neurosphere</p></li>
+<li><p>Other possible layouts are being tested, including :</p>
+<ul>
+<li><p>32x1 site, with the possibility to hold many connected neurospheres</p></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 </li>
 <li><p><strong>Wetware</strong></p>
 <ul>
-<li><p>Neurospheres are human cell-derived brain organoids</p>
+<li><p>Neurospheres are human neural stem cell-derived brain organoids</p>
 <ul>
 <li><p>Generally less than 1 mm in diameter</p></li>
-<li><p>Made from NSCs</p></li>
-<li><p>Lifetime varies between a week and a month on MEAs</p></li>
+<li><p>Made of neurons and glial cells - see <a class="reference external" href="https://finalspark.com/neuroplatform/#:~:text=Check%20our%20transcriptome">here</a> for more information</p></li>
+<li><p>Lifetime varies between two and twelve weeks on MEAs</p></li>
+<li><p>Mediums used :</p>
+<ul>
+<li><p>Neurobasal+</p></li>
+<li><p>BrainPhys</p></li>
+</ul>
+</li>
+<li><p>One to four neurospheres per site on an MEA</p></li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
 </aside>
+<figure class="align-default" id="mea-live">
+<a class="reference internal image-reference" href="../_images/MEA_live.jpeg"><img alt="../_images/MEA_live.jpeg" src="../_images/MEA_live.jpeg" style="width: 100%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 1 </span><span class="caption-text">4x8 layout MEA with neurospheres.</span><a class="headerlink" href="#mea-live" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>See our publication in <a class="reference external" href="https://www.frontiersin.org/journals/artificial-intelligence/articles/10.3389/frai.2024.1376042/full">Frontiers in Artificial Intelligence</a> for further details.</p>
 <section id="system-components">
 <h3>System components<a class="headerlink" href="#system-components" title="Link to this heading">#</a></h3>
 <figure class="align-default" id="neuroplatform-schema">
 <a class="reference internal image-reference" href="../_images/neuroplatform.png"><img alt="../_images/neuroplatform.png" src="../_images/neuroplatform.png" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 1 </span><span class="caption-text">Overview of the NeuroPlatform system.</span><a class="headerlink" href="#neuroplatform-schema" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 2 </span><span class="caption-text">Overview of the NeuroPlatform system.</span><a class="headerlink" href="#neuroplatform-schema" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -503,9 +530,9 @@
 <li><p>The StimParam is associated with a trigger. Whenever said trigger is sent, the <strong>Intan Controller</strong> will execute the <strong>StimParam</strong> associated with that trigger, on the electrode to which the <strong>StimParam</strong> is associated.</p>
 <ul>
 <li><p><strong>Index</strong> : The index of the electrode to stimulate. This is the number of the electrode in the MEA.</p></li>
-<li><p><strong>Trigger</strong> : The trigger is used by the <strong>Trigger Generator</strong> to send a signal to the <strong>Intan Controller</strong> to execute the <strong>StimParam</strong>. There is a maximum of 16 triggers that can be used, from 0 to 15.</p>
+<li><p><strong>Trigger</strong> : The trigger is used by the <strong>Trigger Generator</strong> to send a signal to the <strong>Intan Controller</strong> to execute the <strong>StimParam</strong> associated with that trigger. There is a maximum of 16 triggers that can be used, from 0 to 15.</p>
 <ul>
-<li><p>For example, if you send trigger 0 with two <strong>StimParam</strong>s with <code class="docutils literal notranslate"><span class="pre">trigger_key</span> <span class="pre">=</span> <span class="pre">0</span></code> on electrodes (<code class="docutils literal notranslate"><span class="pre">index</span></code>) 1 and 2 respectively, the <strong>Intan Controller</strong> will stimulate electrodes 1 and 2 using the specified parameters when it receives the trigger 0.</p></li>
+<li><p>For example, if you send trigger 1 with two <strong>StimParam</strong>s with <code class="docutils literal notranslate"><span class="pre">trigger_key</span> <span class="pre">=</span> <span class="pre">1</span></code> on electrodes (<code class="docutils literal notranslate"><span class="pre">index</span></code>) 0 and 1 respectively, the <strong>Intan Controller</strong> will stimulate electrodes 0 and 1 using the specified parameters when it receives the trigger 0. See the scheme below.</p></li>
 </ul>
 </li>
 </ul>
@@ -515,6 +542,12 @@
 <p class="admonition-title">Caution</p>
 <p><strong>DO NOT</strong> use the same index in two different <strong>StimParam</strong>s. This will overwrite the previous <strong>StimParam</strong> and only use the last one.</p>
 </div>
+<figure class="align-default" id="triggers-and-params">
+<a class="reference internal image-reference" href="../_images/triggers_and_params.png"><img alt="../_images/triggers_and_params.png" src="../_images/triggers_and_params.png" style="width: 100%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 3 </span><span class="caption-text">Associations between triggers and StimParams. If a StimParam is defined for a given index, whenever the trigger is sent, the Intan Controller will execute the StimParam on the electrode associated with that index. Note there can be only one parameter per index, but multiple indices per trigger.</span><a class="headerlink" href="#triggers-and-params" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 </section>
 </section>
 <section id="api-usage">
@@ -582,7 +615,7 @@ Remember to check the “Absolute Index” function to get the correct electrode
 <figure class="align-default" id="stimparam">
 <a class="reference internal image-reference" href="../_images/stimparam.png"><img alt="../_images/stimparam.png" src="../_images/stimparam.png" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 2 </span><span class="caption-text">Stimulation parameters.</span><a class="headerlink" href="#stimparam" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 4 </span><span class="caption-text">Stimulation parameters.</span><a class="headerlink" href="#stimparam" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition tip">

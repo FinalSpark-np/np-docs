@@ -22,6 +22,8 @@ This will allow you to test the sample code on your provided machine.
 
 If you have questions or issues, please try to prioritize GitHub or Discord, so discussions can benefit the community.
 
+Please see our publication for further details on our setup in [Frontiers in Artificial Intelligence](https://www.frontiersin.org/journals/artificial-intelligence/articles/10.3389/frai.2024.1376042/full).
+
 You may also [contact us directly](https://finalspark.com/team/) if you have specific questions or requests, or for support on your experiments.
 
 ## Contributing
