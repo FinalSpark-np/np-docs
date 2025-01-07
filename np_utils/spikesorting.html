@@ -30,7 +30,7 @@
   <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
@@ -395,6 +395,7 @@
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#usage">Usage</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-the-utility">Importing the utility</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-spikesorting">Creating a SpikeSorting</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#running-the-spikesorting">Running the SpikeSorting</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-the-results">Plotting the results</a><ul class="nav section-nav flex-column">
@@ -419,13 +420,28 @@
   <section class="tex2jax_ignore mathjax_ignore" id="spike-sorting">
 <h1>Spike sorting<a class="headerlink" href="#spike-sorting" title="Link to this heading">#</a></h1>
 <p>This utility allows you to perform spike sorting directly from the database, and plot the results.</p>
-<p><a class="reference external" href="https://github.com/FinalSpark-np/np-utils/tree/main/SpikeSorting">Link to code</a></p>
+<p><a class="reference external" href="https://github.com/FinalSpark-np/np-utils/tree/main/src/np-utils/spike_sorting.py">Link to code</a></p>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>To install the dependencies for all utilities, use <code class="docutils literal notranslate"><span class="pre">[all]</span></code> instead</p>
+</div>
+</aside>
+<p>To install the dependencies for this utility, use the following command :</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>git+https://github.com/FinalSpark-np/np-utils.git#egg<span class="o">=</span>np-utils<span class="o">[</span>SSG<span class="o">]</span>
+</pre></div>
+</div>
 <p>It uses <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.FastICA.html">FastICA</a> or <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html">PCA</a> followed by <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.cluster.HDBSCAN.html">HDBSCAN</a> to cluster the spikes.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The current (simple) implementation is mostly meant to help distinguish spikes within the same electrode over a given time period.
 This is currently not meant to provide an exact “unit” attribution for each spike over longer durations, such as for the lifetime of an organoid on the MEA.<br>
 Clusters assignements <strong>can and will vary for the same electrode across different time windows</strong>, due to the non-deterministic nature of the clustering algorithm.</p>
+</div>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>Please note that Neuroplatform access is required to use this utility.</p>
 </div>
 <section id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
@@ -447,6 +463,12 @@ Those will always be labeled as belonging to cluster -2 to <span class="math not
 </section>
 <section id="usage">
 <h2>Usage<a class="headerlink" href="#usage" title="Link to this heading">#</a></h2>
+<section id="importing-the-utility">
+<h3>Importing the utility<a class="headerlink" href="#importing-the-utility" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">np_utils.spike_sorting</span><span class="w"> </span><span class="kn">import</span> <span class="n">SpikeSorting</span>
+</pre></div>
+</div>
+</section>
 <section id="creating-a-spikesorting">
 <h3>Creating a SpikeSorting<a class="headerlink" href="#creating-a-spikesorting" title="Link to this heading">#</a></h3>
 <p>You may set the following parameters :</p>
@@ -484,10 +506,10 @@ Those will always be labeled as belonging to cluster -2 to <span class="math not
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">dateutil</span> <span class="kn">import</span> <span class="n">parser</span>
-<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">timedelta</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">dateutil</span><span class="w"> </span><span class="kn">import</span> <span class="n">parser</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">timedelta</span>
 
-<span class="kn">from</span> <span class="nn">neuroplatform_utils</span> <span class="kn">import</span> <span class="n">SpikeSorting</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">np_utils.spike_sorting</span><span class="w"> </span><span class="kn">import</span> <span class="n">SpikeSorting</span>
 
 <span class="n">start</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span>
     <span class="s2">&quot;2024-10-29 13:00:00&quot;</span>
@@ -683,6 +705,7 @@ Those will always be labeled as belonging to cluster -2 to <span class="math not
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#usage">Usage</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-the-utility">Importing the utility</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-spikesorting">Creating a SpikeSorting</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#running-the-spikesorting">Running the SpikeSorting</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-the-results">Plotting the results</a><ul class="nav section-nav flex-column">

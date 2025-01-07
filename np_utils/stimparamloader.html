@@ -30,7 +30,7 @@
   <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
@@ -393,6 +393,7 @@
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#usage">Usage</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-the-utility">Importing the utility</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-stimparamloader">Creating a StimParamLoader</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#changing-parameters">Changing parameters</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#previewing-parameters">Previewing parameters</a></li>
@@ -417,10 +418,32 @@
 <section id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Link to this heading">#</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">StimParamLoader</span></code> class is a small utility for managing stimulation parameters and previewing them in a plot. It provides functionalities to validate, enable, disable, and send stimulation parameters to the Intan software.</p>
-<p><a class="reference external" href="https://github.com/FinalSpark-np/np-utils/tree/main/StimParamLoader">Link to code</a></p>
+<p><a class="reference external" href="https://github.com/FinalSpark-np/np-utils/tree/main/src/np-utils/parameters_loader.py">Link to code</a></p>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>To install the dependencies for all utilities, use <code class="docutils literal notranslate"><span class="pre">[all]</span></code> instead</p>
+</div>
+</aside>
+<p>To install this utiiity, run the following command :</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>git+https://github.com/FinalSpark-np/np-utils.git#egg<span class="o">=</span>np-utils<span class="o">[</span>SPL<span class="o">]</span>
+</pre></div>
+</div>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>Neuroplaform access is required to use this utility.
+This utility requires python 3.11. If you need help upgrading python on your provided Neuroplatform machine, please contact us.</p>
+</div>
 </section>
 <section id="usage">
 <h2>Usage<a class="headerlink" href="#usage" title="Link to this heading">#</a></h2>
+<section id="importing-the-utility">
+<h3>Importing the utility<a class="headerlink" href="#importing-the-utility" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">np_utils.parameters_loader</span><span class="w"> </span><span class="kn">import</span> <span class="n">StimParamLoader</span>
+</pre></div>
+</div>
+</section>
 <section id="creating-a-stimparamloader">
 <h3>Creating a StimParamLoader<a class="headerlink" href="#creating-a-stimparamloader" title="Link to this heading">#</a></h3>
 <p>To create a <code class="docutils literal notranslate"><span class="pre">StimParamLoader</span></code> instance, use the following :</p>
@@ -478,8 +501,8 @@ If this is impractical to show during your experiment, for example if you are ch
 <h2>Example code<a class="headerlink" href="#example-code" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">neuroplatform_utils</span> <span class="kn">import</span> <span class="n">StimParamLoader</span>
-<span class="kn">from</span> <span class="nn">neuroplatform</span> <span class="kn">import</span> <span class="n">StimParam</span><span class="p">,</span> <span class="n">StimPolarity</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">np_utils.parameters_loader</span><span class="w"> </span><span class="kn">import</span> <span class="n">StimParamLoader</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">neuroplatform</span><span class="w"> </span><span class="kn">import</span> <span class="n">StimParam</span><span class="p">,</span> <span class="n">StimPolarity</span>
 </pre></div>
 </div>
 </div>
@@ -662,6 +685,7 @@ If this is impractical to show during your experiment, for example if you are ch
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#usage">Usage</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-the-utility">Importing the utility</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-stimparamloader">Creating a StimParamLoader</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#changing-parameters">Changing parameters</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#previewing-parameters">Previewing parameters</a></li>

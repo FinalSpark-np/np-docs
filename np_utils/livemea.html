@@ -30,7 +30,7 @@
   <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
@@ -437,7 +437,7 @@ Please reuse the provided code in your own projects and modify it as needed; the
 <p>The live view gives, roughly every second, 4096 samples of data from 32 electrodes.</p>
 <p>In the following code, each “duration” unit corresponds to 4096 values; the sampling frequency is 30kHz downsampled via wavelet transform by a factor of 8.</p>
 <p><strong>Therefore, a duration of 1 corresponds in reality to ~1.09 seconds of data.</strong></p>
-<p>Expect a <strong>disk usage of around 1.04 MB</strong>, and an <strong>average wait time of at least 1.09 seconds per second of recording</strong>.</p>
+<p>Expect a <strong>disk usage of around 1.04 MB</strong>, and an <strong>average wait time of at least 1.09 seconds</strong> for every “duration” unit.</p>
 </section>
 <section id="installation">
 <h2>Installation<a class="headerlink" href="#installation" title="Link to this heading">#</a></h2>
@@ -484,8 +484,8 @@ See the <a class="reference internal" href="#utils-livemea-record-example"><span
 <h3>LiveMEA Class<a class="headerlink" href="#livemea-class" title="Link to this heading">#</a></h3>
 <section id="initialization">
 <h4>Initialization<a class="headerlink" href="#initialization" title="Link to this heading">#</a></h4>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">MEA_live</span> <span class="kn">import</span> <span class="n">LiveMEA</span>
-<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">MEA_live</span><span class="w"> </span><span class="kn">import</span> <span class="n">LiveMEA</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
 
 <span class="n">live_mea</span> <span class="o">=</span> <span class="n">LiveMEA</span><span class="p">(</span><span class="n">save_path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">Path</span><span class="p">,</span> <span class="n">recording_duration</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> <span class="n">mea_id</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
 </pre></div>
@@ -519,7 +519,7 @@ See the <a class="reference internal" href="#utils-livemea-record-example"><span
 <span id="utils-livemea-record-example"></span><h3>Example<a class="headerlink" href="#example" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">MEA_live</span> <span class="kn">import</span> <span class="n">LiveMEA</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">MEA_live</span><span class="w"> </span><span class="kn">import</span> <span class="n">LiveMEA</span>
 
 <span class="c1"># Initialize the LiveMEA instance</span>
 <span class="n">live_mea</span> <span class="o">=</span> <span class="n">LiveMEA</span><span class="p">(</span><span class="n">save_path</span><span class="o">=</span><span class="s2">&quot;live_data.h5&quot;</span><span class="p">,</span> <span class="n">recording_duration</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">mea_id</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
@@ -588,7 +588,7 @@ Simply use <code class="docutils literal notranslate"><span class="pre">!</span>
 <p>You can access the saved data using the <code class="docutils literal notranslate"><span class="pre">h5py</span></code> library in Python.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">h5py</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">h5py</span>
 
 <span class="c1"># Open the HDF5 file</span>
 <span class="k">with</span> <span class="n">h5py</span><span class="o">.</span><span class="n">File</span><span class="p">(</span><span class="s2">&quot;live_data.h5&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>

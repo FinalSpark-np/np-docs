@@ -30,7 +30,7 @@
   <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
@@ -428,7 +428,18 @@
                   
   <section class="tex2jax_ignore mathjax_ignore" id="cross-correlograms">
 <h1>Cross-correlograms<a class="headerlink" href="#cross-correlograms" title="Link to this heading">#</a></h1>
-<p><strong>Link to the <a class="reference external" href="https://github.com/FinalSpark-np/np-utils/tree/main/CrossCorrelogram">code on GitHub</a>.</strong></p>
+<p><strong>Link to the <a class="reference external" href="https://github.com/FinalSpark-np/np-utils/tree/main/src/np-utils/cross_corr.py">code on GitHub</a>.</strong></p>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>To install the dependencies for all utilities, use <code class="docutils literal notranslate"><span class="pre">[all]</span></code> instead</p>
+</div>
+</aside>
+<p>To install the module, run the following command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>git+https://github.com/FinalSpark-np/np-utils.git#egg<span class="o">=</span>np-utils<span class="o">[</span>CCM<span class="o">]</span>
+</pre></div>
+</div>
 <p>Cross-correlograms (cross-correlation histograms) are used to analyze the temporal relationships between two sets of event times.</p>
 <p>They are particularly useful for analyzing neural spike data and understanding the interactions between different channels; such as the synchronization of neural activity between different neurons, or complex patterns of co-activation between different sites, such as oscillatory activity.</p>
 <figure class="align-default" id="cross-corr">
@@ -469,10 +480,11 @@ When doing this, use the <code class="docutils literal notranslate"><span class=
 <h3>Example initialization<a class="headerlink" href="#example-initialization" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># if you added a &quot;neuroplatform_utils.py&quot; file in the same directory as this script, you can import it like this:</span>
-<span class="kn">from</span> <span class="nn">neuroplatform_utils</span> <span class="kn">import</span> <span class="n">CrossCorrelogram</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">np_utils.cross_corr</span><span class="w"> </span><span class="kn">import</span> <span class="n">CrossCorrelogram</span>
 
-<span class="n">cc</span> <span class="o">=</span> <span class="n">CrossCorrelogram</span><span class="p">(</span><span class="n">deltat</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">bin_size</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">normalize</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>  <span class="c1"># ms  # ms</span>
+<span class="n">cc</span> <span class="o">=</span> <span class="n">CrossCorrelogram</span><span class="p">(</span>
+    <span class="n">deltat</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">bin_size</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">normalize</span><span class="o">=</span><span class="kc">True</span>
+<span class="p">)</span>  <span class="c1"># deltat and bin_size in ms</span>
 </pre></div>
 </div>
 </div>
