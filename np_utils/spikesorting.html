@@ -541,7 +541,7 @@ Those will always be labeled as belonging to cluster -2 to <span class="math not
 <p>To run the spike sorting, you will need to specify a start and stop time, as well as the experiment ID (<code class="docutils literal notranslate"><span class="pre">fs#ID</span></code>).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">events_df</span> <span class="o">=</span> <span class="n">sorter</span><span class="o">.</span><span class="n">run_spike_sorting</span><span class="p">(</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">processed_spike_events_df</span> <span class="o">=</span> <span class="n">sorter</span><span class="o">.</span><span class="n">run_spike_sorting</span><span class="p">(</span>
     <span class="n">start</span><span class="p">,</span> <span class="n">start</span> <span class="o">+</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">minutes</span><span class="o">=</span><span class="mi">20</span><span class="p">),</span> <span class="n">fs_id</span><span class="o">=</span><span class="n">EXP_NAME</span><span class="p">,</span> <span class="n">electrode_nb</span><span class="o">=</span><span class="n">ELECTRODE</span>
 <span class="p">)</span>
 </pre></div>
@@ -625,9 +625,9 @@ Those will always be labeled as belonging to cluster -2 to <span class="math not
 <h4>Making your own plots<a class="headerlink" href="#making-your-own-plots" title="Link to this heading">#</a></h4>
 <p>You may also use some of the attributes of the SpikeSorting object to make your own plots :</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">raw_spikes_df</span></code> : DataFrame containing the raw spikes, with clustering results.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">processed_spike_events_df</span></code> : DataFrame containing the spike events with clustering results.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">dimred_method_spikes.fit_data_df</span></code> : DataFrame containing the dimensionality reduction, with clustering results.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sorter.raw_spikes_df</span></code> : DataFrame containing the raw spikes, with clustering results. Each time point is a row, as such the number of points per event will vary depending on the specified time window.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sorter.processed_spike_events_df</span></code> : DataFrame containing the spike events with clustering results (also returned by <code class="docutils literal notranslate"><span class="pre">sorter.run_spike_sorting()</span></code>). Each row corresponds to a spike event.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sorter.dimred_method_spikes.fit_data_df</span></code> : DataFrame containing the dimensionality reduction, with clustering results. Each column corresponds to a component, along with the cluster assignment. Each row corresponds to a (processed) spike.</p></li>
 </ul>
 <div class="admonition hint">
 <p class="admonition-title">Hint</p>
