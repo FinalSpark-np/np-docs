@@ -29,3 +29,7 @@ jb build neuroplatform-docs
 ```
 
 and access the built documentation in the `_build/html/index.html` file.
+
+## Custom CSS
+
+There are some custom CSS styles in the `neuroplatform-docs/_static/custom.css` file.
