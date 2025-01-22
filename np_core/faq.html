@@ -1,0 +1,843 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Troubleshoothing &amp; FAQ &#8212; NeuroPlatform Documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=990f3d29" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'np_core/faq';</script>
+    <link rel="icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Recording live data" href="../np_utils/livemea.html" />
+    <link rel="prev" title="Closed-loop : reading and stimulating" href="closed_loop.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../welcome.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="NeuroPlatform Documentation - Home"/>
+    <img src="../_static/logo.png" class="logo__image only-dark pst-js-only" alt="NeuroPlatform Documentation - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../welcome.html">
+                    Welcome to the NeuroPlatform documentation!
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">NeuroPlatform usage</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="np_usage.html">System basics and stimulating organoids</a></li>
+<li class="toctree-l1"><a class="reference internal" href="db_usage.html">Database usage and fetching results</a></li>
+<li class="toctree-l1"><a class="reference internal" href="closed_loop.html">Closed-loop : reading and stimulating</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Troubleshoothing &amp; FAQ</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">NeuroPlatform utilities</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../np_utils/livemea.html">Recording live data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../np_utils/stimparamloader.html">Stimulation parameter loader</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../np_utils/spikesorting.html">Spike sorting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../np_utils/crosscorr.html">Cross-correlograms</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/FinalSpark-np/np-docs" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/FinalSpark-np/np-docs/edit/main/neuroplatform-docs/np_core/faq.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/FinalSpark-np/np-docs/issues/new?title=Issue%20on%20page%20%2Fnp_core/faq.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/np_core/faq.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Troubleshoothing & FAQ</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contact">Contact</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#public-channels">Public channels</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#private-channels">Private channels</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#common-issues-faq">Common issues &amp; FAQ</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#organoids-meas-and-live-view">Organoids, MEAs and live view</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#how-can-i-be-sure-the-organoids-are-fit-for-an-experiment-what-guarantees-do-you-provide-on-the-quality-of-the-organoids-is-neurobiology-important-do-you-provide-support-on-the-biology-side">How can I be sure the organoids are fit for an experiment? What guarantees do you provide on the quality of the organoids? Is neurobiology important ? Do you provide support on the biology side?</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#what-are-the-differences-between-the-meas-does-the-layout-matter">What are the differences between the MEAs? Does the layout matter?</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#why-is-there-constant-noise-on-a-channel">Why is there constant noise on a channel?</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#there-is-no-signal-anymore-on-the-mea">There is no signal anymore on the MEA</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-differentiate-between-noise-and-activity">How to differentiate between noise and activity?</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#the-python-api-is-not-responding-and-or-the-live-view-went-into-maintenance-mode-during-my-booking">The Python API is not responding and/or the live view went into maintenance mode during my booking</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#the-spike-count-on-an-organoid-is-too-high-low">The spike count on an organoid is too high/low</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stimulation-and-parameters">Stimulation and parameters</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#i-am-unsure-about-triggers-parameters-and-how-i-can-parallelize-my-experiments-or-dynamically-change-parameters">I am unsure about triggers/parameters, and how I can parallelize my experiments or dynamically change parameters</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#some-triggers-cause-stimulation-on-several-sites-meas-in-an-unexpected-way">Some triggers cause stimulation on several sites/MEAs in an unexpected way</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#how-long-should-i-wait-after-a-stimulation-to-start-taking-events-into-account-and-avoid-artifacts">How long should I wait after a stimulation to start taking events into account and avoid artifacts?</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#i-am-unsure-about-the-stimulation-parameters-and-or-am-not-sure-they-are-correctly-set">I am unsure about the stimulation parameters and/or am not sure they are correctly set</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#is-it-possible-to-perform-high-speed-closed-loops-e-g-modulating-stimulation-frequency-or-changing-parameters-based-on-the-activity-of-the-organoid-in-real-time">Is it possible to perform high-speed closed loops, e.g. modulating stimulation frequency or changing parameters based on the activity of the organoid in real-time?</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#stimulation-does-not-elicit-any-response-from-the-organoid">Stimulation does not elicit any response from the organoid</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#database-and-experiment-tokens">Database and experiment tokens</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#i-do-not-have-an-experiment-token-or-it-is-no-longer-valid">I do not have an Experiment token, or it is no longer valid</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#i-receive-only-empty-data-plots-from-the-database-even-though-the-same-code-worked-previously">I receive only empty data/plots from the database, even though the same code worked previously</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#when-starting-my-experiment-i-receive-an-error-about-an-experiment-already-running-shared-access">When starting my experiment, I receive an error about an experiment already running (shared access)</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#neuroplatform-utilities">Neuroplatform utilities</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#the-livemea-recording-tool-stopped-working">The LiveMEA recording tool stopped working</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#there-is-an-issue-with-neuroplatform-utilities">There is an issue with Neuroplatform utilities</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="troubleshoothing-faq">
+<h1>Troubleshoothing &amp; FAQ<a class="headerlink" href="#troubleshoothing-faq" title="Link to this heading">#</a></h1>
+<section id="contact">
+<h2>Contact<a class="headerlink" href="#contact" title="Link to this heading">#</a></h2>
+<section id="public-channels">
+<h3>Public channels<a class="headerlink" href="#public-channels" title="Link to this heading">#</a></h3>
+<p><a class="reference external" href="https://github.com/FinalSpark-np/np-docs/issues"><img alt="GitHub" src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&amp;logo=github&amp;logoColor=white" /></a>
+<a class="reference external" href="https://discord.gg/edPetHUYtx"><img alt="Discord" src="https://img.shields.io/badge/Discord-5865F2?style=for-the-badge&amp;logo=discord&amp;logoColor=white" /></a></p>
+</section>
+<section id="private-channels">
+<h3>Private channels<a class="headerlink" href="#private-channels" title="Link to this heading">#</a></h3>
+<p>Please write to <a class="reference external" href="mailto:jean-marc&#46;comby&#37;&#52;&#48;finalspark&#46;com">Jean-Marc Comby</a> for technical issues and questions about the platform, the API, the database, the utilities, or the MEAs.</p>
+<p>For biology and neuroscience-related questions, please write to <a class="reference external" href="mailto:flora&#46;brozzi&#37;&#52;&#48;finalspark&#46;com">Dr<span>&#46;</span> Flora Brozzi</a>.</p>
+</section>
+</section>
+<section id="common-issues-faq">
+<h2>Common issues &amp; FAQ<a class="headerlink" href="#common-issues-faq" title="Link to this heading">#</a></h2>
+<section id="organoids-meas-and-live-view">
+<h3>Organoids, MEAs and live view<a class="headerlink" href="#organoids-meas-and-live-view" title="Link to this heading">#</a></h3>
+<section id="how-can-i-be-sure-the-organoids-are-fit-for-an-experiment-what-guarantees-do-you-provide-on-the-quality-of-the-organoids-is-neurobiology-important-do-you-provide-support-on-the-biology-side">
+<h4>How can I be sure the organoids are fit for an experiment? What guarantees do you provide on the quality of the organoids? Is neurobiology important ? Do you provide support on the biology side?<a class="headerlink" href="#how-can-i-be-sure-the-organoids-are-fit-for-an-experiment-what-guarantees-do-you-provide-on-the-quality-of-the-organoids-is-neurobiology-important-do-you-provide-support-on-the-biology-side" title="Link to this heading">#</a></h4>
+<p>Biocomputing is currently a field of fundamental research, which ideally requires some familiarity with neurobiology in order to understand the current capabilities and limitations of the technology.</p>
+<p>If you’d like a detailed introduction, we suggest reading <a class="reference external" href="https://www.frontiersin.org/journals/artificial-intelligence/articles/10.3389/frai.2024.1376042/full">our publication in Frontiers</a>.</p>
+<p>We are actively working on making organoids that are fit for the purpose of biocomputing, and we are constantly aiming to improve the quality of the organoids in the following aspects:</p>
+<ul class="simple">
+<li><p>Longevity, durability, and stability</p></li>
+<li><p>Complex, rich activity patterns</p></li>
+<li><p>Presence of genes known to be relevant in functional learning, neuromodulation, synapses, and other neurobiological processes</p></li>
+</ul>
+<p>Currently, we provide an RNA-seq analysis of relevant genes for the organoids <a class="reference external" href="https://finalspark.com/wp-content/uploads/2024/10/RNAseq-results_Heatmap_07.10.24.pdf">on our website</a>.</p>
+<p>Neurobiology is crucial for the success of your experiments, and we are here to help you with any questions you may have on the topic.</p>
+<p>Please contact us if you have any doubts about the quality of the organoids, or if you have any questions about the biology side of your experiments, and how it may be relevant to your research.</p>
+</section>
+<section id="what-are-the-differences-between-the-meas-does-the-layout-matter">
+<h4>What are the differences between the MEAs? Does the layout matter?<a class="headerlink" href="#what-are-the-differences-between-the-meas-does-the-layout-matter" title="Link to this heading">#</a></h4>
+<p>We currently use two distinct MEA configurations : <strong>4x8</strong> and <strong>1x32</strong>.</p>
+<figure class="align-default" id="mea4x8">
+<a class="reference internal image-reference" href="../_images/MEA4x8_assembly.png"><img alt="../_images/MEA4x8_assembly.png" src="../_images/MEA4x8_assembly.png" style="width: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 5 </span><span class="caption-text">4x8 MEA configuration, with a close-up of two sites</span><a class="headerlink" href="#mea4x8" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="mea1x32">
+<a class="reference internal image-reference" href="../_images/MEA32_assembly.png"><img alt="../_images/MEA32_assembly.png" src="../_images/MEA32_assembly.png" style="width: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 6 </span><span class="caption-text">1x32 MEA configuration</span><a class="headerlink" href="#mea1x32" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>As there is no cross-talk between sites in the 4x8 configuration, you may parallelize some experiments, which is not possible with the 1x32 configuration (since the sites have cross-talk).</p>
+<p>The 1x32 configuration has more sites, which may be useful for some experiments, and may increase the chances of having a particular combination of sites that may be useful for your experiment.</p>
+<p>Please contact us if you have further questions about the MEAs and their specifications.</p>
+</section>
+<section id="why-is-there-constant-noise-on-a-channel">
+<span id="faq-continuous-noise"></span><h4>Why is there constant noise on a channel?<a class="headerlink" href="#why-is-there-constant-noise-on-a-channel" title="Link to this heading">#</a></h4>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#faq-noise-vs-events"><span class="std std-ref">How to differentiate between noise and activity?</span></a></p>
+</div>
+</aside>
+<p>The organoid may not fully cover or be in contact with the electrode, as they are spherical and may not be perfectly centered.</p>
+<figure class="align-default" id="partially-covered-mea">
+<a class="reference internal image-reference" href="../_images/partially-covered-MEA.png"><img alt="../_images/partially-covered-MEA.png" src="../_images/partially-covered-MEA.png" style="width: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 7 </span><span class="caption-text">Partially covered MEA site, highlighted by the red arrow</span><a class="headerlink" href="#partially-covered-mea" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<!-- TODO add MEA activity -->
+</section>
+<section id="there-is-no-signal-anymore-on-the-mea">
+<h4>There is no signal anymore on the MEA<a class="headerlink" href="#there-is-no-signal-anymore-on-the-mea" title="Link to this heading">#</a></h4>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#faq-low-response"><span class="std std-ref">Stimulation does not elicit any response from the organoid</span></a></p>
+</div>
+</aside>
+<p>This is likely due to the organoids losing activity over time. Please contact us so that we can change the organoids.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you are using a dedicated access, <strong>do not lower the event threshold</strong> to get “more activity”, as there may simply not be any activity anymore and you will record noise.</p>
+</div>
+</section>
+<section id="how-to-differentiate-between-noise-and-activity">
+<span id="faq-noise-vs-events"></span><h4>How to differentiate between noise and activity?<a class="headerlink" href="#how-to-differentiate-between-noise-and-activity" title="Link to this heading">#</a></h4>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#faq-continuous-noise"><span class="std std-ref">Why is there constant noise on a channel?</span></a><br>
+<a class="reference internal" href="#faq-stim-artifacts"><span class="std std-ref">How long should I wait after a stimulation to start taking events into account and avoid artifacts?</span></a></p>
+</div>
+</aside>
+<p>Stimulation artifacts tend to have an amplitude far greater than the organoid’s activity, so checking the amplitude tag of the events may help you determine if there are any artifacts.</p>
+<ul class="simple">
+<li><p><strong>Amplitudes below 30 µV are likely to be noise, while amplitudes above 200 to 1000 µV are very likely to be artifacts</strong>.</p>
+<ul>
+<li><p>You may check the shape of recorded events in the database, to see if they correspond to the expected shape of spikes.</p>
+<ul>
+<li><p>See the <a class="reference internal" href="#faq-stim-artifacts"><span class="std std-ref">following section</span></a> for examples of artifacts and spikes shapes.</p></li>
+</ul>
+</li>
+<li><p>On a dedicated access, you may inspect the live waveforms to see if they correspond to the expected shape of spikes.</p></li>
+</ul>
+</li>
+<li><p>A perfectly regular signal, with a nearly constant amplitude, shape and frequency, is likely to be noise or another extraneous signal, unrelated to the organoid.</p></li>
+</ul>
+<p>Please contact us if you have any doubts; we may also be able to correct or mitigate the issue on our side.</p>
+<figure class="align-default" id="signal-vs-noise">
+<a class="reference internal image-reference" href="../_images/signal-vs-noise.png"><img alt="../_images/signal-vs-noise.png" src="../_images/signal-vs-noise.png" style="width: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 8 </span><span class="caption-text">Example of a signal (top) and noise (bottom) on the same channel from the live view. Scale of +/- 100 µV. Note that the noisy channel shown here is not covered by the organoid.</span><a class="headerlink" href="#signal-vs-noise" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<!-- TODO add high-freq artifacts and overlays of real signal -->
+</section>
+<section id="the-python-api-is-not-responding-and-or-the-live-view-went-into-maintenance-mode-during-my-booking">
+<h4>The Python API is not responding and/or the live view went into maintenance mode during my booking<a class="headerlink" href="#the-python-api-is-not-responding-and-or-the-live-view-went-into-maintenance-mode-during-my-booking" title="Link to this heading">#</a></h4>
+<p>Please contact us.</p>
+</section>
+<section id="the-spike-count-on-an-organoid-is-too-high-low">
+<h4>The spike count on an organoid is too high/low<a class="headerlink" href="#the-spike-count-on-an-organoid-is-too-high-low" title="Link to this heading">#</a></h4>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#faq-low-response"><span class="std std-ref">Stimulation does not elicit any response from the organoid</span></a></p>
+</div>
+</aside>
+<p>Note that “events” are recorded in the database, not spikes.</p>
+<p>Since an event is a recording of 3ms whenever the event threshold of <span class="math notranslate nohighlight">\(6\sigma\)</span> is crossed, the number of events is not directly comparable to the number of spikes.</p>
+<p>A spiking rate of up to 1500 per minute is still normal (especially in the presence of bursts), but an order of magnitude more would indicate an issue with the event threshold.</p>
+<p>For instance, during a burst event, the voltage will nearly always be above the threshold, which will result in an artificial event every 3ms during the burst. However, this will show as a single event in the database, not as multiple events.</p>
+<p>Feel free to ask if you have further doubts regarding the activity of a channel.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Make sure to reset the variable threshold to True whenever you start or finish an experiment.<br>
+See the <a class="reference internal" href="np_usage.html#np-core-variance-threshold"><span class="std std-ref">relevant API section</span></a>.</p>
+</div>
+</section>
+</section>
+<section id="stimulation-and-parameters">
+<h3>Stimulation and parameters<a class="headerlink" href="#stimulation-and-parameters" title="Link to this heading">#</a></h3>
+<section id="i-am-unsure-about-triggers-parameters-and-how-i-can-parallelize-my-experiments-or-dynamically-change-parameters">
+<h4>I am unsure about triggers/parameters, and how I can parallelize my experiments or dynamically change parameters<a class="headerlink" href="#i-am-unsure-about-triggers-parameters-and-how-i-can-parallelize-my-experiments-or-dynamically-change-parameters" title="Link to this heading">#</a></h4>
+<p>Please re-read the <a class="reference internal" href="np_usage.html#np-core-basics"><span class="std std-ref">system basics</span></a> page. If anything is still unclear, please contact us.</p>
+</section>
+<section id="some-triggers-cause-stimulation-on-several-sites-meas-in-an-unexpected-way">
+<h4>Some triggers cause stimulation on several sites/MEAs in an unexpected way<a class="headerlink" href="#some-triggers-cause-stimulation-on-several-sites-meas-in-an-unexpected-way" title="Link to this heading">#</a></h4>
+<p>Please make sure to disable all parameters at the end of your experiment, as they are not reset automatically.</p>
+<ul class="simple">
+<li><p>On the shared access, if you suspect there may be leftover triggers from a previous experiment, please contact us.</p></li>
+<li><p>On a dedicated access, please remove any other triggers that may be active.</p></li>
+</ul>
+</section>
+<section id="how-long-should-i-wait-after-a-stimulation-to-start-taking-events-into-account-and-avoid-artifacts">
+<span id="faq-stim-artifacts"></span><h4>How long should I wait after a stimulation to start taking events into account and avoid artifacts?<a class="headerlink" href="#how-long-should-i-wait-after-a-stimulation-to-start-taking-events-into-account-and-avoid-artifacts" title="Link to this heading">#</a></h4>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#faq-noise-vs-events"><span class="std std-ref">How to differentiate between noise and activity?</span></a></p>
+</div>
+</aside>
+<p>Excluding 10ms after the stimulation is a good rule of thumb, but it may vary depending on the stimulation parameters.</p>
+<p>Please check the raw events’ shape and amplitude in the database to see if there are any artifacts, and adjust the delay accordingly.</p>
+<figure class="align-default" id="artifacts-raw-example">
+<a class="reference internal image-reference" href="../_images/artifacts-raw-example.png"><img alt="../_images/artifacts-raw-example.png" src="../_images/artifacts-raw-example.png" style="width: 800px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 9 </span><span class="caption-text">Example of artifacts in the raw events. Notice the large “wave”-like shape, with a very large amplitude.</span><a class="headerlink" href="#artifacts-raw-example" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="signal-example">
+<a class="reference internal image-reference" href="../_images/signal-example.png"><img alt="../_images/signal-example.png" src="../_images/signal-example.png" style="width: 800px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 10 </span><span class="caption-text">Example of a signal from an organoid. Notice the variability, small amplitude, and “dip” before the peak.</span><a class="headerlink" href="#signal-example" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>On a dedicated access, you can also tune analog and digital filters to decrease the delay; please contact us for more information.</p>
+<!-- TODO check with JMC -->
+</section>
+<section id="i-am-unsure-about-the-stimulation-parameters-and-or-am-not-sure-they-are-correctly-set">
+<h4>I am unsure about the stimulation parameters and/or am not sure they are correctly set<a class="headerlink" href="#i-am-unsure-about-the-stimulation-parameters-and-or-am-not-sure-they-are-correctly-set" title="Link to this heading">#</a></h4>
+<p>Our <a class="reference internal" href="../np_utils/stimparamloader.html#utils-stimparamloader"><span class="std std-ref">parameter visualization tool</span></a> may help you check the parameters you are using.</p>
+<p>If you are still unsure, please contact us.</p>
+</section>
+<section id="is-it-possible-to-perform-high-speed-closed-loops-e-g-modulating-stimulation-frequency-or-changing-parameters-based-on-the-activity-of-the-organoid-in-real-time">
+<h4>Is it possible to perform high-speed closed loops, e.g. modulating stimulation frequency or changing parameters based on the activity of the organoid in real-time?<a class="headerlink" href="#is-it-possible-to-perform-high-speed-closed-loops-e-g-modulating-stimulation-frequency-or-changing-parameters-based-on-the-activity-of-the-organoid-in-real-time" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p>Due to the network-based nature of the Neuroplatform, the delay between recording data directly on the Intan device and receiving it in your Python script will be at the strict minimum 35 to 50 ms.</p></li>
+<li><p>Changing parameters currently takes 10 seconds on the shared access. On a dedicated access, parameters are changed as fast as the hardware allows.</p></li>
+</ul>
+<p>We currently do not have the possibility to upload custom code to the Intan device, as such high-speed closed loops will be limited to the buffer rate of the software first, then the network delay, before it is available for processing in your Python script, then followed by network delays to send the stimulation back to the Intan device.</p>
+<p>The network-based communication, the delay when changing parameters, and the use of Python make the current iteration of the Neuroplatform challenging for high-speed closed loops (&lt; 200ms); however we are actively working on improving this aspect, as we are aware it is crucial to many experiments such as reservoir computing.</p>
+</section>
+<section id="stimulation-does-not-elicit-any-response-from-the-organoid">
+<span id="faq-low-response"></span><h4>Stimulation does not elicit any response from the organoid<a class="headerlink" href="#stimulation-does-not-elicit-any-response-from-the-organoid" title="Link to this heading">#</a></h4>
+<!-- - Scan using our scan utility -->
+<ul class="simple">
+<li><p>Stimulations usually only elicit most of the response on their own channel, so make sure to check the correct channel.</p></li>
+<li><p>As the organoid gets older, increasing the stimulation amplitude may be necessary.</p></li>
+<li><p>Neurons require resources to fire, so fatigue may eventually occur after repeated stimulations. Use a higher delay between stimulations (1-10s) to avoid this issue.</p></li>
+<li><p>If all else is ineffective, please contact us so we can change the organoids.</p></li>
+</ul>
+</section>
+</section>
+<section id="database-and-experiment-tokens">
+<h3>Database and experiment tokens<a class="headerlink" href="#database-and-experiment-tokens" title="Link to this heading">#</a></h3>
+<section id="i-do-not-have-an-experiment-token-or-it-is-no-longer-valid">
+<h4>I do not have an Experiment token, or it is no longer valid<a class="headerlink" href="#i-do-not-have-an-experiment-token-or-it-is-no-longer-valid" title="Link to this heading">#</a></h4>
+<p>Please contact us.</p>
+</section>
+<section id="i-receive-only-empty-data-plots-from-the-database-even-though-the-same-code-worked-previously">
+<h4>I receive only empty data/plots from the database, even though the same code worked previously<a class="headerlink" href="#i-receive-only-empty-data-plots-from-the-database-even-though-the-same-code-worked-previously" title="Link to this heading">#</a></h4>
+<p>On the shared access, there may have been a change of organoids, which requires you to change your experiment token. Please contact us so we can provide you with the updated token.</p>
+</section>
+<section id="when-starting-my-experiment-i-receive-an-error-about-an-experiment-already-running-shared-access">
+<h4>When starting my experiment, I receive an error about an experiment already running (shared access)<a class="headerlink" href="#when-starting-my-experiment-i-receive-an-error-about-an-experiment-already-running-shared-access" title="Link to this heading">#</a></h4>
+<p>Please double-check the shared access booking to make sure you are not overriding someone else’s experiment.</p>
+<p>If you are not sure whether another experiment is running, please contact us.</p>
+<p>Otherwise, use <code class="docutils literal notranslate"><span class="pre">experiment.stop()</span></code> to stop the experiment, and try again.</p>
+</section>
+</section>
+<section id="neuroplatform-utilities">
+<h3>Neuroplatform utilities<a class="headerlink" href="#neuroplatform-utilities" title="Link to this heading">#</a></h3>
+<section id="the-livemea-recording-tool-stopped-working">
+<h4>The LiveMEA recording tool stopped working<a class="headerlink" href="#the-livemea-recording-tool-stopped-working" title="Link to this heading">#</a></h4>
+<p>We may have changed the way we stream data to the website. Please contact us.</p>
+</section>
+<section id="there-is-an-issue-with-neuroplatform-utilities">
+<h4>There is an issue with Neuroplatform utilities<a class="headerlink" href="#there-is-an-issue-with-neuroplatform-utilities" title="Link to this heading">#</a></h4>
+<p>Make sure you use Python 3.11 and have <strong>installed all the requirements for the specific utility you are using</strong>.</p>
+<p>If you are still having issues or need help with upgrading your Python version, please contact us.</p>
+</section>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./np_core"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="closed_loop.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Closed-loop : reading and stimulating</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../np_utils/livemea.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Recording live data</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contact">Contact</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#public-channels">Public channels</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#private-channels">Private channels</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#common-issues-faq">Common issues &amp; FAQ</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#organoids-meas-and-live-view">Organoids, MEAs and live view</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#how-can-i-be-sure-the-organoids-are-fit-for-an-experiment-what-guarantees-do-you-provide-on-the-quality-of-the-organoids-is-neurobiology-important-do-you-provide-support-on-the-biology-side">How can I be sure the organoids are fit for an experiment? What guarantees do you provide on the quality of the organoids? Is neurobiology important ? Do you provide support on the biology side?</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#what-are-the-differences-between-the-meas-does-the-layout-matter">What are the differences between the MEAs? Does the layout matter?</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#why-is-there-constant-noise-on-a-channel">Why is there constant noise on a channel?</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#there-is-no-signal-anymore-on-the-mea">There is no signal anymore on the MEA</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-differentiate-between-noise-and-activity">How to differentiate between noise and activity?</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#the-python-api-is-not-responding-and-or-the-live-view-went-into-maintenance-mode-during-my-booking">The Python API is not responding and/or the live view went into maintenance mode during my booking</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#the-spike-count-on-an-organoid-is-too-high-low">The spike count on an organoid is too high/low</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stimulation-and-parameters">Stimulation and parameters</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#i-am-unsure-about-triggers-parameters-and-how-i-can-parallelize-my-experiments-or-dynamically-change-parameters">I am unsure about triggers/parameters, and how I can parallelize my experiments or dynamically change parameters</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#some-triggers-cause-stimulation-on-several-sites-meas-in-an-unexpected-way">Some triggers cause stimulation on several sites/MEAs in an unexpected way</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#how-long-should-i-wait-after-a-stimulation-to-start-taking-events-into-account-and-avoid-artifacts">How long should I wait after a stimulation to start taking events into account and avoid artifacts?</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#i-am-unsure-about-the-stimulation-parameters-and-or-am-not-sure-they-are-correctly-set">I am unsure about the stimulation parameters and/or am not sure they are correctly set</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#is-it-possible-to-perform-high-speed-closed-loops-e-g-modulating-stimulation-frequency-or-changing-parameters-based-on-the-activity-of-the-organoid-in-real-time">Is it possible to perform high-speed closed loops, e.g. modulating stimulation frequency or changing parameters based on the activity of the organoid in real-time?</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#stimulation-does-not-elicit-any-response-from-the-organoid">Stimulation does not elicit any response from the organoid</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#database-and-experiment-tokens">Database and experiment tokens</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#i-do-not-have-an-experiment-token-or-it-is-no-longer-valid">I do not have an Experiment token, or it is no longer valid</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#i-receive-only-empty-data-plots-from-the-database-even-though-the-same-code-worked-previously">I receive only empty data/plots from the database, even though the same code worked previously</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#when-starting-my-experiment-i-receive-an-error-about-an-experiment-already-running-shared-access">When starting my experiment, I receive an error about an experiment already running (shared access)</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#neuroplatform-utilities">Neuroplatform utilities</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#the-livemea-recording-tool-stopped-working">The LiveMEA recording tool stopped working</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#there-is-an-issue-with-neuroplatform-utilities">There is an issue with Neuroplatform utilities</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By the FinalSpark team - Vevey, Switzerland
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright FinalSpark 2024-2025.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
