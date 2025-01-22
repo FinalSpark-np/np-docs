@@ -183,6 +183,7 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../np_utils/livemea.html">Recording live data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../np_utils/stimparamloader.html">Stimulation parameter loader</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../np_utils/stimscan.html">Stimulation parameter scan</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../np_utils/spikesorting.html">Spike sorting</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../np_utils/crosscorr.html">Cross-correlograms</a></li>
 </ul>
@@ -413,6 +414,7 @@
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stimulation-and-parameters">Stimulation and parameters</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#i-am-unsure-about-triggers-parameters-and-how-i-can-parallelize-my-experiments-or-dynamically-change-parameters">I am unsure about triggers/parameters, and how I can parallelize my experiments or dynamically change parameters</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#some-triggers-cause-stimulation-on-several-sites-meas-in-an-unexpected-way">Some triggers cause stimulation on several sites/MEAs in an unexpected way</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#how-can-i-find-the-best-parameters-for-stimulation-how-should-i-stimulate-to-get-maximal-responses-from-the-organoid">How can I find the best parameters for stimulation ? How should I stimulate to get maximal responses from the organoid?</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#how-long-should-i-wait-after-a-stimulation-to-start-taking-events-into-account-and-avoid-artifacts">How long should I wait after a stimulation to start taking events into account and avoid artifacts?</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#i-am-unsure-about-the-stimulation-parameters-and-or-am-not-sure-they-are-correctly-set">I am unsure about the stimulation parameters and/or am not sure they are correctly set</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#is-it-possible-to-perform-high-speed-closed-loops-e-g-modulating-stimulation-frequency-or-changing-parameters-based-on-the-activity-of-the-organoid-in-real-time">Is it possible to perform high-speed closed loops, e.g. modulating stimulation frequency or changing parameters based on the activity of the organoid in real-time?</a></li>
@@ -600,6 +602,10 @@ See the <a class="reference internal" href="np_usage.html#np-core-variance-thres
 <li><p>On a dedicated access, please remove any other triggers that may be active.</p></li>
 </ul>
 </section>
+<section id="how-can-i-find-the-best-parameters-for-stimulation-how-should-i-stimulate-to-get-maximal-responses-from-the-organoid">
+<h4>How can I find the best parameters for stimulation ? How should I stimulate to get maximal responses from the organoid?<a class="headerlink" href="#how-can-i-find-the-best-parameters-for-stimulation-how-should-i-stimulate-to-get-maximal-responses-from-the-organoid" title="Link to this heading">#</a></h4>
+<p>Our <a class="reference internal" href="../np_utils/stimscan.html#np-utils-stimscan"><span class="std std-ref">StimScan utility</span></a> may be useful to find the best parameters for your experiment.</p>
+</section>
 <section id="how-long-should-i-wait-after-a-stimulation-to-start-taking-events-into-account-and-avoid-artifacts">
 <span id="faq-stim-artifacts"></span><h4>How long should I wait after a stimulation to start taking events into account and avoid artifacts?<a class="headerlink" href="#how-long-should-i-wait-after-a-stimulation-to-start-taking-events-into-account-and-avoid-artifacts" title="Link to this heading">#</a></h4>
 <aside class="margin sidebar">
@@ -767,6 +773,7 @@ See the <a class="reference internal" href="np_usage.html#np-core-variance-thres
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stimulation-and-parameters">Stimulation and parameters</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#i-am-unsure-about-triggers-parameters-and-how-i-can-parallelize-my-experiments-or-dynamically-change-parameters">I am unsure about triggers/parameters, and how I can parallelize my experiments or dynamically change parameters</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#some-triggers-cause-stimulation-on-several-sites-meas-in-an-unexpected-way">Some triggers cause stimulation on several sites/MEAs in an unexpected way</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#how-can-i-find-the-best-parameters-for-stimulation-how-should-i-stimulate-to-get-maximal-responses-from-the-organoid">How can I find the best parameters for stimulation ? How should I stimulate to get maximal responses from the organoid?</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#how-long-should-i-wait-after-a-stimulation-to-start-taking-events-into-account-and-avoid-artifacts">How long should I wait after a stimulation to start taking events into account and avoid artifacts?</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#i-am-unsure-about-the-stimulation-parameters-and-or-am-not-sure-they-are-correctly-set">I am unsure about the stimulation parameters and/or am not sure they are correctly set</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#is-it-possible-to-perform-high-speed-closed-loops-e-g-modulating-stimulation-frequency-or-changing-parameters-based-on-the-activity-of-the-organoid-in-real-time">Is it possible to perform high-speed closed loops, e.g. modulating stimulation frequency or changing parameters based on the activity of the organoid in real-time?</a></li>
