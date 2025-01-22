@@ -13,5 +13,6 @@ parts:
     chapters:
     - file : np_utils/livemea
     - file : np_utils/stimparamloader
+    - file : np_utils/stimscan
     - file : np_utils/spikesorting
     - file : np_utils/crosscorr
