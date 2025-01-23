@@ -422,6 +422,7 @@
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#database-and-experiment-tokens">Database and experiment tokens</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#how-are-spike-events-obtained-why-is-the-minimal-inter-spike-interval-always-3ms">How are spike events obtained ? Why is the minimal inter-spike interval always 3ms ?</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#i-do-not-have-an-experiment-token-or-it-is-no-longer-valid">I do not have an Experiment token, or it is no longer valid</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#i-receive-only-empty-data-plots-from-the-database-even-though-the-same-code-worked-previously">I receive only empty data/plots from the database, even though the same code worked previously</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#when-starting-my-experiment-i-receive-an-error-about-an-experiment-already-running-shared-access">When starting my experiment, I receive an error about an experiment already running (shared access)</a></li>
@@ -573,14 +574,15 @@
 <p class="sidebar-title"></p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
-<p><a class="reference internal" href="#faq-low-response"><span class="std std-ref">Stimulation does not elicit any response from the organoid</span></a></p>
+<p><a class="reference internal" href="#faq-low-response"><span class="std std-ref">Stimulation does not elicit any response from the organoid</span></a>
+<a class="reference internal" href="#faq-spike-events"><span class="std std-ref">How are spike events obtained ? Why is the minimal inter-spike interval always 3ms ?</span></a></p>
 </div>
 </aside>
 <p>Note that “events” are recorded in the database, not spikes.</p>
 <p>Since an event is a recording of 3ms whenever the event threshold of <span class="math notranslate nohighlight">\(6\sigma\)</span> is crossed, the number of events is not directly comparable to the number of spikes.</p>
 <p>A spiking rate of up to 1500 per minute is still normal (especially in the presence of bursts), but an order of magnitude more would indicate an issue with the event threshold.</p>
-<p>For instance, during a burst event, the voltage will nearly always be above the threshold, which will result in an artificial event every 3ms during the burst. However, this will show as a single event in the database, not as multiple events.</p>
-<p>Feel free to ask if you have further doubts regarding the activity of a channel.</p>
+<p>For instance, during a burst event, the voltage will nearly always be above the threshold, which will result in an artificial event every 3ms during the burst. However, the many spikes that occur will be merged under several events of 3ms duration.
+Feel free to ask if you have further doubts regarding the activity of a channel.</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>Make sure to reset the variable threshold to True whenever you start or finish an experiment.<br>
@@ -659,6 +661,24 @@ See the <a class="reference internal" href="np_usage.html#np-core-variance-thres
 </section>
 <section id="database-and-experiment-tokens">
 <h3>Database and experiment tokens<a class="headerlink" href="#database-and-experiment-tokens" title="Link to this heading">#</a></h3>
+<section id="how-are-spike-events-obtained-why-is-the-minimal-inter-spike-interval-always-3ms">
+<span id="faq-spike-events"></span><h4>How are spike events obtained ? Why is the minimal inter-spike interval always 3ms ?<a class="headerlink" href="#how-are-spike-events-obtained-why-is-the-minimal-inter-spike-interval-always-3ms" title="Link to this heading">#</a></h4>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#faq-noise-vs-events"><span class="std std-ref">How to differentiate between noise and activity?</span></a></p>
+</div>
+</aside>
+<p>Events are recorded whenever the voltage crosses the event threshold of <span class="math notranslate nohighlight">\(6\sigma\)</span>. This means that whenever the voltage crosses the threshold, an event is recorded for 3ms.
+As such, several spikes may be merged under several events, especially during bursts.</p>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>By default, the threshold is <strong>dynamic</strong>, which means it is computed based on the standard deviation of the noise at a certain time interval.<br>
+During bursts or stimulation, this standard deviation may increase, which will overall lower the amount of events recorded.<br>
+See <a class="reference internal" href="np_usage.html#np-core-variance-threshold"><span class="std std-ref">Variable threshold</span></a> for more information.</p>
+</div>
+</section>
 <section id="i-do-not-have-an-experiment-token-or-it-is-no-longer-valid">
 <h4>I do not have an Experiment token, or it is no longer valid<a class="headerlink" href="#i-do-not-have-an-experiment-token-or-it-is-no-longer-valid" title="Link to this heading">#</a></h4>
 <p>Please contact us.</p>
@@ -781,6 +801,7 @@ See the <a class="reference internal" href="np_usage.html#np-core-variance-thres
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#database-and-experiment-tokens">Database and experiment tokens</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#how-are-spike-events-obtained-why-is-the-minimal-inter-spike-interval-always-3ms">How are spike events obtained ? Why is the minimal inter-spike interval always 3ms ?</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#i-do-not-have-an-experiment-token-or-it-is-no-longer-valid">I do not have an Experiment token, or it is no longer valid</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#i-receive-only-empty-data-plots-from-the-database-even-though-the-same-code-worked-previously">I receive only empty data/plots from the database, even though the same code worked previously</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#when-starting-my-experiment-i-receive-an-error-about-an-experiment-already-running-shared-access">When starting my experiment, I receive an error about an experiment already running (shared access)</a></li>

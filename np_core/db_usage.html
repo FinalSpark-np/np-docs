@@ -481,6 +481,12 @@ Make sure to record and recover <strong>the token you used during your experimen
 <section id="spike-events">
 <h3>Spike events<a class="headerlink" href="#spike-events" title="Link to this heading">#</a></h3>
 <p>A <strong>spike event</strong> is logged whenever the voltage from an electrode crosses a threshold of six times the standard deviation of the noise.</p>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>By default, the threshold is <strong>dynamic</strong>, which means it is computed based on the standard deviation of the noise at a certain time interval.<br>
+During bursts or stimulation, this standard deviation may increase, which will overall lower the amount of events recorded.
+See <a class="reference internal" href="np_usage.html#np-core-variance-threshold"><span class="std std-ref">Variable threshold</span></a> for more information.</p>
+</div>
 <p>You can query a list of spike events with the timestamp, the amplitude (maximum absolute voltage of the peak across 3ms around the spike) and the channel number using <code class="docutils literal notranslate"><span class="pre">get_spike_event</span></code></p>
 <p>To avoid returning large amounts of data, keep the time window small.<br>
 We recommed starting with 5 minutes, and increasing/decreasing the window as needed.</p>

@@ -979,10 +979,11 @@ This is a limitation of the system, and we are working on improving this delay; 
 <section id="fixed-threshold">
 <span id="np-core-variance-threshold"></span><h3>Fixed threshold<a class="headerlink" href="#fixed-threshold" title="Link to this heading">#</a></h3>
 <p>You can set the threshold for spike events to be fixed, which means it will be constant throughout the experiment.</p>
-<p>As mentioned earlier, the threshold is six times the standard deviation of the noise. This is recomputed when the variance threshold is enabled.</p>
+<p>As mentioned earlier, the threshold is six times the standard deviation of the noise. This is recomputed when the variable threshold is enabled.</p>
+<p>During bursts or stimulation, this standard deviation may increase, which will overall lower the amount of events recorded.</p>
 <div class="admonition caution">
 <p class="admonition-title">Caution</p>
-<p><strong>ALWAYS</strong> set back the variance threshold to <strong>enabled</strong> after finishing your experiment.</p>
+<p><strong>ALWAYS</strong> set back the variable threshold to <strong>enabled</strong> after finishing your experiment.</p>
 </div>
 <p>If you need to set a fixed threshold, for example to account for a drift in the noise or activity, you can use:</p>
 <div class="cell docutils container">
