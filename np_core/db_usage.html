@@ -432,6 +432,7 @@
 <p class="admonition-title">See also</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="../np_utils/spikesorting.html"><span class="doc std std-doc">Spike sorting</span></a> : Utility to perform basic spike sorting on the data.</p></li>
+<li><p><a class="reference internal" href="faq.html#faq-stimulation"><span class="std std-ref">Database FAQ</span></a> : Frequently asked questions about the database.</p></li>
 </ul>
 </div>
 <section id="connection-to-the-database">
@@ -490,9 +491,9 @@ See <a class="reference internal" href="np_usage.html#np-core-variance-threshold
 <p>You can query a list of spike events with the timestamp, the amplitude (maximum absolute voltage of the peak across 3ms around the spike) and the channel number using <code class="docutils literal notranslate"><span class="pre">get_spike_event</span></code></p>
 <p>To avoid returning large amounts of data, keep the time window small.<br>
 We recommed starting with 5 minutes, and increasing/decreasing the window as needed.</p>
-<div class="admonition caution">
-<p class="admonition-title">Caution</p>
-<p>The database WILL record stimulation events. Any event with an amplitude above 200 uV is very likely to be a stimulation artifact.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The database will record stimulation events. See the <a class="reference internal" href="faq.html#faq-stim-artifacts"><span class="std std-ref">relevant question in FAQ</span></a> for more information.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
