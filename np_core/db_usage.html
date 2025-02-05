@@ -599,7 +599,7 @@ We recommed starting with 5 minutes, and increasing/decreasing the window as nee
 <p>You can obtain the triggers used for stimulation using <code class="docutils literal notranslate"><span class="pre">get_triggers</span></code> to return a DataFrame with the timestamp, the trigger number, the status (up/down, which corresponds to the times where the trigger was enabled/disabled respectively) and the tag if any.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">triggers_df</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">get_all_triggers</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">stop</span><span class="p">,</span> <span class="n">FS_NAME</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">triggers_df</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">get_all_triggers</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">stop</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
