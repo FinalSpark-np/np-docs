@@ -8,6 +8,7 @@ parts:
     - file : np_core/np_usage
     - file : np_core/db_usage
     - file : np_core/closed_loop
+    - file : np_core/best_practices
     - file : np_core/faq
   - caption: NeuroPlatform utilities
     chapters:
