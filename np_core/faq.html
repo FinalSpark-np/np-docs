@@ -65,7 +65,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Recording live data" href="../np_utils/livemea.html" />
-    <link rel="prev" title="Closed-loop : reading and stimulating" href="closed_loop.html" />
+    <link rel="prev" title="Best Practices" href="best_practices.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -188,6 +188,7 @@
 <li class="toctree-l1"><a class="reference internal" href="np_usage.html">System basics and stimulating organoids</a></li>
 <li class="toctree-l1"><a class="reference internal" href="db_usage.html">Database usage and fetching results</a></li>
 <li class="toctree-l1"><a class="reference internal" href="closed_loop.html">Closed-loop : reading and stimulating</a></li>
+<li class="toctree-l1"><a class="reference internal" href="best_practices.html">Best Practices</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Troubleshoothing &amp; FAQ</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">NeuroPlatform utilities</span></p>
@@ -500,14 +501,14 @@ document.write(`
 <a class="reference internal image-reference" href="../_images/MEA4x8_assembly.png"><img alt="../_images/MEA4x8_assembly.png" src="../_images/MEA4x8_assembly.png" style="width: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 5 </span><span class="caption-text">4x8 MEA configuration, with a close-up of two sites</span><a class="headerlink" href="#mea4x8" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 7 </span><span class="caption-text">4x8 MEA configuration, with a close-up of two sites</span><a class="headerlink" href="#mea4x8" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="mea1x32">
 <a class="reference internal image-reference" href="../_images/MEA32_assembly.png"><img alt="../_images/MEA32_assembly.png" src="../_images/MEA32_assembly.png" style="width: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 6 </span><span class="caption-text">1x32 MEA configuration</span><a class="headerlink" href="#mea1x32" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 8 </span><span class="caption-text">1x32 MEA configuration</span><a class="headerlink" href="#mea1x32" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>As there is no cross-talk between sites in the 4x8 configuration, you may parallelize some experiments, which is not possible with the 1x32 configuration (since the sites have cross-talk).</p>
@@ -528,7 +529,7 @@ document.write(`
 <a class="reference internal image-reference" href="../_images/partially-covered-MEA.png"><img alt="../_images/partially-covered-MEA.png" src="../_images/partially-covered-MEA.png" style="width: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 7 </span><span class="caption-text">Partially covered MEA site, highlighted by the red arrow</span><a class="headerlink" href="#partially-covered-mea" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 9 </span><span class="caption-text">Partially covered MEA site, highlighted by the red arrow</span><a class="headerlink" href="#partially-covered-mea" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <!-- TODO add MEA activity -->
@@ -577,7 +578,7 @@ document.write(`
 <a class="reference internal image-reference" href="../_images/signal-vs-noise.png"><img alt="../_images/signal-vs-noise.png" src="../_images/signal-vs-noise.png" style="width: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 8 </span><span class="caption-text">Example of a signal (top) and noise (bottom) on the same channel from the live view. Scale of +/- 100 µV. Note that the noisy channel shown here is not covered by the organoid.</span><a class="headerlink" href="#signal-vs-noise" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 10 </span><span class="caption-text">Example of a signal (top) and noise (bottom) on the same channel from the live view. Scale of +/- 100 µV. Note that the noisy channel shown here is not covered by the organoid.</span><a class="headerlink" href="#signal-vs-noise" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <!-- TODO add high-freq artifacts and overlays of real signal -->
@@ -641,14 +642,14 @@ See the <a class="reference internal" href="np_usage.html#np-core-variance-thres
 <a class="reference internal image-reference" href="../_images/artifacts-raw-example.png"><img alt="../_images/artifacts-raw-example.png" src="../_images/artifacts-raw-example.png" style="width: 800px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 9 </span><span class="caption-text">Example of artifacts in the raw events. Notice the large “wave”-like shape, with a very large amplitude.</span><a class="headerlink" href="#artifacts-raw-example" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 11 </span><span class="caption-text">Example of artifacts in the raw events. Notice the large “wave”-like shape, with a very large amplitude.</span><a class="headerlink" href="#artifacts-raw-example" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="signal-example">
 <a class="reference internal image-reference" href="../_images/signal-example.png"><img alt="../_images/signal-example.png" src="../_images/signal-example.png" style="width: 800px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 10 </span><span class="caption-text">Example of a signal from an organoid. Notice the variability, small amplitude, and “dip” before the peak.</span><a class="headerlink" href="#signal-example" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 12 </span><span class="caption-text">Example of a signal from an organoid. Notice the variability, small amplitude, and “dip” before the peak.</span><a class="headerlink" href="#signal-example" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>On a dedicated access, you can also tune analog and digital filters to decrease the delay; please contact us for more information.</p>
@@ -760,12 +761,12 @@ See <a class="reference internal" href="np_usage.html#np-core-variance-threshold
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="closed_loop.html"
+       href="best_practices.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Closed-loop : reading and stimulating</p>
+        <p class="prev-next-title">Best Practices</p>
       </div>
     </a>
     <a class="right-next"
