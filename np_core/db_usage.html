@@ -185,6 +185,8 @@
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="np_usage.html">System basics and stimulating organoids</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Database usage and fetching results</a></li>
+
+
 <li class="toctree-l1"><a class="reference internal" href="closed_loop.html">Closed-loop : reading and stimulating</a></li>
 <li class="toctree-l1"><a class="reference internal" href="best_practices.html">Best Practices</a></li>
 <li class="toctree-l1"><a class="reference internal" href="faq.html">Troubleshoothing &amp; FAQ</a></li>
@@ -408,6 +410,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Database usage and fetching results</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connection-to-the-database">Connection to the database</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-code">Example code</a></li>
 </ul>
@@ -430,6 +433,11 @@ document.write(`
 </ul>
 </li>
 </ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">——————————–</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-metadata-about-your-experiment">Getting metadata about your experiment</a></li>
+</ul>
+
             </nav>
         </div>
     </div>
@@ -704,6 +712,91 @@ We recommed starting with 5 minutes, and increasing/decreasing the window as nee
 </section>
 </section>
 </section>
+<section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1>——————————–<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="getting-metadata-about-your-experiment">
+<h1>Getting metadata about your experiment<a class="headerlink" href="#getting-metadata-about-your-experiment" title="Link to this heading">#</a></h1>
+<p>Some information about your experiments are available with the following commands. They can be useful understand and study your results, don’t hesitate to use them!</p>
+<p>If you need more information about those data, contact us on Discord or by email.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">neuroplatform</span><span class="w"> </span><span class="kn">import</span> <span class="n">elab</span>
+
+<span class="c1"># Create the object elab()</span>
+<span class="n">metadata</span> <span class="o">=</span> <span class="n">elab</span><span class="p">()</span>
+<span class="n">metadata</span><span class="o">.</span><span class="n">check_server</span><span class="p">()</span>  <span class="c1"># This should print : &#39;The server works !&#39; if everything is fine!</span>
+
+<span class="c1"># Choose the experiment you want to study : here for example we use &#39;fs410&#39;</span>
+<span class="n">fs_name</span> <span class="o">=</span> <span class="s2">&quot;fs410&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>1- Get the starting date of your experiment (the date when the organoids were put on the MEA) :</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">starting_date</span> <span class="o">=</span> <span class="n">metadata</span><span class="o">.</span><span class="n">get_start_date</span><span class="p">(</span><span class="n">fs_name</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">starting_date</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>2- Get the cell batch (the cell batch with which the organoids of your experiment were generated) :</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">cell_batch</span> <span class="o">=</span> <span class="n">metadata</span><span class="o">.</span><span class="n">get_cell_batch</span><span class="p">(</span><span class="n">fs_name</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">cell_batch</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>3- Get the medium (the medium that was used on the MEA to keep the organoids alive) :</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">medium</span> <span class="o">=</span> <span class="n">metadata</span><span class="o">.</span><span class="n">get_medium</span><span class="p">(</span><span class="n">fs_name</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">medium</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>4- Get the MEA (the name of the MEA on which your experiment is happening) :</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">mea</span> <span class="o">=</span> <span class="n">metadata</span><span class="o">.</span><span class="n">get_mea</span><span class="p">(</span><span class="n">fs_name</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mea</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>5- Get the pump (the type of pump, the flux and the flux unit) :</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pump</span> <span class="o">=</span> <span class="n">metadata</span><span class="o">.</span><span class="n">get_pump</span><span class="p">(</span><span class="n">fs_name</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pump</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>6- Get the protocols (this gives indications about which version of MEA is used for this experiment) :</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">protocols</span> <span class="o">=</span> <span class="n">metadata</span><span class="o">.</span><span class="n">get_protocols</span><span class="p">(</span><span class="n">fs_name</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">protocols</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>7- Get the death date (the date when the organoids were removed from the MEA) :</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">death_date</span> <span class="o">=</span> <span class="n">metadata</span><span class="o">.</span><span class="n">get_death_date</span><span class="p">(</span><span class="n">fs_name</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">death_date</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -769,6 +862,7 @@ We recommed starting with 5 minutes, and increasing/decreasing the window as nee
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Database usage and fetching results</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connection-to-the-database">Connection to the database</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-code">Example code</a></li>
 </ul>
@@ -791,6 +885,11 @@ We recommed starting with 5 minutes, and increasing/decreasing the window as nee
 </ul>
 </li>
 </ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">——————————–</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-metadata-about-your-experiment">Getting metadata about your experiment</a></li>
+</ul>
+
   </nav></div>
 
 </div></div>
