@@ -1,0 +1,1076 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>NeuroPlatform Version 2 &#8212; NeuroPlatform Documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=990f3d29" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'np_core/doc_v2';</script>
+    <link rel="icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Recording live data" href="../np_utils/livemea.html" />
+    <link rel="prev" title="Troubleshoothing &amp; FAQ" href="faq.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../welcome.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="NeuroPlatform Documentation - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="NeuroPlatform Documentation - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../welcome.html">
+                    Welcome to the NeuroPlatform documentation!
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">NeuroPlatform usage</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="np_usage.html">System basics and stimulating organoids</a></li>
+<li class="toctree-l1"><a class="reference internal" href="db_usage.html">Database usage and fetching results</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="closed_loop.html">Closed-loop : reading and stimulating</a></li>
+<li class="toctree-l1"><a class="reference internal" href="best_practices.html">Best Practices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">Troubleshoothing &amp; FAQ</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">NeuroPlatform Version 2</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">NeuroPlatform utilities</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../np_utils/livemea.html">Recording live data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../np_utils/stimparamloader.html">Stimulation parameter loader</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../np_utils/stimscan.html">Stimulation parameter scan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../np_utils/spikesorting.html">Spike sorting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../np_utils/crosscorr.html">Cross-correlograms</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/FinalSpark-np/np-docs" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/FinalSpark-np/np-docs/edit/main/neuroplatform-docs/np_core/doc_v2.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/FinalSpark-np/np-docs/issues/new?title=Issue%20on%20page%20%2Fnp_core/doc_v2.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/np_core/doc_v2.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>NeuroPlatform Version 2</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#intan-interface">1- Intan interface</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python-code">2- Python Code</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#imports">Imports</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#empty-shell-of-an-experiment">Empty shell of an experiment</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stimulation-parameters">Stimulation parameters</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#stimparam-reference">StimParam reference</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#triggers">Triggers</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-experiment">Example experiment :</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#closed-loop">Closed Loop</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#database">Database</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Triggers</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spike-counts">Spike Counts</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spike-events">Spike Events</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#raw-data">Raw data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#camera">Camera</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="neuroplatform-version-2">
+<h1>NeuroPlatform Version 2<a class="headerlink" href="#neuroplatform-version-2" title="Link to this heading">#</a></h1>
+<p>This version of the neuroplatform is for now only for dedicated clients that are not using the shared access.</p>
+<p>The interface and the code are slightly different from the version 1. Here is a small overview of how this version works. We will go through the visual interface, then the code and finally the database.</p>
+<section id="intan-interface">
+<h2>1- Intan interface<a class="headerlink" href="#intan-interface" title="Link to this heading">#</a></h2>
+<p>Here is what the interface looks like :</p>
+<figure class="align-default" id="npv2-interface">
+<a class="reference internal image-reference" href="../_images/NPv2_interface.png"><img alt="../_images/NPv2_interface.png" src="../_images/NPv2_interface.png" style="width: 100%;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 13 </span><span class="caption-text">NeuroPlatform v2 interface.</span><a class="headerlink" href="#npv2-interface" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>To get the overlays of spikes for one electrode, first click on a trace to select it, then go to Tools / Spike Scope :</p>
+<figure class="align-default" id="path-spike-scope">
+<a class="reference internal image-reference" href="../_images/path_spike_scope.png"><img alt="../_images/path_spike_scope.png" src="../_images/path_spike_scope.png" style="width: 15%;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 14 </span><span class="caption-text">Path to Spike Scope.</span><a class="headerlink" href="#path-spike-scope" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>It will open a new window (see below). Click on ‘Set to Selected’ to see the trace you had chosen before.</p>
+<p>Adapt manually the treshold of amplitude value you want to use to detect spikes.</p>
+<p>You can also have an idea of the electrode noise by checking the value ‘RMS’ on the top left.</p>
+<figure class="align-default" id="spike-scope">
+<a class="reference internal image-reference" href="../_images/spike_scope.png"><img alt="../_images/spike_scope.png" src="../_images/spike_scope.png" style="width: 80%;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 15 </span><span class="caption-text">Spike Scope.</span><a class="headerlink" href="#spike-scope" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="python-code">
+<h2>2- Python Code<a class="headerlink" href="#python-code" title="Link to this heading">#</a></h2>
+<section id="imports">
+<h3>Imports<a class="headerlink" href="#imports" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="n">autoawait</span> <span class="n">asyncio</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">timedelta</span><span class="p">,</span> <span class="n">datetime</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">neuroplatformv2.core.trigger</span><span class="w"> </span><span class="kn">import</span> <span class="n">TriggerController</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">neuroplatformv2.core.database</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">DatabaseController</span><span class="p">,</span>
+    <span class="n">TriggersQuery</span><span class="p">,</span>
+    <span class="n">SpikeCountQuery</span><span class="p">,</span>
+    <span class="n">SpikeEventQuery</span><span class="p">,</span>
+    <span class="n">RawSpikeQuery</span><span class="p">,</span>
+    <span class="n">get_raw_spike</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">neuroplatformv2.core.intan</span><span class="w"> </span><span class="kn">import</span> <span class="n">IntanController</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">neuroplatformv2.utils.schemas</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">StimParam</span><span class="p">,</span>
+    <span class="n">StimPolarity</span><span class="p">,</span>
+    <span class="n">StartRawRecordingRequest</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">neuroplatformv2.core.camera</span><span class="w"> </span><span class="kn">import</span> <span class="n">CameraController</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">neuroplatformv2.utils.enumerations</span><span class="w"> </span><span class="kn">import</span> <span class="n">MEA</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="empty-shell-of-an-experiment">
+<h3>Empty shell of an experiment<a class="headerlink" href="#empty-shell-of-an-experiment" title="Link to this heading">#</a></h3>
+<p>Here is the general structure of an experiment. We will see in the next sections how to create stimulation parameters, update them, send stimulations, and disable them.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1 - Define the stimulation parameters</span>
+<span class="c1"># ...</span>
+
+<span class="c1"># 2 - Open the intan and trigger controllers</span>
+<span class="n">intan</span> <span class="o">=</span> <span class="n">IntanController</span><span class="p">()</span>
+<span class="n">trigger</span> <span class="o">=</span> <span class="n">TriggerController</span><span class="p">(</span><span class="s2">&quot;admin&quot;</span><span class="p">)</span>
+
+<span class="c1"># 3 - Start the experiment </span>
+<span class="k">try</span><span class="p">:</span>
+
+    <span class="c1"># 4 - Update your stimulation parameters in the intan</span>
+    <span class="c1"># ...</span>
+
+    <span class="c1"># 5 - Send triggers (that use our stimulation parameters)</span>
+    <span class="c1"># ...</span>
+
+    <span class="c1"># 6 - Disable stimulation parameters</span>
+    <span class="c1"># ...</span>
+
+<span class="c1"># 7 - Close the experiment</span>
+<span class="k">finally</span><span class="p">:</span>
+    <span class="k">await</span> <span class="n">intan</span><span class="o">.</span><span class="n">_close</span><span class="p">()</span>
+    <span class="n">trigger</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="stimulation-parameters">
+<h3>Stimulation parameters<a class="headerlink" href="#stimulation-parameters" title="Link to this heading">#</a></h3>
+<p>We need to define the stimulation parameters.</p>
+<p>Through Python, you will be controlling the Intan software to set the stimulation parameters.</p>
+<p>The software defines stimulations using the elements shown here :</p>
+<figure class="align-default" id="stimparam">
+<a class="reference internal image-reference" href="../_images/stimparam.png"><img alt="../_images/stimparam.png" src="../_images/stimparam.png" style="width: 100%;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 16 </span><span class="caption-text">Stimulation parameters.</span><a class="headerlink" href="#stimparam" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Feel free to use this as a visual reference when setting your parameters.</p>
+</div>
+<p>Stimulation parameters are defined by several values, such as the amplitude, the duration, and the electrode to stimulate.
+See below for a detailed explanation of the parameters.</p>
+<section id="stimparam-reference">
+<h4>StimParam reference<a class="headerlink" href="#stimparam-reference" title="Link to this heading">#</a></h4>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Default Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">enable</span></code></p></td>
+<td><p>Enable stimulation</p></td>
+<td><p>True</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">index</span></code></p></td>
+<td><p>Electrode index [0-127]</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">trigger_key</span></code></p></td>
+<td><p>Trigger key [0-15]</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">polarity</span></code></p></td>
+<td><p>Polarity of the stimulation</p></td>
+<td><p>NegativeFirst</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">phase_duration1</span></code></p></td>
+<td><p>D1 [us]</p></td>
+<td><p>100.0</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">phase_amplitude1</span></code></p></td>
+<td><p>A1 [uA]</p></td>
+<td><p>1.0</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">phase_duration2</span></code></p></td>
+<td><p>D2 [us]</p></td>
+<td><p>100</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">phase_amplitude2</span></code></p></td>
+<td><p>A2 [uA]</p></td>
+<td><p>1.0</p></td>
+</tr>
+<tr class="row-even"><td><p>————————–</p></td>
+<td><p>————————————–</p></td>
+<td><p>—————</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">stim_shape</span></code></p></td>
+<td><p>Stimulation Shape</p></td>
+<td><p>Biphasic</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">interphase_delay</span></code></p></td>
+<td><p>Interphase delay [us]</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">trigger_delay</span></code></p></td>
+<td><p>Post trigger delay [us]</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">nb_pulse</span></code></p></td>
+<td><p>Number of pulses</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">pulse_train_period</span></code></p></td>
+<td><p>Pulse Train Period [us]</p></td>
+<td><p>10000</p></td>
+</tr>
+<tr class="row-even"><td><p>————————–</p></td>
+<td><p>————————————–</p></td>
+<td><p>—————</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">post_stim_ref_period</span></code></p></td>
+<td><p>Post-Stimulation Refractory Period [us]</p></td>
+<td><p>1000.0</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">enable_amp_settle</span></code></p></td>
+<td><p>Enable amplitude settling</p></td>
+<td><p>True</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">pre_stim_amp_settle</span></code></p></td>
+<td><p>Pre-stimulation amplitude settling [us]</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">post_stim_amp_settle</span></code></p></td>
+<td><p>Post-stimulation amplitude settling [us]</p></td>
+<td><p>1000.0</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">enable_charge_recovery</span></code></p></td>
+<td><p>Enable charge recovery</p></td>
+<td><p>True</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">post_charge_recovery_on</span></code></p></td>
+<td><p>Post charge recovery on [us]</p></td>
+<td><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">post_charge_recovery_off</span></code></p></td>
+<td><p>Post charge recovery off [us]</p></td>
+<td><p>100.0</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>You can use the <a class="reference internal" href="../np_utils/stimparamloader.html"><span class="doc std std-doc">StimParamLoader utility</span></a> to help you manage and preview your parameters.</p>
+</div>
+</aside>
+<ul class="simple">
+<li><p><strong>The first section of the table contains the basic parameters for the stimulation.</strong></p>
+<ul>
+<li><p>You likely will have to adapt these for each experiment.</p></li>
+<li><p>If possible, balance the charge of the stimulation.</p>
+<ul>
+<li><p>Ensure that <span class="math notranslate nohighlight">\(\text{phase_duration1} \times \text{phase_amplitude1} = \text{phase_duration2} \times \text{phase_amplitude2}\)</span>.</p></li>
+<li><p>This improves the lifetime of both the organoid and the electrodes.</p></li>
+</ul>
+</li>
+<li><p>The polarity can greatly affect the response. Please remember to check which polarity is best for your experiment.</p></li>
+</ul>
+</li>
+<li><p>The second section contains useful parameters you may want to modify for specific experiments.</p>
+<ul>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">nb_pulse</span></code> parameter is useful for burst stimulation.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">pulse_train_period</span></code> parameter is useful for setting the period of the burst stimulation.</p></li>
+</ul>
+</li>
+<li><p>The last section contains parameters that we recommend leaving as-is.</p>
+<ul>
+<li><p>Please contact us if you have questions regarding the relevance of these parameters for your experiment.</p></li>
+</ul>
+</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Due to the network-based nature of the communication between components, using Python to time your stimulation (e.g. with <code class="docutils literal notranslate"><span class="pre">time.sleep()</span></code>) will always be less precise than using the pulse train settings.
+However, the pulse train settings may not be changed quickly during the experiment, due to the delay when sending the parameters to the headstage of the MEA.</p>
+<p>Therefore, you must choose between <strong>flexible spike trains with less precise timing</strong> (Python) or <strong>precise timing with less flexibility</strong> (pulse train settings).</p>
+</div>
+<p>Here is an example of how to create one Stimulation parameter :</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">stim_param1</span> <span class="o">=</span> <span class="n">StimParam</span><span class="p">()</span>
+<span class="n">stim_param1</span><span class="o">.</span><span class="n">enable</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">stim_param1</span><span class="o">.</span><span class="n">trigger_key</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">stim_param1</span><span class="o">.</span><span class="n">polarity</span> <span class="o">=</span> <span class="n">StimPolarity</span><span class="o">.</span><span class="n">PositiveFirst</span>
+<span class="n">stim_param1</span><span class="o">.</span><span class="n">phase_duration2</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">stim_param1</span><span class="o">.</span><span class="n">display_attributes</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p><strong>Index</strong> : You specify the electrode you want to stimulate.</p>
+<ul>
+<li><p>As mentioned, you cannot use two distinct parameters with the same electrode index. This will overwrite the previous parameter.</p></li>
+</ul>
+</li>
+<li><p><strong>Trigger key</strong> : You specify the trigger that will be sent to the <strong>Intan Controller</strong>. The controller can accomodate up to <strong>16</strong> triggers (from 0 to 15).</p>
+<ul>
+<li><p>When you send a trigger, the <strong>Intan Controller</strong> will execute the parameter(s) associated with that trigger.</p></li>
+</ul>
+</li>
+<li><p><strong>Enable</strong> : if the parameter is enabled, the <strong>Intan Software</strong> will record that a given parameter is set for a given trigger.</p></li>
+</ul>
+<p>Then create a list of all the stimulation parameters you created :</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">stim_params</span> <span class="o">=</span> <span class="p">[</span><span class="n">stim_param1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Finally we can update those parameters to the intan (this is necessary in order to use them later) :</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">await</span> <span class="n">intan</span><span class="o">.</span><span class="n">_send_stimparam</span><span class="p">(</span><span class="n">stim_params</span><span class="p">)</span>
+<span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="k">await</span> <span class="n">intan</span><span class="o">.</span><span class="n">_upload_stimparam</span><span class="p">()</span>
+<span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>At the end of every experiment, disable all the stimulation parameters by changing the ‘enable’ parameter to ‘False’ and updating them in the intan again :</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">stim_param</span> <span class="ow">in</span> <span class="n">stim_params</span><span class="p">:</span>
+    <span class="n">stim_param</span><span class="o">.</span><span class="n">enable</span> <span class="o">=</span> <span class="kc">False</span>
+
+<span class="k">await</span> <span class="n">intan</span><span class="o">.</span><span class="n">_send_stimparam</span><span class="p">(</span><span class="n">stim_params</span><span class="p">)</span>
+<span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="k">await</span> <span class="n">intan</span><span class="o">.</span><span class="n">_upload_stimparam</span><span class="p">()</span>
+<span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="triggers">
+<h3>Triggers<a class="headerlink" href="#triggers" title="Link to this heading">#</a></h3>
+<p>The main new concept here is how to send triggers.</p>
+<p>When you send a given trigger(s), the <strong>TriggerGenerator</strong> will send a signal to the <strong>Intan Controller</strong> to execute the <strong>StimParam</strong>(s) you set for the trigger(s).</p>
+<p>To send triggers, use a 16-length array of uint8 to send the triggers. If the value is 1, the trigger is sent. If the value is 0, the trigger is not sent.</p>
+<p>For example, to send trigger 3, we would define the array as follows:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">trigger_gen</span> <span class="o">=</span> <span class="n">TriggerController</span><span class="p">(</span><span class="s2">&quot;admin&quot;</span><span class="p">)</span>
+<span class="n">trigger_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span>
+    <span class="mi">16</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span>
+<span class="p">)</span>  <span class="c1"># Here all the triggers are set to 0, so none will be sent</span>
+
+<span class="n">trigger_array</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># This will send a trigger to the stimulation with trigger_key = 3</span>
+
+<span class="o">...</span>  <span class="c1"># Run experiment ...</span>
+
+<span class="n">trigger_gen</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>  <span class="c1"># Close the trigger generator</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="example-experiment">
+<h3>Example experiment :<a class="headerlink" href="#example-experiment" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">stim_param1</span> <span class="o">=</span> <span class="n">StimParam</span><span class="p">()</span>  <span class="c1"># Create the stimulation parameter</span>
+<span class="n">stim_param1</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="mi">23</span>  <span class="c1"># Associate it to the electrode 23</span>
+<span class="n">stim_param1</span><span class="o">.</span><span class="n">trigger_key</span> <span class="o">=</span> <span class="mi">2</span>  <span class="c1"># Associate it to the trigger 2</span>
+
+<span class="n">stim_params</span> <span class="o">=</span> <span class="p">[</span><span class="n">stim_param1</span><span class="p">]</span>  <span class="c1"># Put all the stimulation parameters in a list</span>
+
+<span class="n">intan</span> <span class="o">=</span> <span class="n">IntanController</span><span class="p">()</span>  <span class="c1"># Open the intan controller</span>
+<span class="n">trigger</span> <span class="o">=</span> <span class="n">TriggerController</span><span class="p">(</span><span class="s2">&quot;admin&quot;</span><span class="p">)</span>  <span class="c1"># Open the trigger controller</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">start_exp</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">utcnow</span><span class="p">()</span>
+
+    <span class="k">await</span> <span class="n">intan</span><span class="o">.</span><span class="n">_send_stimparam</span><span class="p">(</span>
+        <span class="n">stim_params</span>
+    <span class="p">)</span>  <span class="c1"># Update the stimulation parameters in the intan</span>
+    <span class="k">await</span> <span class="n">intan</span><span class="o">.</span><span class="n">_upload_stimparam</span><span class="p">()</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+
+    <span class="n">trig_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span>
+        <span class="mi">16</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span>
+    <span class="p">)</span>  <span class="c1"># Create the trigger matrix and set the trigger 2 to 1 (so it is activated)</span>
+    <span class="n">trig_array</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+        <span class="k">await</span> <span class="n">trigger</span><span class="o">.</span><span class="n">send</span><span class="p">(</span>
+            <span class="n">trig_array</span>
+        <span class="p">)</span>  <span class="c1"># Send the trigger matrix (this one has the trigger 2 ativated, and the stim_param1 is associated to it, so it will send the stim_param1 on the electrode 23)</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="n">stim_param1</span><span class="o">.</span><span class="n">enable</span> <span class="o">=</span> <span class="kc">False</span>  <span class="c1"># Disable all the stimulation parameters</span>
+    <span class="k">await</span> <span class="n">intan</span><span class="o">.</span><span class="n">_send_stimparam</span><span class="p">(</span><span class="n">stim_params</span><span class="p">)</span>
+    <span class="k">await</span> <span class="n">intan</span><span class="o">.</span><span class="n">_upload_stimparam</span><span class="p">()</span>
+
+<span class="k">finally</span><span class="p">:</span>
+    <span class="k">await</span> <span class="n">intan</span><span class="o">.</span><span class="n">_close</span><span class="p">()</span>  <span class="c1"># Close the intan and trigger controllers</span>
+    <span class="n">trigger</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="closed-loop">
+<h3>Closed Loop<a class="headerlink" href="#closed-loop" title="Link to this heading">#</a></h3>
+<p>If you need to read instantaneously the data from the organoid, you can use the _count_spike function of the intan. It will give you the number of counted spikes for each electrodes during the time interval of your choice.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">intan</span> <span class="o">=</span> <span class="n">IntanController</span><span class="p">()</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="c1"># ...</span>
+    <span class="n">count_spike</span> <span class="o">=</span> <span class="k">await</span> <span class="n">intan</span><span class="o">.</span><span class="n">_count_spike</span><span class="p">(</span>
+        <span class="mi">100</span>
+    <span class="p">)</span>  <span class="c1"># Here you just precise how many ms you want to record</span>
+    <span class="c1"># ...</span>
+
+<span class="k">finally</span><span class="p">:</span>
+    <span class="k">await</span> <span class="n">intan</span><span class="o">.</span><span class="n">_close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="database">
+<h2>Database<a class="headerlink" href="#database" title="Link to this heading">#</a></h2>
+<p>Now let’s see how we can retrieve our experimental data.</p>
+<section id="id1">
+<h3>Triggers<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<p>You can get the list of triggers that were sent to the organoid in a chosen time interval with :</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Choose your start and stop times in datetime</span>
+<span class="n">start</span> <span class="o">=</span> <span class="o">...</span>
+<span class="n">stop</span> <span class="o">=</span> <span class="o">...</span>
+<span class="n">query</span> <span class="o">=</span> <span class="n">TriggersQuery</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">stop</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="k">await</span> <span class="n">DatabaseController</span><span class="o">.</span><span class="n">get_all_triggers</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+<span class="n">df_trig</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;up&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s2">&quot;up&quot;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="p">)</span>  <span class="c1"># This lines removes all the duplicates (because df contains all the moments when each trigger went on AND off)</span>
+<span class="n">df_trig</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="spike-counts">
+<h3>Spike Counts<a class="headerlink" href="#spike-counts" title="Link to this heading">#</a></h3>
+<p>This gives you the number of spikes per minutes in a chosen time interval for each electrode. To do that, you need to know the ID (fs…) of the experiment you want to study.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">query</span> <span class="o">=</span> <span class="n">SpikeCountQuery</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">stop</span><span class="p">,</span> <span class="n">fsname</span><span class="o">=</span><span class="s2">&quot;fs264&quot;</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="k">await</span> <span class="n">DatabaseController</span><span class="o">.</span><span class="n">get_spike_count</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="spike-events">
+<h3>Spike Events<a class="headerlink" href="#spike-events" title="Link to this heading">#</a></h3>
+<p>This gives you the timing of each spikes that happened on every electrode in a chosen time interval. Again, you need to know the ID of your experiment.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">query</span> <span class="o">=</span> <span class="n">SpikeEventQuery</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">stop</span><span class="p">,</span> <span class="n">fsname</span><span class="o">=</span><span class="s2">&quot;fs264&quot;</span><span class="p">)</span>
+<span class="n">df_events</span> <span class="o">=</span> <span class="k">await</span> <span class="n">DatabaseController</span><span class="o">.</span><span class="n">get_spike_event</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+<span class="n">df_events</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="raw-data">
+<h3>Raw data<a class="headerlink" href="#raw-data" title="Link to this heading">#</a></h3>
+<p>You can retrieve the raw data for a specific electrode for a chosen time interval. Remember that we only register 3 ms of raw data around each spike! So the best practice is to first get the spike timing (see Spike Events section right above) and then fetch raw data around it. You can then plot them.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="n">df_events</span><span class="p">[</span><span class="s2">&quot;Time&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">start</span> <span class="o">=</span> <span class="n">t</span> <span class="o">-</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">milliseconds</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">stop</span> <span class="o">=</span> <span class="n">t</span> <span class="o">+</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">milliseconds</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">query</span> <span class="o">=</span> <span class="n">RawSpikeQuery</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="n">start</span><span class="p">,</span> <span class="n">stop</span><span class="o">=</span><span class="n">stop</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">channel</span><span class="p">)</span>
+<span class="n">raw</span> <span class="o">=</span> <span class="k">await</span> <span class="n">get_raw_spike</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="camera">
+<h3>Camera<a class="headerlink" href="#camera" title="Link to this heading">#</a></h3>
+<p>To get a picture of your current MEA :</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">cam</span> <span class="o">=</span> <span class="n">CameraController</span><span class="p">(</span><span class="n">mea</span><span class="o">=</span><span class="n">MEA</span><span class="o">.</span><span class="n">Five</span><span class="p">)</span>
+<span class="n">lastcapture</span> <span class="o">=</span> <span class="k">await</span> <span class="n">cam</span><span class="o">.</span><span class="n">_last_capture</span><span class="p">()</span>
+<span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">lastcapture</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="n">lastcapture</span> <span class="o">=</span> <span class="n">lastcapture</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;id&quot;</span><span class="p">]</span>
+    <span class="n">img</span> <span class="o">=</span> <span class="n">cam</span><span class="o">.</span><span class="n">_image_from</span><span class="p">(</span><span class="n">lastcapture</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./np_core"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="faq.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Troubleshoothing &amp; FAQ</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../np_utils/livemea.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Recording live data</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#intan-interface">1- Intan interface</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python-code">2- Python Code</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#imports">Imports</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#empty-shell-of-an-experiment">Empty shell of an experiment</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stimulation-parameters">Stimulation parameters</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#stimparam-reference">StimParam reference</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#triggers">Triggers</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-experiment">Example experiment :</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#closed-loop">Closed Loop</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#database">Database</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Triggers</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spike-counts">Spike Counts</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spike-events">Spike Events</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#raw-data">Raw data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#camera">Camera</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By the FinalSpark team - Vevey, Switzerland
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright FinalSpark 2024-2025.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
