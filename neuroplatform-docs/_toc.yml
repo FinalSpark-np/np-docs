@@ -3,18 +3,8 @@
 format: jb-book
 root: welcome
 parts:
-  - caption: NeuroPlatform usage
+  - caption: NeuroPlatform v2
     chapters:
-    - file : np_core/np_usage
-    - file : np_core/db_usage
-    - file : np_core/closed_loop
+    - file : np_core/doc_v2
     - file : np_core/best_practices
     - file : np_core/faq
-    - file : np_core/doc_v2
-  - caption: NeuroPlatform utilities
-    chapters:
-    - file : np_utils/livemea
-    - file : np_utils/stimparamloader
-    - file : np_utils/stimscan
-    - file : np_utils/spikesorting
-    - file : np_utils/crosscorr

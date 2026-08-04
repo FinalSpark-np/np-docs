@@ -21,14 +21,20 @@ before committing changes.
 
 ## Building the documentation
 
-Install jupyter-book and run the following command to build the documentation:
+Install the documentation dependencies and run the following command to build the documentation:
 
 ```bash
-pip install jupyter-book
+pip install -r requirements-dev.txt
 jb build neuroplatform-docs
 ```
 
 and access the built documentation in the `_build/html/index.html` file.
+
+Inside the devcontainer, you can preview the built site on the forwarded port:
+
+```bash
+python -m http.server 8080 --directory neuroplatform-docs/_build/html
+```
 
 ## Custom CSS
 

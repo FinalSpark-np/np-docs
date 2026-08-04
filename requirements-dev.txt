@@ -1,0 +1,2 @@
+jupyter-book<2
+pre-commit
