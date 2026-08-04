@@ -16,42 +16,45 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-
-  
-  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=990f3d29" />
   
+  <!-- So that users can add custom icons -->
+  <script defer src="../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
-  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
 
     <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../_static/copybutton.js?v=f281be69"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../_static/togglebutton.js?v=b8b12719"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../_static/design-tabs.js?v=f930bc37"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
@@ -61,41 +64,37 @@
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'np_core/faq';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <link rel="icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="NeuroPlatform Version 2" href="doc_v2.html" />
     <link rel="prev" title="Best Practices" href="best_practices.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../_static/searchtools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../searchindex.js"></script>
+  
   </head>
-  
-  
-  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
-
+  <body data-default-mode="">
   
   
   <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
   
   <div id="pst-scroll-pixel-helper"></div>
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
-
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-primary-sidebar-checkbox"/>
-  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-secondary-sidebar-checkbox"/>
-  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
+  
+  <dialog id="pst-search-dialog">
+    
 <form class="bd-search d-flex align-items-center"
       action="../search.html"
       method="get">
@@ -103,7 +102,6 @@
   <input type="search"
          class="form-control"
          name="q"
-         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -111,15 +109,59 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
+</form>
+  </dialog>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
 </div>
 
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
     </header>
   
 
@@ -128,7 +170,8 @@
       
       
       
-      <div class="bd-sidebar-primary bd-sidebar">
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -158,21 +201,17 @@
     
     
     <img src="../_static/logo.png" class="logo__image only-light" alt="NeuroPlatform Documentation - Home"/>
-    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="NeuroPlatform Documentation - Home"/>`);</script>
+    <img src="../_static/logo.png" class="logo__image only-dark pst-js-only" alt="NeuroPlatform Documentation - Home"/>
   
   
 </a></div>
         <div class="sidebar-primary-item">
 
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
@@ -183,24 +222,11 @@
                 </a>
             </li>
         </ul>
-        <p aria-level="2" class="caption" role="heading"><span class="caption-text">NeuroPlatform usage</span></p>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">NeuroPlatform v2</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="np_usage.html">System basics and stimulating organoids</a></li>
-<li class="toctree-l1"><a class="reference internal" href="db_usage.html">Database usage and fetching results</a></li>
-
-
-<li class="toctree-l1"><a class="reference internal" href="closed_loop.html">Closed-loop : reading and stimulating</a></li>
+<li class="toctree-l1"><a class="reference internal" href="doc_v2.html">neuroplatformv2 API Guide for Python Notebooks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="best_practices.html">Best Practices</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Troubleshoothing &amp; FAQ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="doc_v2.html">NeuroPlatform Version 2</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">NeuroPlatform utilities</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../np_utils/livemea.html">Recording live data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../np_utils/stimparamloader.html">Stimulation parameter loader</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../np_utils/stimscan.html">Stimulation parameter scan</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../np_utils/spikesorting.html">Spike sorting</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../np_utils/crosscorr.html">Cross-correlograms</a></li>
 </ul>
 
     </div>
@@ -209,9 +235,14 @@
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
   </div>
-  
-  <div id="rtd-footer-container"></div>
 
 
       </div>
@@ -358,7 +389,7 @@
 
 
 <button onclick="toggleFullScreen()"
-  class="btn btn-sm btn-fullscreen-button"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
   title="Fullscreen mode"
   data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
@@ -372,25 +403,17 @@
 
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
-  </button>
-`);
-</script>
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-  </button>
-`);
-</script>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
 </button>
 </div></div>
@@ -412,7 +435,7 @@ document.write(`
                 <h2> Contents </h2>
             </div>
             <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+                <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contact">Contact</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#public-channels">Public channels</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#private-channels">Private channels</a></li>
@@ -439,16 +462,9 @@ document.write(`
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#stimulation-does-not-elicit-any-response-from-the-organoid">Stimulation does not elicit any response from the organoid</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#database-and-experiment-tokens">Database and experiment tokens</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#database-access">Database access</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#how-are-spike-events-obtained-why-is-the-minimal-inter-spike-interval-always-3ms">How are spike events obtained ? Why is the minimal inter-spike interval always 3ms ?</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#i-do-not-have-an-experiment-token-or-it-is-no-longer-valid">I do not have an Experiment token, or it is no longer valid</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#i-receive-only-empty-data-plots-from-the-database-even-though-the-same-code-worked-previously">I receive only empty data/plots from the database, even though the same code worked previously</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#when-starting-my-experiment-i-receive-an-error-about-an-experiment-already-running-shared-access">When starting my experiment, I receive an error about an experiment already running (shared access)</a></li>
-</ul>
-</li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#neuroplatform-utilities">Neuroplatform utilities</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#the-livemea-recording-tool-stopped-working">The LiveMEA recording tool stopped working</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#there-is-an-issue-with-neuroplatform-utilities">There is an issue with Neuroplatform utilities</a></li>
 </ul>
 </li>
 </ul>
@@ -504,14 +520,14 @@ document.write(`
 <a class="reference internal image-reference" href="../_images/MEA4x8_assembly.png"><img alt="../_images/MEA4x8_assembly.png" src="../_images/MEA4x8_assembly.png" style="width: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 7 </span><span class="caption-text">4x8 MEA configuration, with a close-up of two sites</span><a class="headerlink" href="#mea4x8" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 3 </span><span class="caption-text">4x8 MEA configuration, with a close-up of two sites</span><a class="headerlink" href="#mea4x8" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="mea1x32">
 <a class="reference internal image-reference" href="../_images/MEA32_assembly.png"><img alt="../_images/MEA32_assembly.png" src="../_images/MEA32_assembly.png" style="width: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 8 </span><span class="caption-text">1x32 MEA configuration</span><a class="headerlink" href="#mea1x32" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 4 </span><span class="caption-text">1x32 MEA configuration</span><a class="headerlink" href="#mea1x32" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>As there is no cross-talk between sites in the 4x8 configuration, you may parallelize some experiments, which is not possible with the 1x32 configuration (since the sites have cross-talk).</p>
@@ -532,7 +548,7 @@ document.write(`
 <a class="reference internal image-reference" href="../_images/partially-covered-MEA.png"><img alt="../_images/partially-covered-MEA.png" src="../_images/partially-covered-MEA.png" style="width: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 9 </span><span class="caption-text">Partially covered MEA site, highlighted by the red arrow</span><a class="headerlink" href="#partially-covered-mea" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 5 </span><span class="caption-text">Partially covered MEA site, highlighted by the red arrow</span><a class="headerlink" href="#partially-covered-mea" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <!-- TODO add MEA activity -->
@@ -581,7 +597,7 @@ document.write(`
 <a class="reference internal image-reference" href="../_images/signal-vs-noise.png"><img alt="../_images/signal-vs-noise.png" src="../_images/signal-vs-noise.png" style="width: 400px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 10 </span><span class="caption-text">Example of a signal (top) and noise (bottom) on the same channel from the live view. Scale of +/- 100 µV. Note that the noisy channel shown here is not covered by the organoid.</span><a class="headerlink" href="#signal-vs-noise" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 6 </span><span class="caption-text">Example of a signal (top) and noise (bottom) on the same channel from the live view. Scale of +/- 100 µV. Note that the noisy channel shown here is not covered by the organoid.</span><a class="headerlink" href="#signal-vs-noise" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <!-- TODO add high-freq artifacts and overlays of real signal -->
@@ -605,30 +621,23 @@ document.write(`
 <p>A spiking rate of up to 1500 per minute is still normal (especially in the presence of bursts), but an order of magnitude more would indicate an issue with the event threshold.</p>
 <p>For instance, during a burst event, the voltage will nearly always be above the threshold, which will result in an artificial event every 3ms during the burst. However, the many spikes that occur will be merged under several events of 3ms duration.
 Feel free to ask if you have further doubts regarding the activity of a channel.</p>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>Make sure to reset the variable threshold to True whenever you start or finish an experiment.<br>
-See the <a class="reference internal" href="np_usage.html#np-core-variance-threshold"><span class="std std-ref">relevant API section</span></a>.</p>
-</div>
+<p>If the event threshold appears incorrect, contact the laboratory operator before changing acquisition settings.</p>
 </section>
 </section>
 <section id="stimulation-and-parameters">
 <span id="faq-stimulation"></span><h3>Stimulation and parameters<a class="headerlink" href="#stimulation-and-parameters" title="Link to this heading">#</a></h3>
 <section id="i-am-unsure-about-triggers-parameters-and-how-i-can-parallelize-my-experiments-or-dynamically-change-parameters">
 <h4>I am unsure about triggers/parameters, and how I can parallelize my experiments or dynamically change parameters<a class="headerlink" href="#i-am-unsure-about-triggers-parameters-and-how-i-can-parallelize-my-experiments-or-dynamically-change-parameters" title="Link to this heading">#</a></h4>
-<p>Please re-read the <a class="reference internal" href="np_usage.html#np-core-basics"><span class="std std-ref">system basics</span></a> page. If anything is still unclear, please contact us.</p>
+<p>Please review the <a class="reference internal" href="doc_v2.html"><span class="doc std std-doc">neuroplatformv2 API guide</span></a>, especially the stimulation safety and trigger sections. If anything is still unclear, contact us.</p>
 </section>
 <section id="some-triggers-cause-stimulation-on-several-sites-meas-in-an-unexpected-way">
 <h4>Some triggers cause stimulation on several sites/MEAs in an unexpected way<a class="headerlink" href="#some-triggers-cause-stimulation-on-several-sites-meas-in-an-unexpected-way" title="Link to this heading">#</a></h4>
 <p>Please make sure to disable all parameters at the end of your experiment, as they are not reset automatically.</p>
-<ul class="simple">
-<li><p>On the shared access, if you suspect there may be leftover triggers from a previous experiment, please contact us.</p></li>
-<li><p>On a dedicated access, please remove any other triggers that may be active.</p></li>
-</ul>
+<p>Call <code class="docutils literal notranslate"><span class="pre">await</span> <span class="pre">IntanController.disable_all_stim()</span></code> to return stimulation to a safe state. If you suspect another hardware configuration is still active, contact the laboratory operator.</p>
 </section>
 <section id="how-can-i-find-the-best-parameters-for-stimulation-how-should-i-stimulate-to-get-maximal-responses-from-the-organoid">
 <h4>How can I find the best parameters for stimulation ? How should I stimulate to get maximal responses from the organoid?<a class="headerlink" href="#how-can-i-find-the-best-parameters-for-stimulation-how-should-i-stimulate-to-get-maximal-responses-from-the-organoid" title="Link to this heading">#</a></h4>
-<p>Our <a class="reference internal" href="../np_utils/stimscan.html#np-utils-stimscan"><span class="std std-ref">StimScan utility</span></a> may be useful to find the best parameters for your experiment.</p>
+<p>Test a small, operator-approved parameter range and record the response for each combination. Enforce strict limits on amplitude, duration, electrodes, trials, and total runtime.</p>
 </section>
 <section id="how-long-should-i-wait-after-a-stimulation-to-start-taking-events-into-account-and-avoid-artifacts">
 <span id="faq-stim-artifacts"></span><h4>How long should I wait after a stimulation to start taking events into account and avoid artifacts?<a class="headerlink" href="#how-long-should-i-wait-after-a-stimulation-to-start-taking-events-into-account-and-avoid-artifacts" title="Link to this heading">#</a></h4>
@@ -645,14 +654,14 @@ See the <a class="reference internal" href="np_usage.html#np-core-variance-thres
 <a class="reference internal image-reference" href="../_images/artifacts-raw-example.png"><img alt="../_images/artifacts-raw-example.png" src="../_images/artifacts-raw-example.png" style="width: 800px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 11 </span><span class="caption-text">Example of artifacts in the raw events. Notice the large “wave”-like shape, with a very large amplitude.</span><a class="headerlink" href="#artifacts-raw-example" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 7 </span><span class="caption-text">Example of artifacts in the raw events. Notice the large “wave”-like shape, with a very large amplitude.</span><a class="headerlink" href="#artifacts-raw-example" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="signal-example">
 <a class="reference internal image-reference" href="../_images/signal-example.png"><img alt="../_images/signal-example.png" src="../_images/signal-example.png" style="width: 800px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 12 </span><span class="caption-text">Example of a signal from an organoid. Notice the variability, small amplitude, and “dip” before the peak.</span><a class="headerlink" href="#signal-example" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 8 </span><span class="caption-text">Example of a signal from an organoid. Notice the variability, small amplitude, and “dip” before the peak.</span><a class="headerlink" href="#signal-example" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>On a dedicated access, you can also tune analog and digital filters to decrease the delay; please contact us for more information.</p>
@@ -660,14 +669,14 @@ See the <a class="reference internal" href="np_usage.html#np-core-variance-thres
 </section>
 <section id="i-am-unsure-about-the-stimulation-parameters-and-or-am-not-sure-they-are-correctly-set">
 <h4>I am unsure about the stimulation parameters and/or am not sure they are correctly set<a class="headerlink" href="#i-am-unsure-about-the-stimulation-parameters-and-or-am-not-sure-they-are-correctly-set" title="Link to this heading">#</a></h4>
-<p>Our <a class="reference internal" href="../np_utils/stimparamloader.html#utils-stimparamloader"><span class="std std-ref">parameter visualization tool</span></a> may help you check the parameters you are using.</p>
+<p>Validate each <code class="docutils literal notranslate"><span class="pre">StimParam</span></code> schema, check the electrode mapping and charge balance, and log the exact parameters before uploading them.</p>
 <p>If you are still unsure, please contact us.</p>
 </section>
 <section id="is-it-possible-to-perform-high-speed-closed-loops-e-g-modulating-stimulation-frequency-or-changing-parameters-based-on-the-activity-of-the-organoid-in-real-time">
 <h4>Is it possible to perform high-speed closed loops, e.g. modulating stimulation frequency or changing parameters based on the activity of the organoid in real-time?<a class="headerlink" href="#is-it-possible-to-perform-high-speed-closed-loops-e-g-modulating-stimulation-frequency-or-changing-parameters-based-on-the-activity-of-the-organoid-in-real-time" title="Link to this heading">#</a></h4>
 <ul class="simple">
 <li><p>Due to the network-based nature of the Neuroplatform, the delay between recording data directly on the Intan device and receiving it in your Python script will be at the strict minimum 35 to 50 ms.</p></li>
-<li><p>Changing parameters currently takes 10 seconds on the shared access. On a dedicated access, parameters are changed as fast as the hardware allows.</p></li>
+<li><p>After <code class="docutils literal notranslate"><span class="pre">upload_stimparam(...)</span></code>, wait at least five seconds for recording to resume before triggering, stimulating, or reading data.</p></li>
 </ul>
 <p>We currently do not have the possibility to upload custom code to the Intan device, as such high-speed closed loops will be limited to the buffer rate of the software first, then the network delay, before it is available for processing in your Python script, then followed by network delays to send the stimulation back to the Intan device.</p>
 <p>The network-based communication, the delay when changing parameters, and the use of Python make the current iteration of the Neuroplatform challenging for high-speed closed loops (&lt; 200ms); however we are actively working on improving this aspect, as we are aware it is crucial to many experiments such as reservoir computing.</p>
@@ -683,8 +692,8 @@ See the <a class="reference internal" href="np_usage.html#np-core-variance-thres
 </ul>
 </section>
 </section>
-<section id="database-and-experiment-tokens">
-<span id="faq-database"></span><h3>Database and experiment tokens<a class="headerlink" href="#database-and-experiment-tokens" title="Link to this heading">#</a></h3>
+<section id="database-access">
+<span id="faq-database"></span><h3>Database access<a class="headerlink" href="#database-access" title="Link to this heading">#</a></h3>
 <section id="how-are-spike-events-obtained-why-is-the-minimal-inter-spike-interval-always-3ms">
 <span id="faq-spike-events"></span><h4>How are spike events obtained ? Why is the minimal inter-spike interval always 3ms ?<a class="headerlink" href="#how-are-spike-events-obtained-why-is-the-minimal-inter-spike-interval-always-3ms" title="Link to this heading">#</a></h4>
 <aside class="margin sidebar">
@@ -700,34 +709,12 @@ As such, several spikes may be merged under several events, especially during bu
 <p class="admonition-title">Caution</p>
 <p>By default, the threshold is <strong>dynamic</strong>, which means it is computed based on the standard deviation of the noise at a certain time interval.<br>
 During bursts or stimulation, this standard deviation may increase, which will overall lower the amount of events recorded.<br>
-See <a class="reference internal" href="np_usage.html#np-core-variance-threshold"><span class="std std-ref">Variable threshold</span></a> for more information.</p>
+Ask the laboratory operator before changing acquisition thresholds.</p>
 </div>
-</section>
-<section id="i-do-not-have-an-experiment-token-or-it-is-no-longer-valid">
-<h4>I do not have an Experiment token, or it is no longer valid<a class="headerlink" href="#i-do-not-have-an-experiment-token-or-it-is-no-longer-valid" title="Link to this heading">#</a></h4>
-<p>Please contact us.</p>
 </section>
 <section id="i-receive-only-empty-data-plots-from-the-database-even-though-the-same-code-worked-previously">
 <h4>I receive only empty data/plots from the database, even though the same code worked previously<a class="headerlink" href="#i-receive-only-empty-data-plots-from-the-database-even-though-the-same-code-worked-previously" title="Link to this heading">#</a></h4>
-<p>On the shared access, there may have been a change of organoids, which requires you to change your experiment token. Please contact us so we can provide you with the updated token.</p>
-</section>
-<section id="when-starting-my-experiment-i-receive-an-error-about-an-experiment-already-running-shared-access">
-<h4>When starting my experiment, I receive an error about an experiment already running (shared access)<a class="headerlink" href="#when-starting-my-experiment-i-receive-an-error-about-an-experiment-already-running-shared-access" title="Link to this heading">#</a></h4>
-<p>Please double-check the shared access booking to make sure you are not overriding someone else’s experiment.</p>
-<p>If you are not sure whether another experiment is running, please contact us.</p>
-<p>Otherwise, use <code class="docutils literal notranslate"><span class="pre">experiment.stop()</span></code> to stop the experiment, and try again.</p>
-</section>
-</section>
-<section id="neuroplatform-utilities">
-<h3>Neuroplatform utilities<a class="headerlink" href="#neuroplatform-utilities" title="Link to this heading">#</a></h3>
-<section id="the-livemea-recording-tool-stopped-working">
-<h4>The LiveMEA recording tool stopped working<a class="headerlink" href="#the-livemea-recording-tool-stopped-working" title="Link to this heading">#</a></h4>
-<p>We may have changed the way we stream data to the website. Please contact us.</p>
-</section>
-<section id="there-is-an-issue-with-neuroplatform-utilities">
-<h4>There is an issue with Neuroplatform utilities<a class="headerlink" href="#there-is-an-issue-with-neuroplatform-utilities" title="Link to this heading">#</a></h4>
-<p>Make sure you use Python 3.11 and have <strong>installed all the requirements for the specific utility you are using</strong>.</p>
-<p>If you are still having issues or need help with upgrading your Python version, please contact us.</p>
+<p>Check the dataset identifier (<code class="docutils literal notranslate"><span class="pre">fsname</span></code>), timezone-aware UTC interval, database settings, authorization, and possible ingestion delay. For intervals longer than ten minutes, query in ten-minute chunks. Contact us if access still fails.</p>
 </section>
 </section>
 </section>
@@ -772,15 +759,6 @@ See <a class="reference internal" href="np_usage.html#np-core-variance-threshold
         <p class="prev-next-title">Best Practices</p>
       </div>
     </a>
-    <a class="right-next"
-       href="doc_v2.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">NeuroPlatform Version 2</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
-    </a>
 </div>
                 </footer>
               
@@ -788,15 +766,17 @@ See <a class="reference internal" href="np_usage.html#np-core-variance-threshold
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
     <i class="fa-solid fa-list"></i> Contents
   </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="visible nav section-nav flex-column">
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contact">Contact</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#public-channels">Public channels</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#private-channels">Private channels</a></li>
@@ -823,16 +803,9 @@ See <a class="reference internal" href="np_usage.html#np-core-variance-threshold
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#stimulation-does-not-elicit-any-response-from-the-organoid">Stimulation does not elicit any response from the organoid</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#database-and-experiment-tokens">Database and experiment tokens</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#database-access">Database access</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#how-are-spike-events-obtained-why-is-the-minimal-inter-spike-interval-always-3ms">How are spike events obtained ? Why is the minimal inter-spike interval always 3ms ?</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#i-do-not-have-an-experiment-token-or-it-is-no-longer-valid">I do not have an Experiment token, or it is no longer valid</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#i-receive-only-empty-data-plots-from-the-database-even-though-the-same-code-worked-previously">I receive only empty data/plots from the database, even though the same code worked previously</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#when-starting-my-experiment-i-receive-an-error-about-an-experiment-already-running-shared-access">When starting my experiment, I receive an error about an experiment already running (shared access)</a></li>
-</ul>
-</li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#neuroplatform-utilities">Neuroplatform utilities</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#the-livemea-recording-tool-stopped-working">The LiveMEA recording tool stopped working</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#there-is-an-issue-with-neuroplatform-utilities">There is an issue with Neuroplatform utilities</a></li>
 </ul>
 </li>
 </ul>
@@ -885,8 +858,8 @@ By the FinalSpark team - Vevey, Switzerland
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <script defer src="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
 
   <footer class="bd-footer">
   </footer>

@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>NeuroPlatform Version 2 &#8212; NeuroPlatform Documentation</title>
+    <title>neuroplatformv2 API Guide for Python Notebooks &#8212; NeuroPlatform Documentation</title>
   
   
   
@@ -16,86 +16,84 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-
-  
-  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=990f3d29" />
   
+  <!-- So that users can add custom icons -->
+  <script defer src="../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
-  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
 
     <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../_static/copybutton.js?v=f281be69"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../_static/togglebutton.js?v=b8b12719"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../_static/design-tabs.js?v=f930bc37"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'np_core/doc_v2';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <link rel="icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Recording live data" href="../np_utils/livemea.html" />
-    <link rel="prev" title="Troubleshoothing &amp; FAQ" href="faq.html" />
+    <link rel="next" title="Best Practices" href="best_practices.html" />
+    <link rel="prev" title="Welcome to the NeuroPlatform documentation!" href="../welcome.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../_static/searchtools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../searchindex.js"></script>
+  
   </head>
-  
-  
-  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
-
+  <body data-default-mode="">
   
   
   <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
   
   <div id="pst-scroll-pixel-helper"></div>
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
-
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-primary-sidebar-checkbox"/>
-  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-secondary-sidebar-checkbox"/>
-  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
+  
+  <dialog id="pst-search-dialog">
+    
 <form class="bd-search d-flex align-items-center"
       action="../search.html"
       method="get">
@@ -103,7 +101,6 @@
   <input type="search"
          class="form-control"
          name="q"
-         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -111,15 +108,59 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
+</form>
+  </dialog>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
 </div>
 
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
     </header>
   
 
@@ -128,7 +169,8 @@
       
       
       
-      <div class="bd-sidebar-primary bd-sidebar">
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -158,21 +200,17 @@
     
     
     <img src="../_static/logo.png" class="logo__image only-light" alt="NeuroPlatform Documentation - Home"/>
-    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="NeuroPlatform Documentation - Home"/>`);</script>
+    <img src="../_static/logo.png" class="logo__image only-dark pst-js-only" alt="NeuroPlatform Documentation - Home"/>
   
   
 </a></div>
         <div class="sidebar-primary-item">
 
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
@@ -183,24 +221,11 @@
                 </a>
             </li>
         </ul>
-        <p aria-level="2" class="caption" role="heading"><span class="caption-text">NeuroPlatform usage</span></p>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">NeuroPlatform v2</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="np_usage.html">System basics and stimulating organoids</a></li>
-<li class="toctree-l1"><a class="reference internal" href="db_usage.html">Database usage and fetching results</a></li>
-
-
-<li class="toctree-l1"><a class="reference internal" href="closed_loop.html">Closed-loop : reading and stimulating</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">neuroplatformv2 API Guide for Python Notebooks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="best_practices.html">Best Practices</a></li>
 <li class="toctree-l1"><a class="reference internal" href="faq.html">Troubleshoothing &amp; FAQ</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">NeuroPlatform Version 2</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">NeuroPlatform utilities</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../np_utils/livemea.html">Recording live data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../np_utils/stimparamloader.html">Stimulation parameter loader</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../np_utils/stimscan.html">Stimulation parameter scan</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../np_utils/spikesorting.html">Spike sorting</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../np_utils/crosscorr.html">Cross-correlograms</a></li>
 </ul>
 
     </div>
@@ -209,9 +234,14 @@
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
   </div>
-  
-  <div id="rtd-footer-container"></div>
 
 
       </div>
@@ -358,7 +388,7 @@
 
 
 <button onclick="toggleFullScreen()"
-  class="btn btn-sm btn-fullscreen-button"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
   title="Fullscreen mode"
   data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
@@ -372,25 +402,17 @@
 
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
-  </button>
-`);
-</script>
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-  </button>
-`);
-</script>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
 </button>
 </div></div>
@@ -403,7 +425,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>NeuroPlatform Version 2</h1>
+    <h1>neuroplatformv2 API Guide for Python Notebooks</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -412,28 +434,30 @@ document.write(`
                 <h2> Contents </h2>
             </div>
             <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#intan-interface">1- Intan interface</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python-code">2- Python Code</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#imports">Imports</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#empty-shell-of-an-experiment">Empty shell of an experiment</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stimulation-parameters">Stimulation parameters</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#stimparam-reference">StimParam reference</a></li>
+                <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#choose-the-right-interface">1) Choose the Right Interface</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#requirements-and-installation">2) Requirements and Installation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configure-the-environment-before-importing">3) Configure the Environment Before Importing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#notebook-rules">4) Notebook Rules</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-read-only-notebook-quick-start">5) A Read-Only Notebook Quick Start</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#common-controller-calls">6) Common Controller Calls</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#database-read-only">Database (read-only)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#intan-spike-count-and-triggers">Intan spike count and triggers</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#triggers">Triggers</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-experiment">Example experiment :</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#closed-loop">Closed Loop</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#electrical-stimulation-safety-and-example">7) Electrical Stimulation Safety and Example</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#standalone-python-script">8) Standalone Python Script</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-hardware-tools-to-an-agent">9) Adding Hardware Tools to an Agent</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#troubleshooting">10) Troubleshooting</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import-fails-with-missing-environment-variables">Import fails with missing environment variables</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#runtimeerror-asyncio-run-cannot-be-called-from-a-running-event-loop"><code class="docutils literal notranslate"><span class="pre">RuntimeError:</span> <span class="pre">asyncio.run()</span> <span class="pre">cannot</span> <span class="pre">be</span> <span class="pre">called</span> <span class="pre">from</span> <span class="pre">a</span> <span class="pre">running</span> <span class="pre">event</span> <span class="pre">loop</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pydantic-validation-error">Pydantic validation error</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#database-query-returns-no-rows">Database query returns no rows</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#expected-dataframe-columns-are-missing">Expected DataFrame columns are missing</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#agent-calls-the-wrong-tool-or-invents-results">Agent calls the wrong tool or invents results</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#database">Database</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Triggers</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spike-counts">Spike Counts</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spike-events">Spike Events</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#raw-data">Raw data</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#camera">Camera</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quick-reference">11) Quick Reference</a></li>
 </ul>
             </nav>
         </div>
@@ -445,492 +469,364 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="neuroplatform-version-2">
-<h1>NeuroPlatform Version 2<a class="headerlink" href="#neuroplatform-version-2" title="Link to this heading">#</a></h1>
-<p>This version of the neuroplatform is for now only for dedicated clients that are not using the shared access.</p>
-<p>The interface and the code are slightly different from the version 1. Here is a small overview of how this version works. We will go through the visual interface, then the code and finally the database.</p>
-<section id="intan-interface">
-<h2>1- Intan interface<a class="headerlink" href="#intan-interface" title="Link to this heading">#</a></h2>
-<p>Here is what the interface looks like :</p>
-<figure class="align-default" id="npv2-interface">
-<a class="reference internal image-reference" href="../_images/NPv2_interface.png"><img alt="../_images/NPv2_interface.png" src="../_images/NPv2_interface.png" style="width: 100%;" />
-</a>
-<figcaption>
-<p><span class="caption-number">Fig. 13 </span><span class="caption-text">NeuroPlatform v2 interface.</span><a class="headerlink" href="#npv2-interface" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<p>To get the overlays of spikes for one electrode, first click on a trace to select it, then go to Tools / Spike Scope :</p>
-<figure class="align-default" id="path-spike-scope">
-<a class="reference internal image-reference" href="../_images/path_spike_scope.png"><img alt="../_images/path_spike_scope.png" src="../_images/path_spike_scope.png" style="width: 15%;" />
-</a>
-<figcaption>
-<p><span class="caption-number">Fig. 14 </span><span class="caption-text">Path to Spike Scope.</span><a class="headerlink" href="#path-spike-scope" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<p>It will open a new window (see below). Click on ‘Set to Selected’ to see the trace you had chosen before.</p>
-<p>Adapt manually the treshold of amplitude value you want to use to detect spikes.</p>
-<p>You can also have an idea of the electrode noise by checking the value ‘RMS’ on the top left.</p>
-<figure class="align-default" id="spike-scope">
-<a class="reference internal image-reference" href="../_images/spike_scope.png"><img alt="../_images/spike_scope.png" src="../_images/spike_scope.png" style="width: 80%;" />
-</a>
-<figcaption>
-<p><span class="caption-number">Fig. 15 </span><span class="caption-text">Spike Scope.</span><a class="headerlink" href="#spike-scope" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-</section>
-<section id="python-code">
-<h2>2- Python Code<a class="headerlink" href="#python-code" title="Link to this heading">#</a></h2>
-<section id="imports">
-<h3>Imports<a class="headerlink" href="#imports" title="Link to this heading">#</a></h3>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="n">autoawait</span> <span class="n">asyncio</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">timedelta</span><span class="p">,</span> <span class="n">datetime</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">neuroplatformv2.core.trigger</span><span class="w"> </span><span class="kn">import</span> <span class="n">TriggerController</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">neuroplatformv2.core.database</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
-    <span class="n">DatabaseController</span><span class="p">,</span>
-    <span class="n">TriggersQuery</span><span class="p">,</span>
-    <span class="n">SpikeCountQuery</span><span class="p">,</span>
-    <span class="n">SpikeEventQuery</span><span class="p">,</span>
-    <span class="n">RawSpikeQuery</span><span class="p">,</span>
-    <span class="n">get_raw_spike</span><span class="p">,</span>
-<span class="p">)</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">neuroplatformv2.core.intan</span><span class="w"> </span><span class="kn">import</span> <span class="n">IntanController</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">neuroplatformv2.utils.schemas</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
-    <span class="n">StimParam</span><span class="p">,</span>
-    <span class="n">StimPolarity</span><span class="p">,</span>
-    <span class="n">StartRawRecordingRequest</span><span class="p">,</span>
-<span class="p">)</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">neuroplatformv2.core.camera</span><span class="w"> </span><span class="kn">import</span> <span class="n">CameraController</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">neuroplatformv2.utils.enumerations</span><span class="w"> </span><span class="kn">import</span> <span class="n">MEA</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="empty-shell-of-an-experiment">
-<h3>Empty shell of an experiment<a class="headerlink" href="#empty-shell-of-an-experiment" title="Link to this heading">#</a></h3>
-<p>Here is the general structure of an experiment. We will see in the next sections how to create stimulation parameters, update them, send stimulations, and disable them.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1 - Define the stimulation parameters</span>
-<span class="c1"># ...</span>
-
-<span class="c1"># 2 - Open the intan and trigger controllers</span>
-<span class="n">intan</span> <span class="o">=</span> <span class="n">IntanController</span><span class="p">()</span>
-<span class="n">trigger</span> <span class="o">=</span> <span class="n">TriggerController</span><span class="p">(</span><span class="s2">&quot;admin&quot;</span><span class="p">)</span>
-
-<span class="c1"># 3 - Start the experiment </span>
-<span class="k">try</span><span class="p">:</span>
-
-    <span class="c1"># 4 - Update your stimulation parameters in the intan</span>
-    <span class="c1"># ...</span>
-
-    <span class="c1"># 5 - Send triggers (that use our stimulation parameters)</span>
-    <span class="c1"># ...</span>
-
-    <span class="c1"># 6 - Disable stimulation parameters</span>
-    <span class="c1"># ...</span>
-
-<span class="c1"># 7 - Close the experiment</span>
-<span class="k">finally</span><span class="p">:</span>
-    <span class="k">await</span> <span class="n">intan</span><span class="o">.</span><span class="n">_close</span><span class="p">()</span>
-    <span class="n">trigger</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="stimulation-parameters">
-<h3>Stimulation parameters<a class="headerlink" href="#stimulation-parameters" title="Link to this heading">#</a></h3>
-<p>We need to define the stimulation parameters.</p>
-<p>Through Python, you will be controlling the Intan software to set the stimulation parameters.</p>
-<p>The software defines stimulations using the elements shown here :</p>
-<figure class="align-default" id="stimparam">
-<a class="reference internal image-reference" href="../_images/stimparam.png"><img alt="../_images/stimparam.png" src="../_images/stimparam.png" style="width: 100%;" />
-</a>
-<figcaption>
-<p><span class="caption-number">Fig. 16 </span><span class="caption-text">Stimulation parameters.</span><a class="headerlink" href="#stimparam" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>Feel free to use this as a visual reference when setting your parameters.</p>
-</div>
-<p>Stimulation parameters are defined by several values, such as the amplitude, the duration, and the electrode to stimulate.
-See below for a detailed explanation of the parameters.</p>
-<section id="stimparam-reference">
-<h4>StimParam reference<a class="headerlink" href="#stimparam-reference" title="Link to this heading">#</a></h4>
+  <section class="tex2jax_ignore mathjax_ignore" id="neuroplatformv2-api-guide-for-python-notebooks">
+<h1>neuroplatformv2 API Guide for Python Notebooks<a class="headerlink" href="#neuroplatformv2-api-guide-for-python-notebooks" title="Link to this heading">#</a></h1>
+<p>This guide is for people who want to use the FinalSpark NeuroPlatform SDK directly from Python, especially in a Jupyter notebook, or expose a controlled subset of the SDK to an LLM agent.</p>
+<p>The SDK controls real laboratory hardware. Start with read-only database calls. Add triggers, stimulation, pumps, cameras, or other hardware controls only after validating the code with the laboratory operator.</p>
+<p>In this repository, “API” primarily means the Python SDK interface. The controllers may communicate with internal HTTP, gRPC, MongoDB, or InfluxDB services, but users should call the Python controllers instead of depending on those internal protocols directly.</p>
+<section id="choose-the-right-interface">
+<h2>1) Choose the Right Interface<a class="headerlink" href="#choose-the-right-interface" title="Link to this heading">#</a></h2>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
-<tr class="row-odd"><th class="head"><p>Name</p></th>
-<th class="head"><p>Description</p></th>
-<th class="head"><p>Default Value</p></th>
+<tr class="row-odd"><th class="head"><p>Use case</p></th>
+<th class="head"><p>Recommended interface</p></th>
+<th class="head"><p>Calling style</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">enable</span></code></p></td>
-<td><p>Enable stimulation</p></td>
-<td><p>True</p></td>
+<tr class="row-even"><td><p>Jupyter notebook</p></td>
+<td><p>Classes in <code class="docutils literal notranslate"><span class="pre">neuroplatformv2.core.*</span></code></p></td>
+<td><p>Schema object, usually with top-level <code class="docutils literal notranslate"><span class="pre">await</span></code></p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">index</span></code></p></td>
-<td><p>Electrode index [0-127]</p></td>
-<td><p>0</p></td>
+<tr class="row-odd"><td><p>Standalone Python script</p></td>
+<td><p>Classes in <code class="docutils literal notranslate"><span class="pre">neuroplatformv2.core.*</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">asyncio.run(main())</span></code></p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">trigger_key</span></code></p></td>
-<td><p>Trigger key [0-15]</p></td>
-<td><p>0</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">polarity</span></code></p></td>
-<td><p>Polarity of the stimulation</p></td>
-<td><p>NegativeFirst</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">phase_duration1</span></code></p></td>
-<td><p>D1 [us]</p></td>
-<td><p>100.0</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">phase_amplitude1</span></code></p></td>
-<td><p>A1 [uA]</p></td>
-<td><p>1.0</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">phase_duration2</span></code></p></td>
-<td><p>D2 [us]</p></td>
-<td><p>100</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">phase_amplitude2</span></code></p></td>
-<td><p>A2 [uA]</p></td>
-<td><p>1.0</p></td>
-</tr>
-<tr class="row-even"><td><p>————————–</p></td>
-<td><p>————————————–</p></td>
-<td><p>—————</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">stim_shape</span></code></p></td>
-<td><p>Stimulation Shape</p></td>
-<td><p>Biphasic</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">interphase_delay</span></code></p></td>
-<td><p>Interphase delay [us]</p></td>
-<td><p>0.0</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">trigger_delay</span></code></p></td>
-<td><p>Post trigger delay [us]</p></td>
-<td><p>0</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">nb_pulse</span></code></p></td>
-<td><p>Number of pulses</p></td>
-<td><p>0</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">pulse_train_period</span></code></p></td>
-<td><p>Pulse Train Period [us]</p></td>
-<td><p>10000</p></td>
-</tr>
-<tr class="row-even"><td><p>————————–</p></td>
-<td><p>————————————–</p></td>
-<td><p>—————</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">post_stim_ref_period</span></code></p></td>
-<td><p>Post-Stimulation Refractory Period [us]</p></td>
-<td><p>1000.0</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">enable_amp_settle</span></code></p></td>
-<td><p>Enable amplitude settling</p></td>
-<td><p>True</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">pre_stim_amp_settle</span></code></p></td>
-<td><p>Pre-stimulation amplitude settling [us]</p></td>
-<td><p>0.0</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">post_stim_amp_settle</span></code></p></td>
-<td><p>Post-stimulation amplitude settling [us]</p></td>
-<td><p>1000.0</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">enable_charge_recovery</span></code></p></td>
-<td><p>Enable charge recovery</p></td>
-<td><p>True</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">post_charge_recovery_on</span></code></p></td>
-<td><p>Post charge recovery on [us]</p></td>
-<td><p>0.0</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">post_charge_recovery_off</span></code></p></td>
-<td><p>Post charge recovery off [us]</p></td>
-<td><p>100.0</p></td>
+<tr class="row-even"><td><p>LangChain/LangGraph agent</p></td>
+<td><p>Classes in <code class="docutils literal notranslate"><span class="pre">neuroplatformv2.tools.*</span></code>, or a small custom tool</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">await</span> <span class="pre">tool.ainvoke({...})</span></code></p></td>
 </tr>
 </tbody>
 </table>
 </div>
-<aside class="margin sidebar">
-<p class="sidebar-title"></p>
-<div class="admonition seealso">
-<p class="admonition-title">See also</p>
-<p>You can use the <a class="reference internal" href="../np_utils/stimparamloader.html"><span class="doc std std-doc">StimParamLoader utility</span></a> to help you manage and preview your parameters.</p>
-</div>
-</aside>
+<p>Do not pass Pydantic request objects to an agent. Let the tool schema validate plain dictionaries generated by the model.</p>
+</section>
+<section id="requirements-and-installation">
+<h2>2) Requirements and Installation<a class="headerlink" href="#requirements-and-installation" title="Link to this heading">#</a></h2>
 <ul class="simple">
-<li><p><strong>The first section of the table contains the basic parameters for the stimulation.</strong></p>
-<ul>
-<li><p>You likely will have to adapt these for each experiment.</p></li>
-<li><p>If possible, balance the charge of the stimulation.</p>
-<ul>
-<li><p>Ensure that <span class="math notranslate nohighlight">\(\text{phase_duration1} \times \text{phase_amplitude1} = \text{phase_duration2} \times \text{phase_amplitude2}\)</span>.</p></li>
-<li><p>This improves the lifetime of both the organoid and the electrodes.</p></li>
+<li><p>Python: <code class="docutils literal notranslate"><span class="pre">&gt;=3.11,&lt;3.13</span></code></p></li>
+<li><p>Network access to the FinalSpark laboratory services</p></li>
+<li><p>Valid connection settings and authorization for the requested hardware</p></li>
 </ul>
-</li>
-<li><p>The polarity can greatly affect the response. Please remember to check which polarity is best for your experiment.</p></li>
-</ul>
-</li>
-<li><p>The second section contains useful parameters you may want to modify for specific experiments.</p>
-<ul>
-<li><p>The <code class="docutils literal notranslate"><span class="pre">nb_pulse</span></code> parameter is useful for burst stimulation.</p></li>
-<li><p>The <code class="docutils literal notranslate"><span class="pre">pulse_train_period</span></code> parameter is useful for setting the period of the burst stimulation.</p></li>
-</ul>
-</li>
-<li><p>The last section contains parameters that we recommend leaving as-is.</p>
-<ul>
-<li><p>Please contact us if you have questions regarding the relevance of these parameters for your experiment.</p></li>
-</ul>
-</li>
-</ul>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Due to the network-based nature of the communication between components, using Python to time your stimulation (e.g. with <code class="docutils literal notranslate"><span class="pre">time.sleep()</span></code>) will always be less precise than using the pulse train settings.
-However, the pulse train settings may not be changed quickly during the experiment, due to the delay when sending the parameters to the headstage of the MEA.</p>
-<p>Therefore, you must choose between <strong>flexible spike trains with less precise timing</strong> (Python) or <strong>precise timing with less flexibility</strong> (pulse train settings).</p>
-</div>
-<p>Here is an example of how to create one Stimulation parameter :</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">stim_param1</span> <span class="o">=</span> <span class="n">StimParam</span><span class="p">()</span>
-<span class="n">stim_param1</span><span class="o">.</span><span class="n">enable</span> <span class="o">=</span> <span class="kc">True</span>
-<span class="n">stim_param1</span><span class="o">.</span><span class="n">trigger_key</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="n">stim_param1</span><span class="o">.</span><span class="n">polarity</span> <span class="o">=</span> <span class="n">StimPolarity</span><span class="o">.</span><span class="n">PositiveFirst</span>
-<span class="n">stim_param1</span><span class="o">.</span><span class="n">phase_duration2</span> <span class="o">=</span> <span class="mi">100</span>
-<span class="n">stim_param1</span><span class="o">.</span><span class="n">display_attributes</span><span class="p">()</span>
+<p>From a local clone:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span>.
 </pre></div>
 </div>
+<p>For development, including Jupyter and plotting dependencies:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>poetry<span class="w"> </span>install
+poetry<span class="w"> </span>run<span class="w"> </span>python<span class="w"> </span>-m<span class="w"> </span>ipykernel<span class="w"> </span>install<span class="w"> </span>--user<span class="w"> </span>--name<span class="w"> </span>neuroplatformv2
+</pre></div>
 </div>
+<p>Then select the <code class="docutils literal notranslate"><span class="pre">neuroplatformv2</span></code> kernel in Jupyter.</p>
+</section>
+<section id="configure-the-environment-before-importing">
+<h2>3) Configure the Environment Before Importing<a class="headerlink" href="#configure-the-environment-before-importing" title="Link to this heading">#</a></h2>
+<p>The following settings are required when the SDK is imported:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">DB_PORT</span><span class="o">=</span><span class="m">8086</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">INTAN_SOFTWARE_IP</span><span class="o">=</span><span class="s2">&quot;...&quot;</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">TRIGGER_IP</span><span class="o">=</span><span class="s2">&quot;...&quot;</span>
+</pre></div>
 </div>
+<p>Frequently used optional settings include:</p>
 <ul class="simple">
-<li><p><strong>Index</strong> : You specify the electrode you want to stimulate.</p>
-<ul>
-<li><p>As mentioned, you cannot use two distinct parameters with the same electrode index. This will overwrite the previous parameter.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DB_IP</span></code>, <code class="docutils literal notranslate"><span class="pre">DB_TIMEOUT</span></code>, <code class="docutils literal notranslate"><span class="pre">DB_STAT_PORT</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">INTAN_SOFTWARE_PORT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTAN_SOCK_TIMEOUT</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">TRIGGER_IP_PORT</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">TRIGGER_UV_IP</span></code>, <code class="docutils literal notranslate"><span class="pre">TRIGGER_UV_PORT</span></code>, <code class="docutils literal notranslate"><span class="pre">TRIGGER_450_PORT</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CAMERA_IP</span></code>, <code class="docutils literal notranslate"><span class="pre">CAMERA_PORT</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">PUMP_1_IP</span></code>, <code class="docutils literal notranslate"><span class="pre">PUMP_2_IP</span></code>, <code class="docutils literal notranslate"><span class="pre">PUMP_3_IP</span></code>, <code class="docutils literal notranslate"><span class="pre">PUMP_PORT</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MONGODB_URI_NEUROPLATFORM</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">TOTAL_ELECTRODES</span></code> (default: <code class="docutils literal notranslate"><span class="pre">32</span></code>)</p></li>
 </ul>
-</li>
-<li><p><strong>Trigger key</strong> : You specify the trigger that will be sent to the <strong>Intan Controller</strong>. The controller can accomodate up to <strong>16</strong> triggers (from 0 to 15).</p>
-<ul>
-<li><p>When you send a trigger, the <strong>Intan Controller</strong> will execute the parameter(s) associated with that trigger.</p></li>
+<p>Set <code class="docutils literal notranslate"><span class="pre">TOTAL_ELECTRODES=64</span></code> for 64-channel hardware. It must be set before the Python process imports the SDK.</p>
+</section>
+<section id="notebook-rules">
+<h2>4) Notebook Rules<a class="headerlink" href="#notebook-rules" title="Link to this heading">#</a></h2>
+<p>Jupyter supports top-level <code class="docutils literal notranslate"><span class="pre">await</span></code>. Use it directly:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">neuroplatformv2.core.intan</span><span class="w"> </span><span class="kn">import</span> <span class="n">IntanController</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">neuroplatformv2.utils.schemas</span><span class="w"> </span><span class="kn">import</span> <span class="n">CountDurationRequest</span>
+
+<span class="n">counts</span> <span class="o">=</span> <span class="k">await</span> <span class="n">IntanController</span><span class="o">.</span><span class="n">count_spike</span><span class="p">(</span><span class="n">CountDurationRequest</span><span class="p">(</span><span class="n">duration</span><span class="o">=</span><span class="mi">1000</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">counts</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>In a notebook:</p>
+<ol class="arabic simple">
+<li><p>Use top-level <code class="docutils literal notranslate"><span class="pre">await</span></code> for async methods.</p></li>
+<li><p>Do not call <code class="docutils literal notranslate"><span class="pre">asyncio.run(...)</span></code>; a notebook already has an event loop.</p></li>
+<li><p>Use timezone-aware UTC datetimes for database queries.</p></li>
+<li><p>Import controllers from their explicit <code class="docutils literal notranslate"><span class="pre">core</span></code> modules.</p></li>
+<li><p>Build controller inputs with classes from <code class="docutils literal notranslate"><span class="pre">neuroplatformv2.utils.schemas</span></code>.</p></li>
+</ol>
+</section>
+<section id="a-read-only-notebook-quick-start">
+<h2>5) A Read-Only Notebook Quick Start<a class="headerlink" href="#a-read-only-notebook-quick-start" title="Link to this heading">#</a></h2>
+<p>This example fetches recent spike events and produces a compact summary:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">timedelta</span><span class="p">,</span> <span class="n">timezone</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">neuroplatformv2.core.database</span><span class="w"> </span><span class="kn">import</span> <span class="n">DatabaseController</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">neuroplatformv2.utils.schemas</span><span class="w"> </span><span class="kn">import</span> <span class="n">SpikeEventQuery</span>
+
+<span class="n">FSNAME</span> <span class="o">=</span> <span class="s2">&quot;fs511&quot;</span>  <span class="c1"># Replace with your dataset identifier</span>
+<span class="n">stop</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">(</span><span class="n">timezone</span><span class="o">.</span><span class="n">utc</span><span class="p">)</span>
+<span class="n">start</span> <span class="o">=</span> <span class="n">stop</span> <span class="o">-</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">minutes</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="n">spikes</span> <span class="o">=</span> <span class="k">await</span> <span class="n">DatabaseController</span><span class="o">.</span><span class="n">get_spike_event</span><span class="p">(</span>
+    <span class="n">SpikeEventQuery</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="n">start</span><span class="p">,</span> <span class="n">stop</span><span class="o">=</span><span class="n">stop</span><span class="p">,</span> <span class="n">fsname</span><span class="o">=</span><span class="n">FSNAME</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="k">if</span> <span class="n">spikes</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">spikes</span><span class="o">.</span><span class="n">empty</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;No spike events returned.&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">required</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Time&quot;</span><span class="p">,</span> <span class="s2">&quot;channel&quot;</span><span class="p">}</span>
+    <span class="n">missing</span> <span class="o">=</span> <span class="n">required</span> <span class="o">-</span> <span class="nb">set</span><span class="p">(</span><span class="n">spikes</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">missing</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;Missing expected columns: </span><span class="si">{</span><span class="n">missing</span><span class="si">}</span><span class="s2">; got </span><span class="si">{</span><span class="nb">list</span><span class="p">(</span><span class="n">spikes</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="p">)</span>
+
+    <span class="n">spikes</span> <span class="o">=</span> <span class="n">spikes</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">spikes</span><span class="p">[</span><span class="s2">&quot;Time&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">spikes</span><span class="p">[</span><span class="s2">&quot;Time&quot;</span><span class="p">],</span> <span class="n">utc</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">errors</span><span class="o">=</span><span class="s2">&quot;coerce&quot;</span><span class="p">)</span>
+    <span class="n">spikes</span><span class="p">[</span><span class="s2">&quot;channel&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span><span class="n">spikes</span><span class="p">[</span><span class="s2">&quot;channel&quot;</span><span class="p">],</span> <span class="n">errors</span><span class="o">=</span><span class="s2">&quot;coerce&quot;</span><span class="p">)</span>
+    <span class="n">spikes</span> <span class="o">=</span> <span class="n">spikes</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Time&quot;</span><span class="p">,</span> <span class="s2">&quot;channel&quot;</span><span class="p">])</span>
+    <span class="n">spikes</span><span class="p">[</span><span class="s2">&quot;channel&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">spikes</span><span class="p">[</span><span class="s2">&quot;channel&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;spikes&quot;</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">spikes</span><span class="p">),</span>
+            <span class="s2">&quot;channels&quot;</span><span class="p">:</span> <span class="n">spikes</span><span class="p">[</span><span class="s2">&quot;channel&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">nunique</span><span class="p">(),</span>
+            <span class="s2">&quot;first&quot;</span><span class="p">:</span> <span class="n">spikes</span><span class="p">[</span><span class="s2">&quot;Time&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span>
+            <span class="s2">&quot;last&quot;</span><span class="p">:</span> <span class="n">spikes</span><span class="p">[</span><span class="s2">&quot;Time&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span>
+        <span class="p">}</span>
+    <span class="p">)</span>
+    <span class="n">display</span><span class="p">(</span><span class="n">spikes</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>For intervals longer than 10 minutes, query in 10-minute chunks:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">get_spike_events_chunked</span><span class="p">(</span><span class="n">fsname</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">stop</span><span class="p">,</span> <span class="n">chunk_minutes</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">start</span><span class="o">.</span><span class="n">tzinfo</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">stop</span><span class="o">.</span><span class="n">tzinfo</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;start and stop must be timezone-aware&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">start</span> <span class="o">&gt;=</span> <span class="n">stop</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;start must be earlier than stop&quot;</span><span class="p">)</span>
+
+    <span class="n">frames</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">cursor</span> <span class="o">=</span> <span class="n">start</span>
+    <span class="k">while</span> <span class="n">cursor</span> <span class="o">&lt;</span> <span class="n">stop</span><span class="p">:</span>
+        <span class="n">chunk_stop</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">cursor</span> <span class="o">+</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">minutes</span><span class="o">=</span><span class="n">chunk_minutes</span><span class="p">),</span> <span class="n">stop</span><span class="p">)</span>
+        <span class="n">part</span> <span class="o">=</span> <span class="k">await</span> <span class="n">DatabaseController</span><span class="o">.</span><span class="n">get_spike_event</span><span class="p">(</span>
+            <span class="n">SpikeEventQuery</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="n">cursor</span><span class="p">,</span> <span class="n">stop</span><span class="o">=</span><span class="n">chunk_stop</span><span class="p">,</span> <span class="n">fsname</span><span class="o">=</span><span class="n">fsname</span><span class="p">)</span>
+        <span class="p">)</span>
+        <span class="k">if</span> <span class="n">part</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">part</span><span class="o">.</span><span class="n">empty</span><span class="p">:</span>
+            <span class="n">frames</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">part</span><span class="p">)</span>
+        <span class="n">cursor</span> <span class="o">=</span> <span class="n">chunk_stop</span>
+
+    <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">frames</span><span class="p">,</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="k">if</span> <span class="n">frames</span> <span class="k">else</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+
+
+<span class="n">stop</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">(</span><span class="n">timezone</span><span class="o">.</span><span class="n">utc</span><span class="p">)</span>
+<span class="n">start</span> <span class="o">=</span> <span class="n">stop</span> <span class="o">-</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">hours</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">spikes</span> <span class="o">=</span> <span class="k">await</span> <span class="n">get_spike_events_chunked</span><span class="p">(</span><span class="s2">&quot;fs511&quot;</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">stop</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;rows:&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">spikes</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="common-controller-calls">
+<h2>6) Common Controller Calls<a class="headerlink" href="#common-controller-calls" title="Link to this heading">#</a></h2>
+<section id="database-read-only">
+<h3>Database (read-only)<a class="headerlink" href="#database-read-only" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">timedelta</span><span class="p">,</span> <span class="n">timezone</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">neuroplatformv2.core.database</span><span class="w"> </span><span class="kn">import</span> <span class="n">DatabaseController</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">neuroplatformv2.utils.schemas</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">FlowrateQuery</span><span class="p">,</span>
+    <span class="n">LabQuery</span><span class="p">,</span>
+    <span class="n">NoiseQuery</span><span class="p">,</span>
+    <span class="n">SpikeCountQuery</span><span class="p">,</span>
+    <span class="n">SpikeEventQuery</span><span class="p">,</span>
+    <span class="n">TriggersQuery</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">stop</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">(</span><span class="n">timezone</span><span class="o">.</span><span class="n">utc</span><span class="p">)</span>
+<span class="n">start</span> <span class="o">=</span> <span class="n">stop</span> <span class="o">-</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">minutes</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="n">events</span> <span class="o">=</span> <span class="k">await</span> <span class="n">DatabaseController</span><span class="o">.</span><span class="n">get_spike_event</span><span class="p">(</span>
+    <span class="n">SpikeEventQuery</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="n">start</span><span class="p">,</span> <span class="n">stop</span><span class="o">=</span><span class="n">stop</span><span class="p">,</span> <span class="n">fsname</span><span class="o">=</span><span class="s2">&quot;fs511&quot;</span><span class="p">)</span>
+<span class="p">)</span>
+<span class="n">counts</span> <span class="o">=</span> <span class="k">await</span> <span class="n">DatabaseController</span><span class="o">.</span><span class="n">get_spike_count</span><span class="p">(</span>
+    <span class="n">SpikeCountQuery</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="n">start</span><span class="p">,</span> <span class="n">stop</span><span class="o">=</span><span class="n">stop</span><span class="p">,</span> <span class="n">fsname</span><span class="o">=</span><span class="s2">&quot;fs511&quot;</span><span class="p">)</span>
+<span class="p">)</span>
+<span class="n">triggers</span> <span class="o">=</span> <span class="k">await</span> <span class="n">DatabaseController</span><span class="o">.</span><span class="n">get_all_triggers</span><span class="p">(</span>
+    <span class="n">TriggersQuery</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="n">start</span><span class="p">,</span> <span class="n">stop</span><span class="o">=</span><span class="n">stop</span><span class="p">)</span>
+<span class="p">)</span>
+<span class="n">noise</span> <span class="o">=</span> <span class="k">await</span> <span class="n">DatabaseController</span><span class="o">.</span><span class="n">get_noise_std</span><span class="p">(</span><span class="n">NoiseQuery</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="n">start</span><span class="p">,</span> <span class="n">stop</span><span class="o">=</span><span class="n">stop</span><span class="p">))</span>
+<span class="n">temperature</span> <span class="o">=</span> <span class="k">await</span> <span class="n">DatabaseController</span><span class="o">.</span><span class="n">temperature</span><span class="p">(</span>
+    <span class="n">LabQuery</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="n">start</span><span class="p">,</span> <span class="n">stop</span><span class="o">=</span><span class="n">stop</span><span class="p">,</span> <span class="n">incubator</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="p">)</span>
+<span class="n">flowrate</span> <span class="o">=</span> <span class="k">await</span> <span class="n">DatabaseController</span><span class="o">.</span><span class="n">flowrate</span><span class="p">(</span>
+    <span class="n">FlowrateQuery</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="n">start</span><span class="p">,</span> <span class="n">stop</span><span class="o">=</span><span class="n">stop</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="intan-spike-count-and-triggers">
+<h3>Intan spike count and triggers<a class="headerlink" href="#intan-spike-count-and-triggers" title="Link to this heading">#</a></h3>
+<p>A digital trigger pattern must contain exactly 16 integers. Prefer async methods in async workflows. UV and 450 nm trigger duration <code class="docutils literal notranslate"><span class="pre">t</span></code> is in milliseconds and must be in <code class="docutils literal notranslate"><span class="pre">1..1000</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">neuroplatformv2.core.intan</span><span class="w"> </span><span class="kn">import</span> <span class="n">IntanController</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">neuroplatformv2.core.trigger</span><span class="w"> </span><span class="kn">import</span> <span class="n">TriggerController</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">neuroplatformv2.core.trigger450</span><span class="w"> </span><span class="kn">import</span> <span class="n">Trigger450Controller</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">neuroplatformv2.core.triggeruv</span><span class="w"> </span><span class="kn">import</span> <span class="n">TriggerUVController</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">neuroplatformv2.utils.schemas</span><span class="w"> </span><span class="kn">import</span> <span class="n">CountDurationRequest</span><span class="p">,</span> <span class="n">TriggerUVSendRequest</span>
+
+<span class="n">counts</span> <span class="o">=</span> <span class="k">await</span> <span class="n">IntanController</span><span class="o">.</span><span class="n">count_spike</span><span class="p">(</span><span class="n">CountDurationRequest</span><span class="p">(</span><span class="n">duration</span><span class="o">=</span><span class="mi">1000</span><span class="p">))</span>
+<span class="n">digital_result</span> <span class="o">=</span> <span class="k">await</span> <span class="n">TriggerController</span><span class="o">.</span><span class="n">trigger_a_sender</span><span class="p">([</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="mi">15</span><span class="p">)</span>
+<span class="n">uv_result</span> <span class="o">=</span> <span class="k">await</span> <span class="n">TriggerUVController</span><span class="o">.</span><span class="n">trigger_uv_send</span><span class="p">(</span><span class="n">TriggerUVSendRequest</span><span class="p">(</span><span class="n">t</span><span class="o">=</span><span class="mi">100</span><span class="p">))</span>
+<span class="n">blue_result</span> <span class="o">=</span> <span class="k">await</span> <span class="n">Trigger450Controller</span><span class="o">.</span><span class="n">trigger_450_send</span><span class="p">(</span><span class="n">TriggerUVSendRequest</span><span class="p">(</span><span class="n">t</span><span class="o">=</span><span class="mi">100</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="electrical-stimulation-safety-and-example">
+<h2>7) Electrical Stimulation Safety and Example<a class="headerlink" href="#electrical-stimulation-safety-and-example" title="Link to this heading">#</a></h2>
+<p>Electrical stimulation changes real hardware state. Validate the electrode mapping, charge, amplitude, duration, polarity, and booking before running it.</p>
+<p><code class="docutils literal notranslate"><span class="pre">upload_stimparam(...)</span></code> temporarily stops system recording. After every upload, wait at least five seconds before triggering, starting stimulation, or reading data so recording is active again.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">time</span><span class="w"> </span><span class="kn">import</span> <span class="n">sleep</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">neuroplatformv2.core.intan</span><span class="w"> </span><span class="kn">import</span> <span class="n">IntanController</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">neuroplatformv2.core.trigger</span><span class="w"> </span><span class="kn">import</span> <span class="n">TriggerController</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">neuroplatformv2.utils.enumerations</span><span class="w"> </span><span class="kn">import</span> <span class="n">StimPolarity</span><span class="p">,</span> <span class="n">StimShape</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">neuroplatformv2.utils.schemas</span><span class="w"> </span><span class="kn">import</span> <span class="n">StimParam</span>
+
+<span class="n">electrodes</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">params</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">StimParam</span><span class="p">(</span>
+        <span class="n">index</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+        <span class="n">enable</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">trigger_key</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+        <span class="n">stim_shape</span><span class="o">=</span><span class="n">StimShape</span><span class="o">.</span><span class="n">Biphasic</span><span class="p">,</span>
+        <span class="n">polarity</span><span class="o">=</span><span class="n">StimPolarity</span><span class="o">.</span><span class="n">NegativeFirst</span><span class="p">,</span>
+        <span class="n">phase_duration1</span><span class="o">=</span><span class="mf">100.0</span><span class="p">,</span>
+        <span class="n">phase_duration2</span><span class="o">=</span><span class="mf">100.0</span><span class="p">,</span>
+        <span class="n">phase_amplitude1</span><span class="o">=</span><span class="mf">5.0</span><span class="p">,</span>
+        <span class="n">phase_amplitude2</span><span class="o">=</span><span class="mf">5.0</span><span class="p">,</span>
+        <span class="n">nb_pulse</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="p">)</span>
+<span class="p">]</span>
+
+<span class="k">await</span> <span class="n">IntanController</span><span class="o">.</span><span class="n">send_stimparam</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+<span class="k">await</span> <span class="n">IntanController</span><span class="o">.</span><span class="n">upload_stimparam</span><span class="p">(</span><span class="n">electrodes</span><span class="p">)</span>
+<span class="n">sleep</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>  <span class="c1"># Mandatory: allow recording to resume.</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="k">await</span> <span class="n">TriggerController</span><span class="o">.</span><span class="n">trigger_a_sender</span><span class="p">([</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="mi">15</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+
+<span class="c1"># Disable stimulation when finished or during error recovery.</span>
+<span class="nb">print</span><span class="p">(</span><span class="k">await</span> <span class="n">IntanController</span><span class="o">.</span><span class="n">disable_all_stim</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="standalone-python-script">
+<h2>8) Standalone Python Script<a class="headerlink" href="#standalone-python-script" title="Link to this heading">#</a></h2>
+<p>Top-level <code class="docutils literal notranslate"><span class="pre">await</span></code> is notebook-specific. In a <code class="docutils literal notranslate"><span class="pre">.py</span></code> file, use one event loop:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">asyncio</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">neuroplatformv2.core.intan</span><span class="w"> </span><span class="kn">import</span> <span class="n">IntanController</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">neuroplatformv2.utils.schemas</span><span class="w"> </span><span class="kn">import</span> <span class="n">CountDurationRequest</span>
+
+
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
+    <span class="n">counts</span> <span class="o">=</span> <span class="k">await</span> <span class="n">IntanController</span><span class="o">.</span><span class="n">count_spike</span><span class="p">(</span>
+        <span class="n">CountDurationRequest</span><span class="p">(</span><span class="n">duration</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+    <span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">counts</span><span class="p">)</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">main</span><span class="p">())</span>
+</pre></div>
+</div>
+</section>
+<section id="adding-hardware-tools-to-an-agent">
+<h2>9) Adding Hardware Tools to an Agent<a class="headerlink" href="#adding-hardware-tools-to-an-agent" title="Link to this heading">#</a></h2>
+<p>Treat every mutating tool as privileged. A production agent should have:</p>
+<ol class="arabic simple">
+<li><p>A small allowlist of tools required for one workflow.</p></li>
+<li><p>Explicit bounds in Pydantic schemas, in addition to prompt instructions.</p></li>
+<li><p>A human approval step before each trigger, stimulation, pump, light, or camera capture.</p></li>
+<li><p>A maximum number of trials, pulses, stimulated electrodes, and total runtime.</p></li>
+<li><p>Structured logs containing tool name, validated inputs, timestamps, outputs, and errors.</p></li>
+<li><p>A cleanup path that disables stimulation and safely stops controlled hardware.</p></li>
+<li><p>No arbitrary Python REPL, shell, filesystem, or credential access unless essential and separately sandboxed.</p></li>
+</ol>
+<p>Do not rely on the system prompt as a safety boundary. Validate arguments in code and keep dangerous tools out of the agent’s tool list until approval has been granted.</p>
+<p>A direct tool test should be completed before connecting any hardware-changing tool to a model.</p>
+</section>
+<section id="troubleshooting">
+<h2>10) Troubleshooting<a class="headerlink" href="#troubleshooting" title="Link to this heading">#</a></h2>
+<section id="import-fails-with-missing-environment-variables">
+<h3>Import fails with missing environment variables<a class="headerlink" href="#import-fails-with-missing-environment-variables" title="Link to this heading">#</a></h3>
+<p>Set <code class="docutils literal notranslate"><span class="pre">DB_PORT</span></code>, <code class="docutils literal notranslate"><span class="pre">INTAN_SOFTWARE_IP</span></code>, and <code class="docutils literal notranslate"><span class="pre">TRIGGER_IP</span></code> before importing the package, then restart the Python process or notebook kernel.</p>
+</section>
+<section id="runtimeerror-asyncio-run-cannot-be-called-from-a-running-event-loop">
+<h3><code class="docutils literal notranslate"><span class="pre">RuntimeError:</span> <span class="pre">asyncio.run()</span> <span class="pre">cannot</span> <span class="pre">be</span> <span class="pre">called</span> <span class="pre">from</span> <span class="pre">a</span> <span class="pre">running</span> <span class="pre">event</span> <span class="pre">loop</span></code><a class="headerlink" href="#runtimeerror-asyncio-run-cannot-be-called-from-a-running-event-loop" title="Link to this heading">#</a></h3>
+<p>In Jupyter, remove <code class="docutils literal notranslate"><span class="pre">asyncio.run(...)</span></code> and call the async function with top-level <code class="docutils literal notranslate"><span class="pre">await</span></code>.</p>
+</section>
+<section id="pydantic-validation-error">
+<h3>Pydantic validation error<a class="headerlink" href="#pydantic-validation-error" title="Link to this heading">#</a></h3>
+<p>Pass a schema instance to controller methods and a plain dictionary to LangChain tools. Check units and enum values. Validation failures should stop the hardware call; do not bypass them.</p>
+</section>
+<section id="database-query-returns-no-rows">
+<h3>Database query returns no rows<a class="headerlink" href="#database-query-returns-no-rows" title="Link to this heading">#</a></h3>
+<p>Check the dataset identifier (<code class="docutils literal notranslate"><span class="pre">fsname</span></code>), UTC interval, database access, and eventual ingestion delay. Do not replace missing real data with simulated data unless simulation was explicitly requested.</p>
+</section>
+<section id="expected-dataframe-columns-are-missing">
+<h3>Expected DataFrame columns are missing<a class="headerlink" href="#expected-dataframe-columns-are-missing" title="Link to this heading">#</a></h3>
+<p>Inspect <code class="docutils literal notranslate"><span class="pre">df.columns.tolist()</span></code> and fail clearly. For spike-event analysis, expected columns are normally <code class="docutils literal notranslate"><span class="pre">Time</span></code>, <code class="docutils literal notranslate"><span class="pre">channel</span></code>, and, when available, <code class="docutils literal notranslate"><span class="pre">Max</span> <span class="pre">Amplitude</span></code>.</p>
+</section>
+<section id="agent-calls-the-wrong-tool-or-invents-results">
+<h3>Agent calls the wrong tool or invents results<a class="headerlink" href="#agent-calls-the-wrong-tool-or-invents-results" title="Link to this heading">#</a></h3>
+<p>Reduce the tool list, improve each tool’s description, return small JSON-serializable results, require use of a data tool in the system message, and reject answers not grounded in a tool result.</p>
+</section>
+</section>
+<section id="quick-reference">
+<h2>11) Quick Reference<a class="headerlink" href="#quick-reference" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Notebook async call: <code class="docutils literal notranslate"><span class="pre">await</span> <span class="pre">Controller.method(Request(...))</span></code></p></li>
+<li><p>Standalone async call: <code class="docutils literal notranslate"><span class="pre">asyncio.run(main())</span></code></p></li>
+<li><p>LangChain tool call: <code class="docutils literal notranslate"><span class="pre">await</span> <span class="pre">tool.ainvoke({&quot;field&quot;:</span> <span class="pre">value})</span></code></p></li>
+<li><p>Database timestamps: timezone-aware UTC</p></li>
+<li><p>Long database intervals: query in 10-minute chunks</p></li>
+<li><p>Trigger pattern: exactly 16 integers</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">upload_stimparam</span></code>: always wait at least 5 seconds before triggering or readback</p></li>
+<li><p>Agent inputs: plain dictionaries validated by tool schemas</p></li>
+<li><p>Agent outputs: compact JSON-safe values rather than full DataFrames</p></li>
+<li><p>Hardware-changing agent tools: operator approval, strict bounds, logging, and cleanup</p></li>
 </ul>
-</li>
-<li><p><strong>Enable</strong> : if the parameter is enabled, the <strong>Intan Software</strong> will record that a given parameter is set for a given trigger.</p></li>
-</ul>
-<p>Then create a list of all the stimulation parameters you created :</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">stim_params</span> <span class="o">=</span> <span class="p">[</span><span class="n">stim_param1</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>Finally we can update those parameters to the intan (this is necessary in order to use them later) :</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">await</span> <span class="n">intan</span><span class="o">.</span><span class="n">_send_stimparam</span><span class="p">(</span><span class="n">stim_params</span><span class="p">)</span>
-<span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-<span class="k">await</span> <span class="n">intan</span><span class="o">.</span><span class="n">_upload_stimparam</span><span class="p">()</span>
-<span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>At the end of every experiment, disable all the stimulation parameters by changing the ‘enable’ parameter to ‘False’ and updating them in the intan again :</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">stim_param</span> <span class="ow">in</span> <span class="n">stim_params</span><span class="p">:</span>
-    <span class="n">stim_param</span><span class="o">.</span><span class="n">enable</span> <span class="o">=</span> <span class="kc">False</span>
-
-<span class="k">await</span> <span class="n">intan</span><span class="o">.</span><span class="n">_send_stimparam</span><span class="p">(</span><span class="n">stim_params</span><span class="p">)</span>
-<span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-<span class="k">await</span> <span class="n">intan</span><span class="o">.</span><span class="n">_upload_stimparam</span><span class="p">()</span>
-<span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-</section>
-<section id="triggers">
-<h3>Triggers<a class="headerlink" href="#triggers" title="Link to this heading">#</a></h3>
-<p>The main new concept here is how to send triggers.</p>
-<p>When you send a given trigger(s), the <strong>TriggerGenerator</strong> will send a signal to the <strong>Intan Controller</strong> to execute the <strong>StimParam</strong>(s) you set for the trigger(s).</p>
-<p>To send triggers, use a 16-length array of uint8 to send the triggers. If the value is 1, the trigger is sent. If the value is 0, the trigger is not sent.</p>
-<p>For example, to send trigger 3, we would define the array as follows:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">trigger_gen</span> <span class="o">=</span> <span class="n">TriggerController</span><span class="p">(</span><span class="s2">&quot;admin&quot;</span><span class="p">)</span>
-<span class="n">trigger_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span>
-    <span class="mi">16</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span>
-<span class="p">)</span>  <span class="c1"># Here all the triggers are set to 0, so none will be sent</span>
-
-<span class="n">trigger_array</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># This will send a trigger to the stimulation with trigger_key = 3</span>
-
-<span class="o">...</span>  <span class="c1"># Run experiment ...</span>
-
-<span class="n">trigger_gen</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>  <span class="c1"># Close the trigger generator</span>
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="example-experiment">
-<h3>Example experiment :<a class="headerlink" href="#example-experiment" title="Link to this heading">#</a></h3>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">stim_param1</span> <span class="o">=</span> <span class="n">StimParam</span><span class="p">()</span>  <span class="c1"># Create the stimulation parameter</span>
-<span class="n">stim_param1</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="mi">23</span>  <span class="c1"># Associate it to the electrode 23</span>
-<span class="n">stim_param1</span><span class="o">.</span><span class="n">trigger_key</span> <span class="o">=</span> <span class="mi">2</span>  <span class="c1"># Associate it to the trigger 2</span>
-
-<span class="n">stim_params</span> <span class="o">=</span> <span class="p">[</span><span class="n">stim_param1</span><span class="p">]</span>  <span class="c1"># Put all the stimulation parameters in a list</span>
-
-<span class="n">intan</span> <span class="o">=</span> <span class="n">IntanController</span><span class="p">()</span>  <span class="c1"># Open the intan controller</span>
-<span class="n">trigger</span> <span class="o">=</span> <span class="n">TriggerController</span><span class="p">(</span><span class="s2">&quot;admin&quot;</span><span class="p">)</span>  <span class="c1"># Open the trigger controller</span>
-
-<span class="k">try</span><span class="p">:</span>
-    <span class="n">start_exp</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">utcnow</span><span class="p">()</span>
-
-    <span class="k">await</span> <span class="n">intan</span><span class="o">.</span><span class="n">_send_stimparam</span><span class="p">(</span>
-        <span class="n">stim_params</span>
-    <span class="p">)</span>  <span class="c1"># Update the stimulation parameters in the intan</span>
-    <span class="k">await</span> <span class="n">intan</span><span class="o">.</span><span class="n">_upload_stimparam</span><span class="p">()</span>
-    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
-
-    <span class="n">trig_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span>
-        <span class="mi">16</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span>
-    <span class="p">)</span>  <span class="c1"># Create the trigger matrix and set the trigger 2 to 1 (so it is activated)</span>
-    <span class="n">trig_array</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
-        <span class="k">await</span> <span class="n">trigger</span><span class="o">.</span><span class="n">send</span><span class="p">(</span>
-            <span class="n">trig_array</span>
-        <span class="p">)</span>  <span class="c1"># Send the trigger matrix (this one has the trigger 2 ativated, and the stim_param1 is associated to it, so it will send the stim_param1 on the electrode 23)</span>
-        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-
-    <span class="n">stim_param1</span><span class="o">.</span><span class="n">enable</span> <span class="o">=</span> <span class="kc">False</span>  <span class="c1"># Disable all the stimulation parameters</span>
-    <span class="k">await</span> <span class="n">intan</span><span class="o">.</span><span class="n">_send_stimparam</span><span class="p">(</span><span class="n">stim_params</span><span class="p">)</span>
-    <span class="k">await</span> <span class="n">intan</span><span class="o">.</span><span class="n">_upload_stimparam</span><span class="p">()</span>
-
-<span class="k">finally</span><span class="p">:</span>
-    <span class="k">await</span> <span class="n">intan</span><span class="o">.</span><span class="n">_close</span><span class="p">()</span>  <span class="c1"># Close the intan and trigger controllers</span>
-    <span class="n">trigger</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="closed-loop">
-<h3>Closed Loop<a class="headerlink" href="#closed-loop" title="Link to this heading">#</a></h3>
-<p>If you need to read instantaneously the data from the organoid, you can use the _count_spike function of the intan. It will give you the number of counted spikes for each electrodes during the time interval of your choice.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">intan</span> <span class="o">=</span> <span class="n">IntanController</span><span class="p">()</span>
-
-<span class="k">try</span><span class="p">:</span>
-    <span class="c1"># ...</span>
-    <span class="n">count_spike</span> <span class="o">=</span> <span class="k">await</span> <span class="n">intan</span><span class="o">.</span><span class="n">_count_spike</span><span class="p">(</span>
-        <span class="mi">100</span>
-    <span class="p">)</span>  <span class="c1"># Here you just precise how many ms you want to record</span>
-    <span class="c1"># ...</span>
-
-<span class="k">finally</span><span class="p">:</span>
-    <span class="k">await</span> <span class="n">intan</span><span class="o">.</span><span class="n">_close</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-</section>
-<section id="database">
-<h2>Database<a class="headerlink" href="#database" title="Link to this heading">#</a></h2>
-<p>Now let’s see how we can retrieve our experimental data.</p>
-<section id="id1">
-<h3>Triggers<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
-<p>You can get the list of triggers that were sent to the organoid in a chosen time interval with :</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Choose your start and stop times in datetime</span>
-<span class="n">start</span> <span class="o">=</span> <span class="o">...</span>
-<span class="n">stop</span> <span class="o">=</span> <span class="o">...</span>
-<span class="n">query</span> <span class="o">=</span> <span class="n">TriggersQuery</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">stop</span><span class="p">)</span>
-<span class="n">df</span> <span class="o">=</span> <span class="k">await</span> <span class="n">DatabaseController</span><span class="o">.</span><span class="n">get_all_triggers</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
-<span class="n">df_trig</span> <span class="o">=</span> <span class="p">(</span>
-    <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;up&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s2">&quot;up&quot;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="p">)</span>  <span class="c1"># This lines removes all the duplicates (because df contains all the moments when each trigger went on AND off)</span>
-<span class="n">df_trig</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="spike-counts">
-<h3>Spike Counts<a class="headerlink" href="#spike-counts" title="Link to this heading">#</a></h3>
-<p>This gives you the number of spikes per minutes in a chosen time interval for each electrode. To do that, you need to know the ID (fs…) of the experiment you want to study.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">query</span> <span class="o">=</span> <span class="n">SpikeCountQuery</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">stop</span><span class="p">,</span> <span class="n">fsname</span><span class="o">=</span><span class="s2">&quot;fs264&quot;</span><span class="p">)</span>
-<span class="n">df</span> <span class="o">=</span> <span class="k">await</span> <span class="n">DatabaseController</span><span class="o">.</span><span class="n">get_spike_count</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
-<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="spike-events">
-<h3>Spike Events<a class="headerlink" href="#spike-events" title="Link to this heading">#</a></h3>
-<p>This gives you the timing of each spikes that happened on every electrode in a chosen time interval. Again, you need to know the ID of your experiment.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">query</span> <span class="o">=</span> <span class="n">SpikeEventQuery</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">stop</span><span class="p">,</span> <span class="n">fsname</span><span class="o">=</span><span class="s2">&quot;fs264&quot;</span><span class="p">)</span>
-<span class="n">df_events</span> <span class="o">=</span> <span class="k">await</span> <span class="n">DatabaseController</span><span class="o">.</span><span class="n">get_spike_event</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
-<span class="n">df_events</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="raw-data">
-<h3>Raw data<a class="headerlink" href="#raw-data" title="Link to this heading">#</a></h3>
-<p>You can retrieve the raw data for a specific electrode for a chosen time interval. Remember that we only register 3 ms of raw data around each spike! So the best practice is to first get the spike timing (see Spike Events section right above) and then fetch raw data around it. You can then plot them.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="n">df_events</span><span class="p">[</span><span class="s2">&quot;Time&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-<span class="n">start</span> <span class="o">=</span> <span class="n">t</span> <span class="o">-</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">milliseconds</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">stop</span> <span class="o">=</span> <span class="n">t</span> <span class="o">+</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">milliseconds</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-
-<span class="n">query</span> <span class="o">=</span> <span class="n">RawSpikeQuery</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="n">start</span><span class="p">,</span> <span class="n">stop</span><span class="o">=</span><span class="n">stop</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">channel</span><span class="p">)</span>
-<span class="n">raw</span> <span class="o">=</span> <span class="k">await</span> <span class="n">get_raw_spike</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="camera">
-<h3>Camera<a class="headerlink" href="#camera" title="Link to this heading">#</a></h3>
-<p>To get a picture of your current MEA :</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">cam</span> <span class="o">=</span> <span class="n">CameraController</span><span class="p">(</span><span class="n">mea</span><span class="o">=</span><span class="n">MEA</span><span class="o">.</span><span class="n">Five</span><span class="p">)</span>
-<span class="n">lastcapture</span> <span class="o">=</span> <span class="k">await</span> <span class="n">cam</span><span class="o">.</span><span class="n">_last_capture</span><span class="p">()</span>
-<span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">lastcapture</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-    <span class="n">lastcapture</span> <span class="o">=</span> <span class="n">lastcapture</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;id&quot;</span><span class="p">]</span>
-    <span class="n">img</span> <span class="o">=</span> <span class="n">cam</span><span class="o">.</span><span class="n">_image_from</span><span class="p">(</span><span class="n">lastcapture</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-</section>
 </section>
 </section>
 
@@ -965,20 +861,20 @@ However, the pulse train settings may not be changed quickly during the experime
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="faq.html"
+       href="../welcome.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Troubleshoothing &amp; FAQ</p>
+        <p class="prev-next-title">Welcome to the NeuroPlatform documentation!</p>
       </div>
     </a>
     <a class="right-next"
-       href="../np_utils/livemea.html"
+       href="best_practices.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Recording live data</p>
+        <p class="prev-next-title">Best Practices</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -989,36 +885,40 @@ However, the pulse train settings may not be changed quickly during the experime
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
     <i class="fa-solid fa-list"></i> Contents
   </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#intan-interface">1- Intan interface</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python-code">2- Python Code</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#imports">Imports</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#empty-shell-of-an-experiment">Empty shell of an experiment</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stimulation-parameters">Stimulation parameters</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#stimparam-reference">StimParam reference</a></li>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#choose-the-right-interface">1) Choose the Right Interface</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#requirements-and-installation">2) Requirements and Installation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configure-the-environment-before-importing">3) Configure the Environment Before Importing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#notebook-rules">4) Notebook Rules</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-read-only-notebook-quick-start">5) A Read-Only Notebook Quick Start</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#common-controller-calls">6) Common Controller Calls</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#database-read-only">Database (read-only)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#intan-spike-count-and-triggers">Intan spike count and triggers</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#triggers">Triggers</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-experiment">Example experiment :</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#closed-loop">Closed Loop</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#electrical-stimulation-safety-and-example">7) Electrical Stimulation Safety and Example</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#standalone-python-script">8) Standalone Python Script</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-hardware-tools-to-an-agent">9) Adding Hardware Tools to an Agent</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#troubleshooting">10) Troubleshooting</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import-fails-with-missing-environment-variables">Import fails with missing environment variables</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#runtimeerror-asyncio-run-cannot-be-called-from-a-running-event-loop"><code class="docutils literal notranslate"><span class="pre">RuntimeError:</span> <span class="pre">asyncio.run()</span> <span class="pre">cannot</span> <span class="pre">be</span> <span class="pre">called</span> <span class="pre">from</span> <span class="pre">a</span> <span class="pre">running</span> <span class="pre">event</span> <span class="pre">loop</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pydantic-validation-error">Pydantic validation error</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#database-query-returns-no-rows">Database query returns no rows</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#expected-dataframe-columns-are-missing">Expected DataFrame columns are missing</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#agent-calls-the-wrong-tool-or-invents-results">Agent calls the wrong tool or invents results</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#database">Database</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Triggers</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spike-counts">Spike Counts</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spike-events">Spike Events</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#raw-data">Raw data</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#camera">Camera</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quick-reference">11) Quick Reference</a></li>
 </ul>
   </nav></div>
 
@@ -1067,8 +967,8 @@ By the FinalSpark team - Vevey, Switzerland
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <script defer src="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
 
   <footer class="bd-footer">
   </footer>
