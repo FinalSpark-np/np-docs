@@ -2,18 +2,9 @@
 
 ## Introduction
 
-This documentation will guide through the basics of using FinalSpark's NeuroPlatform.
+This documentation guides you through using FinalSpark's NeuroPlatform with the `neuroplatformv2` Python SDK.
 
-The first part focuses on basic usage of the platform : stimulating organoids, fetching data from the platform and reading spikes for closed-loop experiments.
-
-The second part lists several utilities that you may find useful in your experiments, whether for setting up your parameters or empowering your data analysis.
-
-```{hint}
-**Every tutorial page can be downloaded as a Jupyter notebook.**
-
-Click on the *"Download as .ipynb"* button at the top right of the page.
-This will allow you to test the sample code on your provided machine.
-```
+The API guide covers notebook and standalone Python usage, database queries, controlled hardware operations, and safe agent integration.
 
 ## Questions and support
 
