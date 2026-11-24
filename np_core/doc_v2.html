@@ -36,7 +36,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=6a604523" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=990f3d29" />
   
   <!-- So that users can add custom icons -->
@@ -56,7 +56,7 @@
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js?v=b8b12719"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script data-sd-tabs-storage-prefix="sphinx-design-tab-id-" src="../_static/design-tabs.js?v=fcb327ea"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
@@ -523,8 +523,8 @@ poetry<span class="w"> </span>run<span class="w"> </span>python<span class="w"> 
 <h2>3) Configure the Environment Before Importing<a class="headerlink" href="#configure-the-environment-before-importing" title="Link to this heading">#</a></h2>
 <p>The following settings are required when the SDK is imported:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">DB_PORT</span><span class="o">=</span><span class="m">8086</span>
-<span class="nb">export</span><span class="w"> </span><span class="nv">INTAN_SOFTWARE_IP</span><span class="o">=</span><span class="s2">&quot;...&quot;</span>
-<span class="nb">export</span><span class="w"> </span><span class="nv">TRIGGER_IP</span><span class="o">=</span><span class="s2">&quot;...&quot;</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">INTAN_SOFTWARE_IP</span><span class="o">=</span><span class="s2">"..."</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">TRIGGER_IP</span><span class="o">=</span><span class="s2">"..."</span>
 </pre></div>
 </div>
 <p>Frequently used optional settings include:</p>
@@ -575,7 +575,7 @@ poetry<span class="w"> </span>run<span class="w"> </span>python<span class="w"> 
 <span class="kn">from</span><span class="w"> </span><span class="nn">neuroplatformv2.core.database</span><span class="w"> </span><span class="kn">import</span> <span class="n">DatabaseController</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">neuroplatformv2.utils.schemas</span><span class="w"> </span><span class="kn">import</span> <span class="n">SpikeEventQuery</span>
 
-<span class="n">FSNAME</span> <span class="o">=</span> <span class="s2">&quot;fs511&quot;</span>  <span class="c1"># Replace with your dataset identifier</span>
+<span class="n">FSNAME</span> <span class="o">=</span> <span class="s2">"fs511"</span>  <span class="c1"># Replace with your dataset identifier</span>
 <span class="n">stop</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">(</span><span class="n">timezone</span><span class="o">.</span><span class="n">utc</span><span class="p">)</span>
 <span class="n">start</span> <span class="o">=</span> <span class="n">stop</span> <span class="o">-</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">minutes</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 
@@ -584,27 +584,27 @@ poetry<span class="w"> </span>run<span class="w"> </span>python<span class="w"> 
 <span class="p">)</span>
 
 <span class="k">if</span> <span class="n">spikes</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">spikes</span><span class="o">.</span><span class="n">empty</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;No spike events returned.&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"No spike events returned."</span><span class="p">)</span>
 <span class="k">else</span><span class="p">:</span>
-    <span class="n">required</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Time&quot;</span><span class="p">,</span> <span class="s2">&quot;channel&quot;</span><span class="p">}</span>
+    <span class="n">required</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"Time"</span><span class="p">,</span> <span class="s2">"channel"</span><span class="p">}</span>
     <span class="n">missing</span> <span class="o">=</span> <span class="n">required</span> <span class="o">-</span> <span class="nb">set</span><span class="p">(</span><span class="n">spikes</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">missing</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span>
-            <span class="sa">f</span><span class="s2">&quot;Missing expected columns: </span><span class="si">{</span><span class="n">missing</span><span class="si">}</span><span class="s2">; got </span><span class="si">{</span><span class="nb">list</span><span class="p">(</span><span class="n">spikes</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="sa">f</span><span class="s2">"Missing expected columns: </span><span class="si">{</span><span class="n">missing</span><span class="si">}</span><span class="s2">; got </span><span class="si">{</span><span class="nb">list</span><span class="p">(</span><span class="n">spikes</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span>
         <span class="p">)</span>
 
     <span class="n">spikes</span> <span class="o">=</span> <span class="n">spikes</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-    <span class="n">spikes</span><span class="p">[</span><span class="s2">&quot;Time&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">spikes</span><span class="p">[</span><span class="s2">&quot;Time&quot;</span><span class="p">],</span> <span class="n">utc</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">errors</span><span class="o">=</span><span class="s2">&quot;coerce&quot;</span><span class="p">)</span>
-    <span class="n">spikes</span><span class="p">[</span><span class="s2">&quot;channel&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span><span class="n">spikes</span><span class="p">[</span><span class="s2">&quot;channel&quot;</span><span class="p">],</span> <span class="n">errors</span><span class="o">=</span><span class="s2">&quot;coerce&quot;</span><span class="p">)</span>
-    <span class="n">spikes</span> <span class="o">=</span> <span class="n">spikes</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Time&quot;</span><span class="p">,</span> <span class="s2">&quot;channel&quot;</span><span class="p">])</span>
-    <span class="n">spikes</span><span class="p">[</span><span class="s2">&quot;channel&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">spikes</span><span class="p">[</span><span class="s2">&quot;channel&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+    <span class="n">spikes</span><span class="p">[</span><span class="s2">"Time"</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">spikes</span><span class="p">[</span><span class="s2">"Time"</span><span class="p">],</span> <span class="n">utc</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">errors</span><span class="o">=</span><span class="s2">"coerce"</span><span class="p">)</span>
+    <span class="n">spikes</span><span class="p">[</span><span class="s2">"channel"</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span><span class="n">spikes</span><span class="p">[</span><span class="s2">"channel"</span><span class="p">],</span> <span class="n">errors</span><span class="o">=</span><span class="s2">"coerce"</span><span class="p">)</span>
+    <span class="n">spikes</span> <span class="o">=</span> <span class="n">spikes</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s2">"Time"</span><span class="p">,</span> <span class="s2">"channel"</span><span class="p">])</span>
+    <span class="n">spikes</span><span class="p">[</span><span class="s2">"channel"</span><span class="p">]</span> <span class="o">=</span> <span class="n">spikes</span><span class="p">[</span><span class="s2">"channel"</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
 
     <span class="nb">print</span><span class="p">(</span>
         <span class="p">{</span>
-            <span class="s2">&quot;spikes&quot;</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">spikes</span><span class="p">),</span>
-            <span class="s2">&quot;channels&quot;</span><span class="p">:</span> <span class="n">spikes</span><span class="p">[</span><span class="s2">&quot;channel&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">nunique</span><span class="p">(),</span>
-            <span class="s2">&quot;first&quot;</span><span class="p">:</span> <span class="n">spikes</span><span class="p">[</span><span class="s2">&quot;Time&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span>
-            <span class="s2">&quot;last&quot;</span><span class="p">:</span> <span class="n">spikes</span><span class="p">[</span><span class="s2">&quot;Time&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span>
+            <span class="s2">"spikes"</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">spikes</span><span class="p">),</span>
+            <span class="s2">"channels"</span><span class="p">:</span> <span class="n">spikes</span><span class="p">[</span><span class="s2">"channel"</span><span class="p">]</span><span class="o">.</span><span class="n">nunique</span><span class="p">(),</span>
+            <span class="s2">"first"</span><span class="p">:</span> <span class="n">spikes</span><span class="p">[</span><span class="s2">"Time"</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span>
+            <span class="s2">"last"</span><span class="p">:</span> <span class="n">spikes</span><span class="p">[</span><span class="s2">"Time"</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span>
         <span class="p">}</span>
     <span class="p">)</span>
     <span class="n">display</span><span class="p">(</span><span class="n">spikes</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
@@ -617,9 +617,9 @@ poetry<span class="w"> </span>run<span class="w"> </span>python<span class="w"> 
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">get_spike_events_chunked</span><span class="p">(</span><span class="n">fsname</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">stop</span><span class="p">,</span> <span class="n">chunk_minutes</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">start</span><span class="o">.</span><span class="n">tzinfo</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">stop</span><span class="o">.</span><span class="n">tzinfo</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;start and stop must be timezone-aware&quot;</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"start and stop must be timezone-aware"</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">start</span> <span class="o">&gt;=</span> <span class="n">stop</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;start must be earlier than stop&quot;</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"start must be earlier than stop"</span><span class="p">)</span>
 
     <span class="n">frames</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="n">cursor</span> <span class="o">=</span> <span class="n">start</span>
@@ -637,8 +637,8 @@ poetry<span class="w"> </span>run<span class="w"> </span>python<span class="w"> 
 
 <span class="n">stop</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">(</span><span class="n">timezone</span><span class="o">.</span><span class="n">utc</span><span class="p">)</span>
 <span class="n">start</span> <span class="o">=</span> <span class="n">stop</span> <span class="o">-</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">hours</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">spikes</span> <span class="o">=</span> <span class="k">await</span> <span class="n">get_spike_events_chunked</span><span class="p">(</span><span class="s2">&quot;fs511&quot;</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">stop</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;rows:&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">spikes</span><span class="p">))</span>
+<span class="n">spikes</span> <span class="o">=</span> <span class="k">await</span> <span class="n">get_spike_events_chunked</span><span class="p">(</span><span class="s2">"fs511"</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">stop</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"rows:"</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">spikes</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -666,10 +666,10 @@ poetry<span class="w"> </span>run<span class="w"> </span>python<span class="w"> 
 <span class="n">start</span> <span class="o">=</span> <span class="n">stop</span> <span class="o">-</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">minutes</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 
 <span class="n">events</span> <span class="o">=</span> <span class="k">await</span> <span class="n">DatabaseController</span><span class="o">.</span><span class="n">get_spike_event</span><span class="p">(</span>
-    <span class="n">SpikeEventQuery</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="n">start</span><span class="p">,</span> <span class="n">stop</span><span class="o">=</span><span class="n">stop</span><span class="p">,</span> <span class="n">fsname</span><span class="o">=</span><span class="s2">&quot;fs511&quot;</span><span class="p">)</span>
+    <span class="n">SpikeEventQuery</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="n">start</span><span class="p">,</span> <span class="n">stop</span><span class="o">=</span><span class="n">stop</span><span class="p">,</span> <span class="n">fsname</span><span class="o">=</span><span class="s2">"fs511"</span><span class="p">)</span>
 <span class="p">)</span>
 <span class="n">counts</span> <span class="o">=</span> <span class="k">await</span> <span class="n">DatabaseController</span><span class="o">.</span><span class="n">get_spike_count</span><span class="p">(</span>
-    <span class="n">SpikeCountQuery</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="n">start</span><span class="p">,</span> <span class="n">stop</span><span class="o">=</span><span class="n">stop</span><span class="p">,</span> <span class="n">fsname</span><span class="o">=</span><span class="s2">&quot;fs511&quot;</span><span class="p">)</span>
+    <span class="n">SpikeCountQuery</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="n">start</span><span class="p">,</span> <span class="n">stop</span><span class="o">=</span><span class="n">stop</span><span class="p">,</span> <span class="n">fsname</span><span class="o">=</span><span class="s2">"fs511"</span><span class="p">)</span>
 <span class="p">)</span>
 <span class="n">triggers</span> <span class="o">=</span> <span class="k">await</span> <span class="n">DatabaseController</span><span class="o">.</span><span class="n">get_all_triggers</span><span class="p">(</span>
     <span class="n">TriggersQuery</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="n">start</span><span class="p">,</span> <span class="n">stop</span><span class="o">=</span><span class="n">stop</span><span class="p">)</span>
@@ -766,7 +766,7 @@ poetry<span class="w"> </span>run<span class="w"> </span>python<span class="w"> 
     <span class="nb">print</span><span class="p">(</span><span class="n">counts</span><span class="p">)</span>
 
 
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">"__main__"</span><span class="p">:</span>
     <span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">main</span><span class="p">())</span>
 </pre></div>
 </div>
