@@ -1,5 +1,7 @@
 # NeuroPlatform documentation
 
+> **Documentation:** The latest documentation is available on request. The documentation in this repository is outdated and is kept to give an idea of the API used to access neurons.
+
 This repository contains the documentation for the FinalSpark NeuroPlatform.
 
 ## Contributing
