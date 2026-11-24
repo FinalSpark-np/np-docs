@@ -1,5 +1,9 @@
 # Welcome to the NeuroPlatform documentation!
 
+```{important}
+The latest NeuroPlatform documentation is available on request. The documentation on this site is outdated and remains available to illustrate how the API is used to access neurons.
+```
+
 ## Introduction
 
 This documentation guides you through using FinalSpark's NeuroPlatform with the `neuroplatformv2` Python SDK.
